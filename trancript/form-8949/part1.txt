@@ -1,0 +1,183 @@
+ Bueno, vamos a ver cómo se carga la venta de acciones en CCH
+ Primero ingresamos a Income, a la parte de Income, a Schedule D, 4797, gain and lose, y nos va a abrir de esta forma
+ Nosotros tenemos que ir a Detail
+ Y en Detail abrimos cada fila, digamos, por separado
+ Luego debemos ir a la carpeta del cliente
+ A, bueno, al año que estamos trabajando, Bank Statement, y el Form 1099
+ Una vez abierto
+ Permitido por UBS Financial Service
+ Bajamos, y lo que debemos cargar nosotros es esta parte
+ De short-term
+ Entonces, vamos a ir cargando en base a este formulario
+ Nosotros debemos, bueno, poner la descripción
+ Que es la misma que se encuentra en el 1099
+ United States
+ Para que la vean
+ Esta es la descripción
+ Luego
+ Ponemos, bueno, en Property Type
+ Seleccionamos
+ Esta opción de Short or Long Term
+ Luego ponemos la fecha de adquisición y la fecha de venta que se encuentran en el formulario
+ El precio de venta que se encuentra también acá
+ Venga, acá está la fecha de adquisición
+ El precio de venta
+ Y el costo
+ Y ponemos el costo
+ Luego de eso
+ Debemos completar 1099 B Code
+ Y seleccionamos el A
+ Y por último
+ En el punto 12
+ Ponemos si es short-term la venta
+ O long-term
+ Si las acciones estuvieron por más de un año
+ Sería long-term
+ Si no
+ Sería short-term
+ Bueno
+ Esa sería la forma de cargarlos
+ Acá en el Sketchual D
+ Después cuando vamos a Government Form
+ Los podemos ver de esta forma
+ Vamos a Sketchual D
+ Y acá 8949
+ Entonces los podemos ver de esta forma
+ Ven que acá está tildado short-term
+ Y los vemos acá
+ Y acá están los totales
+ Que el total debe ser igual a
+ Este total
+ Entonces
+ 13605
+ 13605
+ 769061
+ Lo mismo
+ 75546
+ Lo mismo
+ Bueno
+ Yo mostré cargando uno solo
+ En este caso tengo dos
+ Dos ventas de acciones
+ Acá tengo una y acá tengo otra
+ Bueno
+ Así
+ Se van cargando
+ Una por una
+ Vamos con esta
+ Vamos pasando las hojas
+ Y se van cargando
+ Acá de esta forma
+ Acá está la otra
+ Y así sucesivamente
+ Con cada una que tengamos
+ Lo que hay que tener en cuenta
+ Que
+ CCH
+ En el caso de que
+ La sociedad de ganancia
+ La ganancia se informa
+ En el
+ 8804
+ Entonces
+ En el 8804
+ En el 8805
+ Nosotros
+ Nos va
+ Vamos a tener la ganancia
+ Y la retención
+ A pagar
+ Hay que chequear
+ Que no estén tomando
+ Los short y long term
+ Ya que
+ Son no grabados
+ Entonces
+ Entonces lo que debemos
+ Hacer es
+ Nosotros en el punto
+ 4e
+ Tenemos
+ Un monto
+ Que es el monto
+ De la ganancia
+ Y en el
+ Bueno
+ Acá tenemos las retenciones
+ Y nuestra retención
+ En este caso
+ Son 6492
+ Lo que debemos hacer
+ Es
+ Por cada socio
+ Foreign
+ Que nosotros tenemos
+ Que por eso presentan
+ 8805
+ Y bueno
+ Y su ganancia se informa
+ En el 8804
+ Y la retención
+ Que deben pagar
+ Por eso
+ En el 8805
+ Debemos ver
+ Que el punto 9
+ Es decir
+ Vamos a abrirla
+ El 8805
+ Así se ve
+ Acá
+ En el punto 9
+ Del 8805
+ De todos
+ Los socios foreign
+ En este caso
+ Solo tengo uno
+ Pero de todos
+ Los socios foreign
+ Deben sumar
+ Lo que tenemos
+ Plasmado
+ En el 4e
+ Del 8804
+ A lo sumo
+ Puede llegar a variar
+ En un dólar
+ Pero más que eso
+ No
+ Debería ser
+ El mismo monto
+ Y lo mismo
+ Con el punto 10
+ Del 8805
+ Que sería este
+ Que sería la retención
+ A pagar
+ Por cada socio
+ Entonces
+ Debería también
+ La retención
+ De cada socio
+ Sumar
+ Este total
+ De retención
+ Eso para que se tengan
+ En cuenta
+ Porque
+ CCH
+ Lo toma
+ Al short y long term
+ Y no debería ir
+ Entonces
+ Cuando tengamos
+ La venta de acciones
+ Tengamos en cuenta
+ Eso
+ De fijarnos
+ En el 8805
+ Para que
+ Nos pueda quedar bien
+ La declaración
+ Eso es todo
+ Gracias.

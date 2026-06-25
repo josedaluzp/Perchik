@@ -1,0 +1,208 @@
+ Bueno, hola a todos, vamos a realizar la declaración SALVIN7 LLC, comenzamos abriendo la declaración del año pasado, si es que tiene, los reportes del 2025, que es la declaración que nosotros queremos armar, y el manual de cómo hacer un 1065 en CCH.
+ Bueno, comenzamos chequeando los datos, que el nombre de la sociedad esté bien, que el IN de la sociedad esté bien, que la dirección de la sociedad esté bien, el teléfono del estudio esté bien, la actividad de la sociedad, la fecha de inicio, el método contable, cash, accrual puede ser.
+ Bueno, esto, el método contable depende de cómo se hizo años anteriores, y si este año llega a haber cambiado, se consulta con los de QuickBooks para ver si está bien, y si está bien, bueno, se realiza, se cambia el método.
+ Bueno, seguimos los pasos de CCH, del manual de CCH.
+ Bueno, volvamos a Other Information, en Other Information nosotros lo utilizamos para marcar las páginas de la 2 a la 4 en el 1065.
+ Es una Domestic Liability Company, está bien.
+ Bueno, comenzamos porque vemos cuántos socios tiene y qué tipo de socios son.
+ Esta sociedad tiene dos socios, una corp y una persona física, digamos.
+ Pero la corp tiene más del 50%, tiene el 99%.
+ Por ende, en este punto, nosotros en el 1065 debemos marcar que, como yes, el punto este 4.
+ Ya que, bueno, la corp tiene más del 50%.
+ Y la individual tiene, la persona individual tiene 1%.
+ En el caso de que sea 50-50, se marcarían ambos puntos no, sí, yes.
+ Pero en este caso, como solo la corp tiene más del 50%, se marca solo el punto 4 como yes.
+ En este caso, como la sociedad viene de años anteriores, se va a marcar, me lo va a traer solo, pero si no, deberíamos marcar acá como yes.
+ Bueno, luego tenemos el punto 4, que influye al punto 8, digamos.
+ En el punto 4, nosotros, ¿qué vemos?
+ Vemos que se cumplen dos condiciones.
+ La primera es que en el balance no supere el millón.
+ Y la segunda es que el profit and loss, el income, no supere los 250.000 dólares.
+ Bueno, en este caso, como ninguno de los dos se cumplen, se pone como yes.
+ O sea, digamos que ninguno de los dos se superan, se pone como yes.
+ Para poner como yes, nosotros ponemos force print para que nos marque el punto 4 como yes.
+ Luego, si seguimos el punto 12, cuando al último nosotros tiramos un diagnostic, este punto nos lo va a tirar como error.
+ Entonces, lo marcamos ya como no, de entrada.
+ Luego, nos fijamos cuántos socios foreign tienen.
+ En este caso, la corp es foreign y el socio es foreign.
+ Entonces, deben presentar 8805.
+ Entonces, ponemos yes y ponemos cuántos socios deben presentar 8805.
+ Y por otro lado, debemos ver si la sociedad presentó un 1099.
+ En el caso que la sociedad presentó un 1099, ponemos yes en el punto 26.
+ Pero en este caso, como esta sociedad no presentó, ponemos no.
+ Bueno, eso es todo.
+ Seguimos.
+ Luego, vamos a ownership by entities.
+ En este punto, nosotros lo vamos a ver reflejado en el sketchual B1.
+ Por ende, en el sketchual B1, nosotros ponemos los socios que tienen más del 50% o que están relacionados.
+ En el caso de esta sociedad, el único que tiene más del 50% es la corp.
+ Entonces, solo ponemos a la corp.
+ Se llama la Venture Company.
+ Completamos foreign, corp, de dónde es la corp y su porcentaje.
+ En el caso de que sea 50 y 50 con la persona individual, vamos a completar con la persona individual también,
+ con el porcentaje 50%.
+ Bueno, luego vamos a partnership representative.
+ Marcamos el primer punto y ponemos el teléfono del estudio en el punto 10.
+ Luego pasamos a electronic filling.
+ Todo esto es para que se realice bien el e-file y no nos tiene error al momento de hacer la decla.
+ Bueno, marcamos todos los puntos yes, no, este lo tildamos, supres, acá ponemos no, acá ponemos yes.
+ No, yes, 3, yes.
+ Bien.
+ Luego vamos a paperless e-file.
+ Bueno, esto vamos a verlo reflejado en el 8879, que es donde firman la declaración.
+ Vemos el pin.
+ El pin tenemos que, si viene de las anteriores, debemos ver que sea el mismo pin.
+ Lo chequeamos con el año pasado, 9561.
+ Ponemos la fecha de hoy.
+ El nombre del socio, que va a ser el managing member.
+ El itin, y es que tiene, de lo contrario, dependiendo, ponemos 88800888, 1 y yes.
+ Bueno, vamos a electronic return y marcamos este punto.
+ Y luego pasamos a return options.
+ Vamos a calculation options.
+ Acá, bueno, ponemos do not force balance return.
+ Y en prepare the information, todo esto es para que salga bien la información en la decla en sí.
+ Tanto toda la información de IAN, como bien las distintas, que salgan completas de distintos formularios.
+ Por ejemplo, el 8879, el 8804.
+ Entonces, todo esto lo que vamos haciendo es para que se complete bien todo.
+ Bueno, acá completamos con los datos de IAN, la fecha de hoy.
+ Y luego vamos a partners, general options.
+ Y bueno, esto es lo mismo.
+ Acá, seguimos completando.
+ Product for all partners, no, suppress state, basic capital account, suppress K1, also in client copy.
+ Perfecto.
+ Bueno, y por último, vamos con, de la parte de partner, digamos, vamos con partner information.
+ Que acá, todo lo que cargamos acá, lo vamos a ver reflejado en el K1.
+ Entonces, comenzamos a completar el K1.
+ Esta parte, como viene de años anteriores, ya me va a salir cierta parte completa.
+ Y lo podemos ver también del año pasado, para no equivocarnos en los nombres, el domicilio, etc.
+ Si es general, si es limited, el insocio.
+ Bueno, en este caso tenemos Ezequiel C, Aslanian, y la Ventu Company, LTD.
+ Ambos tienen dirección del estudio.
+ Como ambos son foreign, porque Ezequiel es de Argentina y la Ventu es de British, British and Iceland,
+ ponemos acá para que se nos marque como foreign en el K1.
+ En este caso, Ezequiel tiene AIN, y a la Ventu la ponemos como apply for.
+ Pero, ¿qué debemos hacer?
+ Nosotros lo que tenemos que hacer es poner 99-9979, y nos va a salir solo el apply for, pero de esa forma hay que ponerlo.
+ Entity type, bueno, ¿qué tipo son?
+ En el caso de Sequiel es individual, en el caso de la VentuScore.
+ Acá marcamos quién es el general y quién es el partner representativo, en este caso los dos son Ezequiel.
+ Esto lo podemos ver en el operating agreement, y también del año pasado, si tenemos una década del año pasado.
+ Bueno, acá en porcentajes ponemos los porcentajes que les corresponden a cada uno.
+ Como yo les dije en este caso, Ezequiel tiene el 1% y la Ventu tiene el 99%.
+ En este sistema se utiliza el 0, no el porcentaje en sí, sino que, y ambos nos tiene que sumar el 100%, digamos.
+ Bueno, y luego acá nos basamos en el K1 del año pasado, vemos cuál es el ending de cada socio del año pasado.
+ En el caso de Sequiel, 5190 y en el caso de la Ventu, 513721.
+ Y acá completamos lo que serían las contribuciones y las distribuciones que tuvieron en el año.
+ Vamos al capital account y vemos cuáles son.
+ En el caso de las contribuciones, son 222.756,74.
+ Entonces, eso por el 1% nos da 2.228.
+ Y lo mismo por el 99% nos da 220 y 529.
+ Después, se me está, bueno, se me había traído la grabación.
+ Bueno, y después en distributions tenemos que son 262.867, con 70.
+ Entonces, bueno, por el 1% sería 206.29 y por el 99%, 260.239.
+ Acá la distribution y contribution se dividen en base al porcentaje de cada socio.
+ Bueno, luego...
+ Vamos a...
+ Bueno, vamos a ver el profit and loss de la sociedad.
+ Esta sociedad importa 3K1 de 3 sociedades distintas.
+ Nosotros lo vamos a ver, lo vamos a poder cargar en la parte de income, en partnership, path through.
+ Acá.
+ Y pasamos a cargar cada uno de los K1.
+ Entonces, lo que tenemos que hacer es ir a la carpeta del cliente.
+ Y abrimos los K1 de cada uno de cada uno.
+ Y abrimos los K1 de cada uno.
+ Bueno, en este caso vamos a empezar por airport crossing investors.
+ Bien.
+ Nosotros el K1 lo paso a mostrar acá.
+ Lo vamos a ver de esta forma.
+ O sea, tal cual el K1, tal cual como tenemos para cargar.
+ Entonces, comenzamos a cargar.
+ Tenemos que cargar el nombre de la sociedad de este lado.
+ El nombre...
+ Bueno, este nos lo va a tirar solo porque es la sociedad que estamos realizando.
+ Acá vamos a poner la sociedad de la cual participa Salvin7.
+ Marcamos, bueno, si es limited domestic, qué porcentaje tiene en la sociedad.
+ Completamos la parte de partner capital account analytics, análisis.
+ Y, bueno, acá comenzamos a completar.
+ Acá ponemos other.
+ Y acá cambiamos por other passive.
+ Bueno, ahí está.
+ Bueno, listo.
+ Y empezamos a completar esta parte.
+ Tal cual como está en el K1.
+ O sea, nosotros tenemos que reflejar.
+ El K1 del socio acá para que luego impacte en el K1 de...
+ En Salvin7, digamos.
+ Del socio en Salvin7.
+ De los socios en Salvin7.
+ Bueno, comenzamos a...
+ Bueno, comenzamos a...
+ Menos 6.138.
+ Tuvo esta sociedad de pérdida de real estate.
+ Tuvo intereses por 72.
+ Tuvo...
+ Deductions por 47.
+ Tuvo uno de Tax and Interest Income.
+ Todo tal cual.
+ Todo tal cual.
+ Seguimos exactamente cómo está cargado en ese K1.
+ Punto en el 20.
+ En la parte A, que sería en Basement Income, tuvo 72.
+ Y en Business Interest Expense, 311.
+ Vamos por Cherokee Investors.
+ En Cherokee Investors tenemos 6.285 de pérdida de real estate.
+ 122 de Interest.
+ 122 de Interest.
+ 32 en Deductions.
+ En Non-Deduction...
+ Como no deducible, como gasto no deducible, tenemos 8.
+ 122 en Investments.
+ Business Interest, 2007.99.
+ Y 1973 en Current Year Cross Receipts.
+ Bien.
+ Y después, vamos con Road Investors.
+ ¿Qué tenemos?
+ No tuvo nada de pérdida ni ganancia de real estate ni nada.
+ Después tenemos Interest por 2.57.
+ En el punto 13...
+ 49.
+ Y en el 20...
+ Basement Income...
+ 2.57.
+ Bien.
+ Eso sería todo.
+ Acá cargamos los K1 que importan a la sociedad, digamos.
+ Bueno, luego...
+ Vamos a ir a la parte...
+ Vamos a abrir el Profit and Loss.
+ Y vamos a ver, en este caso lo voy a mostrar.
+ Esto sería lo que se...
+ Esta parte, esta parte, esta parte.
+ Lo que se importa de los K1.
+ Y esta parte que es Unclassificated.
+ es lo que...
+ La actividad real de la sociedad en sí.
+ Entonces nosotros debemos cargar esta parte
+ para que nos termine de cerrar el balance
+ porque es la actividad de Salvin 7.
+ No de las sociedades en las cuales participa Salvin 7.
+ Entonces, lo que tenemos que hacer es...
+ Vamos a...
+ El sketcho al M1
+ porque la actividad de Salvin 7 es consulting fuera de Estados Unidos.
+ Entonces, a nosotros, ¿qué nos va a impactar?
+ En la página 6, en el sketcho al M1.
+ Entonces, acá cargamos la actividad,
+ Common, Foreign y, por ejemplo, los Expenses.
+ Tiene Bank Expense por $1,646.
+ Tiene Office Expense por $2,816.
+ Professional Fees por $4,600.
+ Y luego tiene Income, que lo cargamos acá,
+ por $20,718.
+ Esto, ahora se los muestro.
+ Vamos a ver en el form.
+ Nos va a impactar en esta parte.
+ Acá.
+ Entonces, nosotros vemos el total de los Expenses en el punto 4
+ y el total del Income ahí en el punto 6.
+ Bueno, y por último, vemos...

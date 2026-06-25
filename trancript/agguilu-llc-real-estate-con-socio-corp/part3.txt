@@ -1,0 +1,90 @@
+ Bueno, como mencionamos en el video anterior, vamos a cargar en la parte de Selling Expense los Expenses of Disposition, que los vemos en esta línea de Expenses of Disposition en la columna de la propiedad que se vende, en este caso 3.273. Esos 3.273 los cargamos acá en Selling Expense siempre en la fila de building y lo mismo con la otra sociedad que se vende, los Expenses of Disposition en la fila de building.
+ Luego seguimos pasando y tenemos que completar Total Depreciation. Entonces, la Total Depreciation la vemos acá cuando nosotros cargamos en Income, en Rent and Royalty, en Depreciation, acá vamos a ver la amortización acumulada y la amortización del año como habíamos visto previamente.
+ Entonces, lo que hacemos es sumar la acumulada con la del año y la ponemos ahí en el total de depreciation.
+ Entonces, vamos a ver que la suma de ambos de esa propiedad sola es de 17.117.
+ Lo mismo con la otra propiedad. Hacemos la acumulada más la amortización del año y la ponemos en la fila del building de Total Depreciation.
+ y lo mismo va a impactar, acá lo último, cuando se me destrabe, en la fila de, hay que completarlo nosotros a mano, la acumulada más, la amortización del año,
+ en la parte Array Capture Gain, en esta parte. ¿Por qué? Porque así nos va a impactar en el punto 9C de la página 5 del 1065.
+ Entonces, para que pase eso, lo tenemos que escribir a mano acá.
+ Ahora, lo que hay que tener en cuenta, primero vamos a ver, una vez que cargamos esto, vamos a Government Form.
+ Vamos a buscar el formulario 4797.
+ Y desde acá, en este punto 1A, se completa el total del Sale Property Income, que nos aparece en el Profit and Loss.
+ O sea, el total de todas las propiedades que se vendieron, el total del precio que se vendió.
+ O sea, 152, 0.93.
+ Perfecto.
+ Y se pone acá. Bueno, hacemos Link to Worksheet.
+ Y nos va a llevar esta parte.
+ Así que completamos acá.
+ Bueno, y luego de eso, lo que debemos hacer es, vamos desde Government Form a la página 5 del 1065.
+ Ahí es donde nos va a impactar la venta de las propiedades.
+ Entonces, tenemos en el punto 9C, es la amortización.
+ Y en el punto 10, es el resultado de la venta.
+ En este caso, el resultado de la venta dio positivo, pero en el caso de que el resultado de la venta de inmuebles arroje un resultado negativo,
+ el 9C no se va a completar.
+ Por ende, cuando nosotros completamos a mano esa parte de Unrecaptured, acá en Dain and Loss,
+ no la debemos completar.
+ Si es que el resultado de la venta dio negativo.
+ Entonces, este punto que cargamos a mano, no hay que cargarlo.
+ Por ende, el 8804 tampoco hay que cargarlo.
+ Ni tanto, igual más adelante, ahora más adelante lo vamos a ver,
+ pero tanto el punto M ni el punto 4Q.
+ Ni el 4M ni el 4Q.
+ Pero bueno, vamos a seguir igualmente viendo el Government Fund.
+ Entonces, bueno, acá vamos a ver la amortización y el resultado de la venta.
+ Luego, ¿cómo procedemos para la venta?
+ Primero, una vez que cargamos todo lo de la venta,
+ vamos a seguir igual chequeando los otros puntos, como por ejemplo.
+ El balance.
+ Bueno, en este caso dijimos que el balance no se completaba,
+ pero bueno, en el caso de que sea una sociedad que se complete el balance,
+ vamos a LM1, LM2, vamos a balance sheet y acá completamos lo que sería el balance.
+ Desde acá, de the current asset, other current assets, investment, todo esto, lo habría que completar.
+ En este caso, no se completa el balance, pero sí, cuando arrojamos al diagnostic,
+ a lo último que ahora después se los voy a mostrar, nos tira ciertos errores.
+ Y uno de los errores es que esta parte sí o sí hay que completarla.
+ Acá lo que ponemos es el total de billings que nos quedaron activos en la sociedad.
+ O sea, los que se vendieron no irían sumados.
+ Esto igual lo sacamos del balance también, pero para que lo tengan en cuenta, del balance hecho por QuickBooks.
+ Lo mismo con el LAN, o sea, las LAN que quedaron activas.
+ Y la amortización acumulada, más la del año, de todas las propiedades que quedaron activas.
+ Y por último, bueno, vamos a completar la parte de foreing.
+ Completamos lo que es el...
+ Bueno, primero vamos a ir al 8804.
+ Completamos, bueno, el punto 1 lo tindamos, el punto 2 ponemos 1.
+ Acá en la parte 2 tindamos, managing member y same.
+ Y en el punto 3 ponemos la cantidad de socios foreing que tiene la sociedad.
+ Y luego para completar, 8805.
+ Todo esto es para que los formularios estén bien completos.
+ Marcamos, tindamos el punto 1 y 3.
+ Y en esta parte ponemos, bueno, al partner que le corresponde, por ejemplo, 1, y ponemos el country code del país donde reside actualmente.
+ Esto con el 1 reside en Argentina, que sería la Selly.
+ Y en el punto y el 2, que sería la Corp, es de British, British and Iceland.
+ Bueno, de esta forma nos quedarían bien completos todos los forms.
+ Pero ahora faltaría la parte de la venta, que se ve impactada en el 8804, y habría que completar también el K2.
+ Primero vamos a observar el 8804.
+ Bueno, en el 8804 lo vemos de esta forma.
+ En este caso, tiene un socio foreing que es persona y un socio foreing que es corpo.
+ Acá nosotros, en el 4E, vemos reflejada la actividad de la sociedad, el resultado de la actividad de la sociedad.
+ Pero cuando es negativo, no va nada.
+ En este caso, se los muestro, de la actividad de la sociedad, sacando la venta de la propiedad, dio negativo.
+ Entonces, no se pone nada en el 8804.
+ Y luego, cuando hay venta de propiedades, se debe poner en el punto 4M, lo mismo que sería el punto 9C, que está en la página 5 del 1065.
+ Y en el punto 4Q, la diferencia entre el punto 10 y el punto 9C de la página 5 del 1065.
+ Entonces, ese sería el caso.
+ En el punto 4M, esto, y en el punto 4Q, la diferencia entre estos dos.
+ Ahora, ¿por qué es menos?
+ Porque, en este caso, acá impacta solo de las personas físicas.
+ Entonces, en el 8804, en el 4M y 4Q, impacta solo lo de las personas físicas.
+ Entonces, solo nos va a impactar el porcentaje sobre eso que vimos en la página 5 de la persona física.
+ Por ende, la persona física, en este caso, tiene el 1%.
+ Entonces, solamente va a impactar lo que sería el 1% de ese punto 9C y el 10.
+ Y, bueno, eso ocurre acá.
+ Como explicamos, 4M, punto 9C, 4Q, la diferencia.
+ Ahora, cuando es una corp, pasa lo mismo que en el 4A, al ser corp.
+ Debería impactar el resultado del ejercicio menos el resultado de la venda.
+ En este caso, la venda dio positiva, pero el resultado del ejercicio dio negativo.
+ Entonces, se netearon y no dio negativo.
+ Por ende, no va a impactar nada en el 4A.
+ Pero, en el caso de ser positivo, impactaría en esta línea, la actividad de la corp.
+ O sea, el porcentaje que pertenece a la corp.
+ Gracias.

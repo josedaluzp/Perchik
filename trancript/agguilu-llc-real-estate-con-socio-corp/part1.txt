@@ -1,0 +1,71 @@
+ Bueno, hola a todos, vamos a realizar la declaración AGGUILU LLC en CCH. Comenzamos abriendo, bueno, por un lado instructivo de cómo realizar un 1065 en CCH, luego los reportes del 2025 de la sociedad, más la declaración del año pasado de la sociedad que nos vamos a basar en ella para chequear que esté todo bien en esta declaración nueva.
+ Bueno, comenzamos, abrimos la declaración del año pasado y vamos chequeando que el nombre esté bien, el IN esté bien, la dirección del estudio, el teléfono del estudio, la actividad, el número de actividad, la fecha de inicio de la sociedad,
+ y el método de contables, si es cash o acroal, y el, bueno, acá abajo ponemos guías en el punto 35 y el mail layer. Luego vamos a poder information
+ y acá en order information vamos a poder completar la página desde la 2 hasta la
+ 5 de, hasta la 4, perdón, del 1065. Entonces, nosotros, marcando ciertos puntos acá, nos van a impactar en el 1065 en esas páginas.
+ Entonces comenzamos, bueno, es una domestic liability, limited liability company, bien.
+ Ahí está. Bien. Bueno, en este caso, la particularidad de esta sociedad es que el balance no se completa. Para que no se complete, viene desde años anteriores sin completarse,
+ y nosotros tenemos que suprimir el balance. Eso lo hacemos desde este punto, apretando su pre-spring.
+ Siempre y cuando esto se puede realizar, siempre y cuando la sociedad cumpla con los dos requisitos, que es que los assets sean menor a un millón
+ y que el income sea menor a 250.000 dólares.
+ Siempre y cuando cumpla con ambos requisitos, vamos a poder suprimir el balance.
+ Entonces, acá ponemos su pre-spring.
+ Y a la misma vez nos va a marcar el punto 4 como yes, porque cumple con estos requisitos.
+ Entonces, por eso es que siempre y cuando cumple con esos requisitos, se puede realizar esto de no completar el balance.
+ Bueno, luego el punto 12 lo marcamos como no, ya que nos tira el error a lo último cuando arrojamos el diagnostic.
+ En el punto 23 nos va a marcar la página 3 del 1065, que nos pregunta cuántos 8805 se deben emitir,
+ que esto es para los socios foreign, en este caso hay dos socios foreign, entonces nos emite 8805.
+ Luego, bueno, en el punto 26 marcamos si emitió un 1099 o no, si lo emitió se marca yes, de lo contrario no.
+ Y luego todo lo demás se dejaría así.
+ Vamos a Government Forms para chequear que nos ha chequeado todo bien marcado.
+ En este caso, trae como del año pasado el punto 2A como marcado como yes, ya que tiene un acorde de socia que tiene más del 50%.
+ Entonces, por eso marcamos yes en este punto.
+ Luego, como les mencioné anteriormente, el punto A nos tiene que quedar como yes, ya que cumple con ambos requisitos.
+ Vamos a ver que en el punto 14 nos marca los dos socios foreign de los 8805 y nos queda tal cual.
+ En el caso de que todos los socios tengan itin, esta opción se marca como yes, pero en este caso no tiene porque uno es un adcorp, entonces por eso vano.
+ Bueno, luego volvemos a Worksheet.
+ Vamos a Ownership by Other Entities in Partnership.
+ En este punto, nosotros lo vamos a ver reflejado en el sketcho al B1.
+ Por ende, en el sketcho al B1 nosotros cargamos los socios que tienen más del 50% o que están relacionados.
+ En este caso, el único socio que tiene más del 50% es la CORT.
+ Entonces, cargamos la CORT.
+ La cargamos con este Identifying Number, que es 99, y 79 es luego del guión, Corporation, y de donde es la Corp, que es de British Virgin Islands, y con el porcentaje que le corresponde.
+ Luego vamos al punto Partnership Representative, marcamos el primer punto y ponemos en el punto 10 el teléfono del estudio.
+ Luego pasamos a Electronic Feeling.
+ En Electronic Feeling, marcamos yes todos los puntos, excepto el 8 que no.
+ Tildamos el punto 9, el punto 11 lo ponemos como su press, punto 14 no, punto 16 yes, punto 18 no, 19 yes, punto 20 ponemos un 3, y en el 21 yes.
+ Entonces, vamos a píperles e-file, que acá vamos a ver el socio que firma la sociedad.
+ Esta parte la vamos a ver reflejada en el 8879, por lo cual en el 8879 debemos ver qué pin se utilizó el año pasado, si es que la sociedad viene de años anteriores, y si no, hay que ponerlos los pins que tenemos en la lista, algunos de ellos.
+ Pero en este caso como viene de años anteriores, se pone el mismo pin, que es 18-004.
+ Marcamos como ero pin.
+ Ponemos la fecha del día de hoy, el nombre del partner, managing member, el itin del partner.
+ Acá ponemos 1, porque SSN es una persona física, y en el punto 9 ponemos yes.
+ Bueno.
+ Vamos a electronic return originator.
+ Marcamos como, tildamos el primer punto.
+ Vamos a return options, calculation options.
+ Ponemos do not force, but not return.
+ Prepare information, y acá ponemos la información de Jan y del estudio.
+ Tal cual en estos puntos, y la fecha de hoy en el punto 18.
+ Luego vamos a partners, general options.
+ Ponemos produce for all partners, no, super state, basic capital, supres K1, y en el punto 10, also, incrementing copy.
+ Y luego vamos a partner information.
+ Una vez que estamos en partner information, este punto nos va a impactar en el K1 de los socios.
+ Entonces, debemos completar para que luego impacte en el K1.
+ Entonces, bueno, ponemos los nombres, Araceli, Firenze, States, LTV.
+ Las direcciones del estudio, City, State, SIP.
+ Al ser ambos foreign, tanto la corp como Araceli, les debemos poner de esta forma acá para que en el K1 nos impacten como foreign partner.
+ Entonces, ponemos FC, tres cruces en City y en Country, de donde viene o la sociedad o la, bueno, la persona, digamos.
+ En este caso, ahora sería Argentina y la corp de la British Virgin Iceland.
+ Araceli, bueno, tiene su ITIN.
+ En la corp debemos poner de vuelta los 9, 9, guión y 7, 9 y nos tira solo apply for.
+ Completamos el entity type, que es individual, en este caso individual y corp, ya que Firenze State es corp.
+ Luego marcamos quién es el general y el partner del K1 representativo.
+ De no saberlo podemos fijarnos en los años anteriores o en el operating agreement.
+ Acá el porcentaje de cada socio.
+ En este caso Araceli tiene el 1% y la corp tiene 99.
+ Y luego en este caso, como no se completa el balance, no debemos completar nada acá, pero de completarlo debemos cargar el ending capital del año pasado de cada socio, que lo vemos en el K1, como en ending capital account.
+ Luego acá cargamos las contribuciones y las distribuciones.
+ Bueno, continuamos.
+ Vamos a ver, esta sociedad tiene propiedades, por ende, ahora vamos al paso de cargarlas.
+ Acá podemos ver la lista de propiedades que tiene.

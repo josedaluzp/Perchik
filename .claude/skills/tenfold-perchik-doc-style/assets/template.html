@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Documento — Tenfold (Inforge) × Perchik CPA</title>
+<link rel="stylesheet" href="style.css">
+<!-- Per-document footer-right label (optional): set --footer-right on :root.
+     Example: <style>:root{ --footer-right:"NUEVO DOC → CCH AXCESS · v1.0"; }</style> -->
+</head>
+<body>
+<div class="content">
+
+  <!-- ================= COVER ================= -->
+  <p class="eyebrow">Tenfold (Inforge) × Perchik CPA · Documento de diseño funcional</p>
+  <h1 class="hero">Título del documento<br>en dos o tres líneas</h1>
+  <p class="lead">Párrafo introductorio en lenguaje simple: qué describe el documento,
+     a quién va dirigido y qué problema resuelve. Tono claro y directo.</p>
+
+  <!-- Scenario cards -->
+  <div class="card-grid">
+    <div class="card">
+      <p class="eyebrow">Escenario A</p>
+      <h4>1065 estándar</h4>
+      <p>Descripción breve del primer caso de uso.</p>
+    </div>
+    <div class="card">
+      <p class="eyebrow">Escenario B</p>
+      <h4>Venta de propiedades</h4>
+      <p>Descripción breve del segundo caso.</p>
+    </div>
+    <div class="card">
+      <p class="eyebrow">Escenario C</p>
+      <h4>Cambio accionario</h4>
+      <p>Descripción breve del tercer caso.</p>
+    </div>
+  </div>
+
+  <h3>Fuentes de este documento</h3>
+  <ul class="clean">
+    <li><code>FORM 1065 — 2025 — CCH AXCESS</code> · Instructivo interno (proceso estándar).</li>
+    <li><code>VENTA DE PROPIEDADES — CCH AXCESS</code> · Instructivo interno.</li>
+  </ul>
+
+  <!-- Callout -->
+  <div class="callout">
+    <p class="eyebrow">Cómo verificar este documento</p>
+    <p>Texto del callout: instrucción o nota importante que el lector debe tener
+       presente. El borde verde a la izquierda marca el bloque como destacado.</p>
+  </div>
+
+  <!-- Legend -->
+  <p><strong>Leyenda usada en todo el documento:</strong></p>
+  <p>
+    <span class="badge badge--auto">AUTO</span> dato directo, automatizable &nbsp;·&nbsp;
+    <span class="badge badge--regla">REGLA</span> lógica condicional &nbsp;·&nbsp;
+    <span class="badge badge--manual">MANUAL</span> queda manual &nbsp;·&nbsp;
+    <span class="badge badge--check">CHECK</span> verificación humana
+  </p>
+
+  <!-- Cover footer block -->
+  <div class="doc-footer">
+    <div class="col">
+      <p class="eyebrow">Proyecto</p>
+      <p>Automatización data entry · Tax Returns → CCH Axcess</p>
+    </div>
+    <div class="col right">
+      <p class="eyebrow">Versión / Fecha</p>
+      <p>v1.0 · Junio 2026</p>
+    </div>
+  </div>
+
+  <!-- ================= INDEX ================= -->
+  <div class="page-break"></div>
+  <p class="eyebrow">Índice</p>
+  <h2 class="section-title">Cómo está organizado este documento</h2>
+  <p class="lead">Una o dos frases resumiendo la estructura.</p>
+  <hr class="rule-strong">
+
+  <p class="group-label">Parte 1 — Fundamentos</p>
+  <div class="toc">
+    <div class="toc-row"><span class="num">01</span><span class="title">Glosario: los términos en simple</span></div>
+    <div class="toc-row"><span class="num">02</span><span class="title">Visión general del proceso</span></div>
+    <div class="toc-row"><span class="num">03</span><span class="title">Diccionario de fuentes</span></div>
+  </div>
+
+  <!-- ================= SECTION + PROCESS FLOW ================= -->
+  <div class="page-break"></div>
+  <p class="eyebrow">02 · Visión general</p>
+  <h2 class="section-title">El proceso de punta a punta</h2>
+  <p class="lead">De dónde salen los datos, por dónde pasan y dónde terminan.</p>
+  <hr class="rule-strong">
+
+  <div class="flow">
+    <div class="card"><h4>Airtable</h4><p>Dispara el proceso.</p></div>
+    <span class="arrow">→</span>
+    <div class="card"><h4>QuickBooks</h4><p>Contabilidad y reportes.</p></div>
+    <span class="arrow">→</span>
+    <div class="card"><h4>Dropbox</h4><p>Documentos del cliente.</p></div>
+    <span class="arrow">→</span>
+    <div class="card card--filled"><h4>CCH Axcess</h4><p>Destino final. Se presenta por e-file.</p></div>
+  </div>
+
+  <!-- ================= MAPPING TABLE ================= -->
+  <div class="page-break"></div>
+  <p class="eyebrow">04 · Mapping de datos — Escenario A</p>
+  <h2 class="section-title">Basic Data: la identidad de la sociedad</h2>
+  <p class="lead">Primera sección de CCH Axcess.</p>
+  <hr class="rule-strong">
+
+  <h3>Basic Data – General</h3>
+  <table class="mapping">
+    <thead>
+      <tr>
+        <th>Campo en CCH Axcess</th>
+        <th>Fuente del dato</th>
+        <th>Regla de carga</th>
+        <th>Release 1</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Nombre de la sociedad</td>
+        <td><span class="tag">Airtable / SS-4</span></td>
+        <td>Copiar exacto como figura en el SS-4.</td>
+        <td><span class="badge badge--auto">AUTO</span></td>
+      </tr>
+      <tr>
+        <td>Dirección</td>
+        <td><span class="tag">Airtable / SS-4</span></td>
+        <td>Dirección fiscal vigente. Si cambió, marcar <strong>Address Change</strong>.</td>
+        <td><span class="badge badge--regla">REGLA</span></td>
+      </tr>
+      <tr>
+        <td>Fecha de formación</td>
+        <td><span class="tag">Certificate of Formation</span></td>
+        <td>Comparar con la fecha del SS-4. Si difieren, escalar.</td>
+        <td><span class="badge badge--check">CHECK</span></td>
+      </tr>
+      <tr>
+        <td>Final return</td>
+        <td><span class="tag">Indicación del estudio</span></td>
+        <td>Marcar solo si es el último año, con fecha de cierre.</td>
+        <td><span class="badge badge--manual">MANUAL</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>

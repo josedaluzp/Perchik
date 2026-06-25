@@ -1,0 +1,341 @@
+<title>Form 1065 — SALVIN7 LLC · Data Entry Simulado (CCH Axcess)</title>
+<style>
+  :root{
+    --ground:#eef1f5; --panel:#fff; --panel-2:#f7f9fb;
+    --ink:#16202e; --muted:#566472; --faint:#8a97a4; --line:#dce2ea;
+    --primary:#13507e; --primary-2:#1a6298; --primary-ink:#0c3a5c;
+    --auto:#1a7a55; --auto-bg:#e3f3eb; --auto-line:#bfe3cf;
+    --check:#9a6312; --check-bg:#fbf0d8; --check-line:#ecd4a0;
+    --manual:#5d6b7a; --manual-bg:#eef1f4;
+    --rule:#5a4a8c; --rule-bg:#ece8f6;
+    --src-at:#6d4ca6; --src-qb:#0f7d77; --src-k1:#1f6db5; --src-deed:#8a6d3b;
+    --sans:system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+    line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 64px;}
+  a{color:var(--primary-2);}
+
+  /* ---- app title bar ---- */
+  .bar{background:linear-gradient(180deg,var(--primary-2),var(--primary));color:#fff;
+    padding:16px 22px;border-radius:0 0 12px 12px;box-shadow:0 8px 24px -16px rgba(11,58,92,.7);}
+  .bar-top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;justify-content:space-between;}
+  .bar .app{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#bcd6ec;}
+  .bar h1{margin:2px 0 0;font-size:21px;font-weight:700;letter-spacing:-.01em;}
+  .bar h1 b{color:#cfe6f7;font-weight:700;}
+  .ret-status{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 13px;font-size:12px;font-weight:600;}
+  .ret-status .d{width:8px;height:8px;border-radius:50%;background:#ffd27a;box-shadow:0 0 0 3px rgba(255,210,122,.25);}
+  .bar-meta{display:flex;flex-wrap:wrap;gap:6px 26px;margin-top:13px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);}
+  .bar-meta div{font-size:12.5px;color:#dbe9f4;}
+  .bar-meta b{color:#fff;font-family:var(--mono);font-weight:600;letter-spacing:.01em;}
+
+  .intro{margin:22px 0 8px;color:var(--muted);font-size:14px;max-width:80ch;}
+  .intro b{color:var(--ink);}
+
+  /* ---- legend ---- */
+  .legend{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;background:var(--panel);
+    border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:14px 0 26px;}
+  .legend .grp{display:flex;gap:9px;align-items:center;flex-wrap:wrap;}
+  .legend .sep{width:1px;height:20px;background:var(--line);}
+  .tag{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.02em;
+    border-radius:5px;padding:2px 7px;border:1px solid;white-space:nowrap;}
+  .st{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.05em;border-radius:5px;padding:2px 8px;}
+  .st.auto{color:var(--auto);background:var(--auto-bg);}
+  .st.check{color:var(--check);background:var(--check-bg);}
+  .st.manual{color:var(--manual);background:var(--manual-bg);}
+  .st.rule{color:var(--rule);background:var(--rule-bg);}
+  .src{font-family:var(--mono);font-size:10.5px;font-weight:600;border-radius:5px;padding:2px 7px;
+    color:#fff;white-space:nowrap;}
+  .src.at{background:var(--src-at);} .src.qb{background:var(--src-qb);}
+  .src.k1{background:var(--src-k1);} .src.deed{background:var(--src-deed);}
+  .src.rule{background:#6b7785;} .src.none{background:#fff;color:var(--check);border:1px dashed var(--check-line);}
+  .legend small{color:var(--muted);font-size:11.5px;}
+
+  /* ---- layout ---- */
+  .grid{display:grid;grid-template-columns:198px 1fr;gap:26px;align-items:start;}
+  @media(max-width:780px){.grid{grid-template-columns:1fr;}}
+  nav{position:sticky;top:14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;}
+  @media(max-width:780px){nav{position:static;}}
+  nav .nh{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);padding:4px 8px 8px;}
+  nav a{display:flex;justify-content:space-between;gap:8px;align-items:center;text-decoration:none;color:var(--ink);
+    font-size:13px;padding:7px 9px;border-radius:7px;border-left:3px solid transparent;}
+  nav a:hover{background:var(--panel-2);border-left-color:var(--primary);}
+  nav a .c{font-family:var(--mono);font-size:9.5px;color:var(--faint);}
+
+  /* ---- worksheet cards ---- */
+  .ws{background:var(--panel);border:1px solid var(--line);border-radius:11px;margin-bottom:20px;overflow:hidden;scroll-margin-top:14px;}
+  .ws-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;padding:13px 18px;border-bottom:1px solid var(--line);
+    background:var(--panel-2);}
+  .ws-h .code{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--primary);
+    background:#e7f0f8;border:1px solid #cfe2f1;border-radius:5px;padding:2px 8px;}
+  .ws-h h2{margin:0;font-size:15.5px;font-weight:700;letter-spacing:-.01em;}
+  .ws-h .skill{font-family:var(--mono);font-size:11px;color:var(--faint);margin-left:auto;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  th{text-align:left;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--faint);font-weight:600;padding:9px 18px;border-bottom:1px solid var(--line);background:#fff;}
+  td{padding:9px 18px;border-bottom:1px solid #eef2f6;vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:#fafbfc;}
+  .fld{color:var(--muted);}
+  .fld .ln{font-family:var(--mono);font-size:10.5px;color:var(--faint);}
+  .val{font-family:var(--mono);font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;}
+  .val.neg{color:#b03a2e;}
+  .val.empty{color:var(--check);font-weight:600;}
+  td.s{white-space:nowrap;}
+  .colF{width:33%;} .colV{width:30%;} .colSrc{width:19%;} .colSt{width:18%;}
+
+  .subhead td{background:#f2f6fa;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--primary-ink);font-weight:700;padding:6px 18px;}
+
+  /* ---- pending / footer ---- */
+  .pend{background:var(--panel);border:1px solid var(--check-line);border-radius:11px;overflow:hidden;}
+  .pend-h{background:var(--check-bg);padding:13px 18px;border-bottom:1px solid var(--check-line);
+    font-weight:700;font-size:15px;color:#6e470d;}
+  .pend ol{margin:0;padding:14px 18px 16px 36px;}
+  .pend li{margin-bottom:10px;font-size:13.5px;color:var(--ink);}
+  .pend li b{font-family:var(--mono);font-weight:600;}
+  .pend .why{color:var(--muted);font-size:12.5px;}
+
+  .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:6px 0 26px;}
+  @media(max-width:680px){.summary{grid-template-columns:repeat(2,1fr);}}
+  .kpi{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:13px 15px;}
+  .kpi .n{font-family:var(--mono);font-size:24px;font-weight:700;letter-spacing:-.02em;}
+  .kpi .l{font-size:11.5px;color:var(--muted);margin-top:2px;}
+  .kpi.auto .n{color:var(--auto);} .kpi.check .n{color:var(--check);}
+  .kpi.rule .n{color:var(--rule);} .kpi.src .n{color:var(--primary);}
+
+  .foot{margin-top:30px;font-family:var(--mono);font-size:10.5px;color:var(--faint);
+    border-top:1px solid var(--line);padding-top:14px;line-height:1.7;}
+</style>
+
+<div class="bar">
+  <div class="wrap" style="padding-bottom:0">
+    <div class="bar-top">
+      <div>
+        <div class="app">Tenfold × Perchik · CCH Axcess · Data-entry simulado (solo lectura)</div>
+        <h1>Form 1065 — <b>SALVIN7 LLC</b> · Tax Year 2025</h1>
+      </div>
+      <span class="ret-status"><span class="d"></span> READY AFTER CORRECTIONS</span>
+    </div>
+    <div class="bar-meta">
+      <div>EIN <b>35-2691364</b></div>
+      <div>Año <b>Calendar 2025</b></div>
+      <div>Método <b>Cash</b></div>
+      <div>Socios <b>2 · foreign</b></div>
+      <div>Business code <b>541600</b></div>
+      <div>ECTI / 1446 tax <b>$0</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <p class="intro">Cada valor de abajo fue <b>extraído por las skills desde los conectores</b>
+  (Airtable + Dropbox) y colocado en el campo de CCH Axcess donde corresponde. La columna
+  <b>Fuente</b> dice de dónde salió; la columna <b>Estado</b> dice si se auto-rellenó, si lo
+  fija una regla, o si requiere verificación humana. Validado contra el 1065 ya armado por el equipo.</p>
+
+  <div class="legend">
+    <div class="grp">
+      <span class="src at">Airtable</span><small>Entity / Individual Tracker</small>
+    </div>
+    <span class="sep"></span>
+    <div class="grp">
+      <span class="src qb">Dropbox</span><small>P&amp;L · Balance · Capital · K-1 (POH) · Reconoc. de Deuda</small>
+    </div>
+    <span class="sep"></span>
+    <div class="grp">
+      <span class="st auto">AUTO</span><small>auto-rellenado</small>
+      <span class="st rule">REGLA</span><small>derivado por regla</small>
+      <span class="st check">CHECK</span><small>verificar</small>
+      <span class="st manual">MANUAL</span><small>fuera de conectores</small>
+    </div>
+  </div>
+
+  <div class="summary">
+    <div class="kpi auto"><div class="n">29</div><div class="l">campos auto-rellenados desde conectores</div></div>
+    <div class="kpi rule"><div class="n">6</div><div class="l">fijados por regla de skill</div></div>
+    <div class="kpi check"><div class="n">4</div><div class="l">marcados para verificación</div></div>
+    <div class="kpi src"><div class="n">9</div><div class="l">documentos fuente leídos</div></div>
+  </div>
+
+  <div class="grid">
+
+    <nav>
+      <div class="nh">Worksheets</div>
+      <a href="#basic"><span>Basic Data</span><span class="c">Pg 1</span></a>
+      <a href="#partners"><span>Partner Info</span><span class="c">B-1 / K-1</span></a>
+      <a href="#schk"><span>Schedule K</span><span class="c">Pg 5</span></a>
+      <a href="#m1"><span>Schedule M-1</span><span class="c">Pg 6</span></a>
+      <a href="#schl"><span>Schedule L</span><span class="c">Pg 6</span></a>
+      <a href="#m2"><span>Schedule M-2</span><span class="c">Pg 6</span></a>
+      <a href="#f8804"><span>Form 8804/8805</span><span class="c">Pg 11-14</span></a>
+      <a href="#pass"><span>K-1 recibidos</span><span class="c">Passthrough</span></a>
+      <a href="#pend"><span>Pendientes</span><span class="c">4</span></a>
+    </nav>
+
+    <div>
+
+      <!-- BASIC DATA -->
+      <section class="ws" id="basic">
+        <div class="ws-h"><span class="code">1065 · Pg 1</span><h2>Basic Data — General</h2><span class="skill">skill: basic-data</span></div>
+        <table>
+          <thead><tr><th class="colF">Campo CCH</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">Partnership name</td><td class="val">SALVIN7 LLC</td><td class="s"><span class="src at">Airtable·E</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">EIN</td><td class="val">35-2691364</td><td class="s"><span class="src at">Airtable·E</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Address <span class="ln">(Pg1 header)</span></td><td class="val">2625 Weston Road, Suite&nbsp;105<br>Weston, FL 33331</td><td class="s"><span class="src at">Airtable·E</span></td><td class="s"><span class="st check">CHECK</span></td></tr>
+            <tr><td class="fld">Box H — Accounting method</td><td class="val">Cash</td><td class="s"><span class="src qb">Dropbox·P&amp;L</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box C — Business code</td><td class="val">541600</td><td class="s"><span class="src qb">Dropbox·PY</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box E — Date business started</td><td class="val">07/05/2023</td><td class="s"><span class="src none">no extraído</span></td><td class="s"><span class="st manual">MANUAL</span></td></tr>
+            <tr><td class="fld">Box G — Type of return</td><td class="val">Año normal <span class="ln">(sin box)</span></td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">Type of entity filing</td><td class="val">Domestic LLC</td><td class="s"><span class="src at">Airtable·E</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- PARTNERS -->
+      <section class="ws" id="partners">
+        <div class="ws-h"><span class="code">Sch B-1 / K-1</span><h2>Partner Information</h2><span class="skill">skill: partners-k1 · ownership-structure</span></div>
+        <table>
+          <thead><tr><th class="colF">Campo</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr class="subhead"><td colspan="4">Socio #1 — Ezequiel C. Arslanian · Managing Member · Foreign (AR)</td></tr>
+            <tr><td class="fld">Box E — TIN</td><td class="val">ITIN 900-65-5926</td><td class="s"><span class="src at">Airtable·I</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box J — % Profit/Loss/Capital</td><td class="val">1% / 1% / 1%</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box L — Beginning capital</td><td class="val">5,190</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box L — Contributions</td><td class="val">2,228</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box L — Current year income (loss)</td><td class="val neg">(92)</td><td class="s"><span class="src qb">Dropbox·K-1</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box L — Distributions</td><td class="val neg">(2,629)</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box L — Ending capital</td><td class="val">4,814</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+
+            <tr class="subhead"><td colspan="4">Socio #2 — LAVENTU COMPANY LTD · Limited Member · Corp Foreign (BVI / VI)</td></tr>
+            <tr><td class="fld">Box E — EIN/TIN</td><td class="val empty">APPLIED FOR</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">Sch B-1 — EIN placeholder</td><td class="val empty">99-9999999</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st check">CHECK</span></td></tr>
+            <tr><td class="fld">Box J — % Profit/Loss/Capital</td><td class="val">99% / 99% / 99%</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">8805 — Country code</td><td class="val">VI</td><td class="s"><span class="src at">Airtable·I</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box L — Beginning capital</td><td class="val">513,721</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box L — Contributions</td><td class="val">220,529</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box L — Current year income (loss)</td><td class="val neg">(9,365)</td><td class="s"><span class="src qb">Dropbox·K-1</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box L — Distributions</td><td class="val neg">(260,239)</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box L — Ending capital</td><td class="val">476,184</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SCHEDULE K -->
+      <section class="ws" id="schk">
+        <div class="ws-h"><span class="code">Sch K · Pg 5</span><h2>Schedule K — Distributive Items</h2><span class="skill">skill: income-router → passthrough</span></div>
+        <table>
+          <thead><tr><th class="colF">Línea</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">L.1 — Ordinary business income</td><td class="val">0</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">L.2 — Net rental real estate income</td><td class="val neg">(12,423)</td><td class="s"><span class="src qb">Dropbox·K-1</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.5 — Interest income</td><td class="val">451</td><td class="s"><span class="src qb">Dropbox·K-1</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.13e — Other deductions (portfolio)</td><td class="val">128</td><td class="s"><span class="src qb">Dropbox·K-1</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.18A — Tax-exempt interest</td><td class="val">2,651</td><td class="s"><span class="src qb">Dropbox·K-1</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box 16a — Schedule K-2 attached</td><td class="val">X</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- M-1 -->
+      <section class="ws" id="m1">
+        <div class="ws-h"><span class="code">Sch M-1 · Pg 6</span><h2>Schedule M-1 — Books vs Tax</h2><span class="skill">skill: income-consulting-foreign</span></div>
+        <table>
+          <thead><tr><th class="colF">Línea</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">L.1 — Net income per books</td><td class="val">2,198 <span class="ln">(QB 2,196.74)</span></td><td class="s"><span class="src qb">Dropbox·P&amp;L</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.4 — Foreign expenses (no deducibles)</td><td class="val">9,071</td><td class="s"><span class="src qb">Dropbox·P&amp;L</span></td><td class="s"><span class="st check">CHECK</span></td></tr>
+            <tr><td class="fld">L.6 — Service income (foreign, excluido de Sch K)</td><td class="val">20,718</td><td class="s"><span class="src qb">Dropbox·P&amp;L</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SCHEDULE L -->
+      <section class="ws" id="schl">
+        <div class="ws-h"><span class="code">Sch L · Pg 6</span><h2>Schedule L — Balance Sheet</h2><span class="skill">skill: balance-sheet</span></div>
+        <table>
+          <thead><tr><th class="colF">Línea</th><th class="colV">Begin → End</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">L.1 — Cash (First Citizens Bank)</td><td class="val">42,625</td><td class="s"><span class="src qb">Dropbox·BS</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.6 — Other current assets (Glans Football Group)</td><td class="val">304,000 → 258,103</td><td class="s"><span class="src qb">Dropbox·Deed</span></td><td class="s"><span class="st check">CHECK</span></td></tr>
+            <tr><td class="fld">L.8 — Other investments (POH partnerships)</td><td class="val">192,379 → 180,270</td><td class="s"><span class="src qb">Dropbox·BS</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Total assets</td><td class="val">480,998 <span class="ln">(QB 480,997.02)</span></td><td class="s"><span class="src qb">Dropbox·BS</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.21 — Partners' capital accounts</td><td class="val">480,998</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- M-2 -->
+      <section class="ws" id="m2">
+        <div class="ws-h"><span class="code">Sch M-2 · Pg 6</span><h2>Schedule M-2 — Capital Accounts</h2><span class="skill">skill: balance-sheet (M-2)</span></div>
+        <table>
+          <thead><tr><th class="colF">Línea</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">L.1 — Beginning capital (rollover PY)</td><td class="val">518,911</td><td class="s"><span class="src qb">Dropbox·PY</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.2 — Capital contributed (cash)</td><td class="val">222,757</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.6 — Distributions</td><td class="val">262,868</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.9 — Ending capital</td><td class="val">480,998</td><td class="s"><span class="src qb">Dropbox·Cap</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 8804 / 8805 -->
+      <section class="ws" id="f8804">
+        <div class="ws-h"><span class="code">8804 / 8805</span><h2>Foreign Withholding</h2><span class="skill">skill: foreign-forms</span></div>
+        <table>
+          <thead><tr><th class="colF">Campo</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">8804 L.3a — N° de socios extranjeros</td><td class="val">2</td><td class="s"><span class="src at">Airtable·I</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">8804 — ECTI total</td><td class="val">0 <span class="ln">(net loss)</span></td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">8804 L.10 — Section 1446 tax</td><td class="val">0</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">8805 #1 Arslanian — ECTI / credit</td><td class="val">0 / 0</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">8805 #2 LAVENTU — ECTI / credit</td><td class="val">0 / 0</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- PASSTHROUGH K-1 -->
+      <section class="ws" id="pass">
+        <div class="ws-h"><span class="code">Income › Passthrough</span><h2>K-1 recibidos (holding)</h2><span class="skill">skill: income-passthrough-k1 · BRECHA</span></div>
+        <table>
+          <thead><tr><th class="colF">K-1 recibido (fuente)</th><th class="colV">Alimenta a Schedule K</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">POH Ross Road Investors LLC</td><td class="val">→ L.2 / L.5 / L.13e / L.18A</td><td class="s"><span class="src qb">Dropbox·K-1</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">POH Cherokee Investors LLC</td><td class="val">→ L.2 / L.5 / L.13e / L.18A</td><td class="s"><span class="src qb">Dropbox·K-1</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">POH Airport Crossing Investors LLC <span class="ln">(60%)</span></td><td class="val">→ L.2 / L.5 / L.13e / L.18A</td><td class="s"><span class="src qb">Dropbox·K-1</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Glans Football Group LLC <span class="ln">(préstamo 5%)</span></td><td class="val">→ Sch L L.6 (258,103)</td><td class="s"><span class="src qb">Dropbox·Deed</span></td><td class="s"><span class="st check">CHECK</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- PENDIENTES -->
+      <section class="pend" id="pend">
+        <div class="pend-h">Pendientes antes de presentar — los CHECK que la automatización no resuelve sola</div>
+        <ol>
+          <li><b>EIN de LAVENTU COMPANY LTD</b> — figura "APPLIED FOR" (K-1, 8805) y placeholder 99-9999999 (Sch B-1).
+            <div class="why">La regla "corp foreign → Applied for" se aplicó bien, pero si el IRS ya asignó EIN hay que actualizarlo. Requiere confirmación del cliente.</div></li>
+          <li><b>Reconciliación Glans Football Group</b> — Sch L L.6 pasa de 304,000 a 258,103.
+            <div class="why">Verificar que la baja = pagos de capital + intereses del préstamo (Reconocimiento de Deuda, cuotas desde nov-2025). Dato cruzado, no auto-deducible.</div></li>
+          <li><b>Dirección — discrepancia de fuente</b> — Airtable dice "Suite D"; el return usa "Suite 105".
+            <div class="why">Detectado al cruzar Airtable vs 1065. Confirmar cuál es la correcta y unificar en Airtable.</div></li>
+          <li><b>Gastos extranjeros M-1 L.4</b> — diferencia de $9.74 (QB 1,656.74 bank vs 1,647 return).
+            <div class="why">Inmaterial; corresponde al nondeductible passthrough de $8 + redondeo. Solo dejar nota.</div></li>
+        </ol>
+      </section>
+
+    </div>
+  </div>
+
+  <p class="foot">
+    Simulación de data-entry · solo lectura · ningún dato escrito en CCH Axcess (skill cch-axcess-client = brecha abierta).<br>
+    Fuentes leídas vía MCP: Airtable base "Tax Year 2025" (Entity + Individual Tracker) · Dropbox /Estudio PERCHIK CPA/Clients
+    (P&amp;L, Balance Sheet, Capital Account, 3× K-1 POH, Reconocimiento de Deuda).<br>
+    Valores validados contra "1065 Review — SALVIN7 LLC — 2026-06-18" (PERCHIK CPA). Veredicto del equipo: READY AFTER CORRECTIONS.
+  </p>
+
+</div>

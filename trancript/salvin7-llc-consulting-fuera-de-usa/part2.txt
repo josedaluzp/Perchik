@@ -1,0 +1,437 @@
+ Bueno, continuando con el video anterior, nosotros cargamos el M1 que va a impactar en el balance
+ Como les había mostrado anteriormente, en la parte del sketch del M1
+ Luego nosotros debemos cargar la parte del sketch del M2, ya que no impacta solo en el sistema
+ Entonces debemos cargar esta parte también para que impacte en el balance
+ Entonces vamos a worksheet
+ Y cargamos en el sketch del M2
+ Increase y Decrease
+ En la parte de Increase cargamos lo que sería el Income
+ Y en la parte de Decrease cargamos lo que sería Expand
+ Siempre, al igual que como cargamos el sketch del M1
+ Con el Foreign Service Income, Foreign Service Bank Service Charge, Foreign Office, así es
+ O sea que la actividad proviene fuera de Estados Unidos
+ Entonces se pondría la siguiente leyenda anterior a las expuestas y Cielo
+ Bueno, luego de esto nos fijamos que en el Profit and Loss
+ Todo esto seguimos el Profit and Loss de QuickBooks
+ Y en el Profit and Loss vemos que tenemos unos Interest EARMED
+ Que el total es de 3101
+ Pero estas tres columnas quiere decir los K1 que nosotros importamos
+ O sea, ahora lo que nos falta es cargar los Interest que trae de la propia actividad de Salvincero
+ Entonces nosotros vamos a la página 5
+ Y los Interest se cargan en el punto 18
+ Y vamos a Interest
+ Y los cargamos como Interest en Municipal Bones
+ Entonces sería mi Interest y en Municipal Bones iría 2650
+ Que es lo que viene de la actividad de Salvincero
+ Bueno, luego de esto vamos a la parte del Foreing
+ Que sería la parte donde está el K2, el 8804, 8802
+ No, disculpen
+ Primero vamos a cargar
+ Anteriormente a cargar el K2
+ Vamos a cargar el balance
+ Entonces en el balance cargamos
+ Según el balance de QuickBooks
+ Acá está
+ Abrimos el balance
+ Este es el comparativo
+ Ay, perdón, este es el Profit
+ Acá está
+ Este es el balance comparativo
+ Y tenemos que ir cargando lo que vemos en el balance
+ Entonces
+ Nosotros igual ya tenemos una guía
+ Al venir esta declaración del año pasado
+ Ya tenemos una guía
+ En cash
+ Este año son 42.624,52
+ Cash
+ Siempre que tenga de 50 para arriba
+ Lo redondeamos para arriba
+ Los centavos
+ Siempre
+ O sea, en este caso
+ Como es 42.624,52
+ Se redondea a 42.625
+ Después en Other Current Asset
+ Tenemos
+ Glance Global Group LLC
+ Que si vemos
+ El año pasado
+ Se pusieron igual
+ Como Other Current Asset
+ Entonces
+ Los cargamos acá
+ Con el monto de
+ 258.103
+ Que es lo que tenemos acá
+ Y después
+ En
+ InBasement
+ Tenemos
+ InBasement
+ In
+ Las tres sociedades
+ De las cuales participa
+ Salvin7
+ Que sería
+ Airport Crossing Investors
+ Cherokee Investors
+ Y
+ Rose
+ Investors
+ Entonces
+ Cargamos
+ Los montos de CAO
+ Todo esto
+ Viendo el balance
+ Y ya no nos queda
+ Por cargar
+ Nada más
+ Del balance
+ Y ven acá
+ Es lo único
+ Teníamos el cash
+ Y las inversiones
+ Y luego
+ Glance Football Group
+ Bueno
+ Ahora sí
+ Luego de cargar
+ El balance
+ Vamos a cargar
+ El K2
+ ¿Qué tenemos que hacer?
+ Entramos al sketch
+ O al K2
+ La primera hoja
+ La tenemos que completar
+ Como no
+ En el punto 1
+ Y como no
+ En el punto 3
+ Ya que nosotros
+ Queremos que nos quede
+ De esta forma
+ El K2
+ La primera hoja
+ Nos tiene que quedar
+ De esta forma
+ A y B
+ Como no
+ Y del punto 1
+ Al 12
+ Todos que no
+ Menos el 10
+ Así que marcando
+ De esa forma
+ La primera página
+ Nos va a quedar así
+ Y vamos
+ A esta sección
+ Donde
+ Nos vamos a encontrar
+ Con el income
+ Para cargar el income
+ Y las dedos
+ Bueno
+ En este caso
+ Nosotros
+ Vamos a cargar
+ Al hacer consulting
+ En el
+ K2
+ Debe impactar
+ En la línea 1
+ Cuando es consulting
+ Y al ser fuera
+ De Estados Unidos
+ Debe impactar
+ En la columna A
+ Y en la columna G
+ Por ende
+ Cargándolo
+ En esta columna
+ Nos va a impactar
+ En la columna G
+ Ya la columna A
+ Te la trae sola
+ Y después vos tenés que
+ Poner
+ En la siguiente columna
+ Porque en la columna
+ Primera
+ Es el total
+ Eso te lo trae solo
+ Y después vos tenés que
+ Seleccionar la columna
+ Que quieras
+ Que impacte
+ El mundo
+ Entonces en este caso
+ Nosotros queremos
+ Ponerlo en la parte
+ De foreign
+ Entonces iría cargado acá
+ Entonces
+ Viendo el profit
+ No
+ Vemos el profit
+ Acá
+ Y
+ Vemos que
+ De
+ Service income
+ Del foreign
+ Digamos
+ O sea
+ De la actividad
+ De salín 7
+ Tenemos
+ 20.718
+ Esos 20.718
+ Impactarían
+ En esa línea
+ De foreign
+ Entonces lo ponemos
+ Y después
+ Vemos que tenemos
+ Intereses
+ Bueno
+ Bueno
+ Los intereses
+ Que tenemos
+ Vemos que
+ 72
+ 122
+ Y 257
+ Son de los
+ Cada uno
+ Que importan
+ Por ende
+ Esos irían
+ Dentro de Estados Unidos
+ O sea
+ En la columna
+ 3
+ Y luego
+ Tenemos
+ 2650
+ De la actividad
+ De salín
+ Entonces
+ ¿Cómo
+ Debería
+ Impactar esto?
+ Nosotros
+ Pondríamos
+ En la línea
+ 6
+ Porque en la línea
+ 6
+ Del K2
+ Es donde
+ Impactan
+ Los intereses
+ Entonces iría
+ En
+ ESE
+ US
+ Source
+ Iría
+ Los 451
+ Que es el total
+ De los K1
+ Que importamos
+ Y en
+ Non
+ ESE
+ US
+ Source
+ Iría
+ Los 2650
+ Que es de la actividad
+ De salín
+ Y esto sería
+ Todo lo que cargaríamos
+ En la parte
+ Y luego
+ Vamos a la parte
+ De action
+ Donde cargamos
+ Los expens
+ Acá lo mismo
+ En la misma línea
+ 1
+ Impactan los expens
+ De
+ Consulting
+ Fuera de Estados Unidos
+ Entonces vamos
+ A la misma columna
+ A foreign source
+ Y cargamos
+ Los expens
+ Acá como vemos
+ Los expens
+ De la actividad
+ De salín
+ Son
+ 9.062
+ Que por redondeo
+ Nos terminó
+ Quedando
+ 9.063
+ Porque le sumamos
+ Tiene unos
+ Non-deuxable expense
+ Y tenía
+ Un dólar
+ De la actividad
+ De la sociedad
+ Y digamos que
+ Terminamos concordando
+ Con
+ Con QuickBooks
+ Y con
+ Shale
+ De ponerle
+ Ese
+ Dólar
+ A bank service charge
+ Por eso nos quedó
+ Con un dólar más
+ Igual siempre
+ Hay que ver
+ El redondeo
+ Que a veces
+ Tenemos que subirle
+ Un dólar más
+ O bajarlo
+ Depende de
+ Cómo nos cierra
+ El balance
+ Pero en este caso
+ Nos termina quedando
+ Así por este dólar
+ De non-deuxable expense
+ Y bueno
+ Luego
+ Hay que cargar
+ La actividad
+ De
+ Los K1
+ Que nosotros importamos
+ Entonces
+ ¿Qué hacemos?
+ Acá podemos ver
+ Que
+ Tiene un
+ Net
+ Real estate
+ Income
+ Por
+ Menos 12.425
+ Entonces
+ Al ser
+ Negativo
+ Nosotros lo tenemos
+ Que cargar
+ En la parte
+ Expense
+ Si es positivo
+ Lo cargamos
+ En la parte
+ De income
+ Pero al ser negativo
+ Se carga
+ En esta parte
+ Y como es por
+ Real estate
+ Lo debemos cargar
+ En
+ Debe impactar
+ En la columna 3
+ Del K2
+ Ya que
+ En la columna 3
+ Es de
+ ACUSSource
+ Entonces
+ Lo tenemos que cargar
+ Acá
+ ¿Y qué cargue?
+ Son 12.551
+ Lo que hicimos acá
+ Fue
+ Hacer
+ Los
+ 12.423
+ Que es
+ El net
+ Income
+ De la sociedad
+ Y le sumamos
+ Los extends
+ Porque en este caso
+ Como esto es negativo
+ Iría en la parte
+ De expense
+ Por ende
+ Le sumamos
+ Estos extends
+ Que nos quedan acá
+ Que sería
+ Más 47
+ Más 32
+ Más 49
+ Y nos quedarían
+ 12.551
+ En el caso
+ De
+ Todo esto
+ Dentro de Estados Unidos
+ Se pone
+ En el caso
+ De
+ Que
+ Supónganse
+ Que el net
+ Real estate
+ Income
+ De los K1
+ Que importa
+ El
+ Perdón
+ El income
+ De los K1
+ Que importan
+ Sea positivo
+ Iría
+ En la página
+ Anterior
+ Que mostramos
+ Y
+ Acá en los
+ Expends
+ En esta suma
+ Solo iría
+ Los 47
+ Más 32
+ Más 49
+ O sea
+ Esto nada más
+ La parte
+ Expends
+ Pero en este caso
+ Como
+ Fue negativo
+ Iría en la parte
+ De deductions
+ Y se le suman
+ Los expenses
+ Bueno
+ Por ende
+ Nos termina
+ Quedando
+ 12.751
+ Gracias.

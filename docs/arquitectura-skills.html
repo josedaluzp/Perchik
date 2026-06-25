@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Arquitectura de Skills — Automatización 1065 → CCH Axcess</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+:root{
+  --ink:#1b262e; --slate:#46555f; --muted:#8a8578; --green:#1f6f54;
+  --surface:#f5f7f6; --surface2:#eef1f0; --rule:#d4dcd9; --white:#fff;
+  --auto-fg:#1f6f54;--auto-bg:#e4f1ea;--auto-bd:#bcd9cb;
+  --regla-fg:#2f5fa8;--regla-bg:#e7eef9;--regla-bd:#c3d3ee;
+  --manual-fg:#b3641c;--manual-bg:#faeede;--manual-bd:#ecd0b3;
+  --check-fg:#8d2f3c;--check-bg:#f8e9eb;--check-bd:#e6c3c9;
+  --c1:#2f5fa8; --c2:#7a3da8; --c3:#1f6f54;
+  --sans:'Archivo','Segoe UI',sans-serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;}
+body{font-family:var(--sans);color:var(--slate);background:#fbfcfb;margin:0;padding:28px 34px 60px;line-height:1.45;}
+.eyebrow{font-family:var(--mono);font-weight:600;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin:0 0 6px;}
+h1{font-family:var(--sans);font-weight:900;font-size:30px;color:var(--ink);margin:0 0 8px;letter-spacing:-.01em;}
+h2{font-family:var(--sans);font-weight:900;font-size:18px;color:var(--ink);margin:34px 0 4px;}
+.lead{font-size:14px;max-width:60em;margin:0 0 6px;}
+hr{border:0;border-top:1.5px solid var(--ink);margin:10px 0 18px;}
+.legend{display:flex;flex-wrap:wrap;gap:18px;align-items:center;font-size:12.5px;margin:14px 0 6px;}
+.badge{font-family:var(--mono);font-weight:600;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;border-radius:4px;padding:2px 7px;border:.6px solid transparent;}
+.b-auto{color:var(--auto-fg);background:var(--auto-bg);border-color:var(--auto-bd);}
+.b-regla{color:var(--regla-fg);background:var(--regla-bg);border-color:var(--regla-bd);}
+.b-manual{color:var(--manual-fg);background:var(--manual-bg);border-color:var(--manual-bd);}
+.b-check{color:var(--check-fg);background:var(--check-bg);border-color:var(--check-bd);}
+.tagc{font-family:var(--mono);font-weight:700;font-size:10px;padding:2px 6px;border-radius:4px;color:#fff;}
+.c1{background:var(--c1);} .c2{background:var(--c2);} .c3{background:var(--c3);}
+.gap{font-family:var(--mono);font-weight:700;font-size:9px;letter-spacing:.06em;color:#9a3b12;background:#fdeede;border:.6px solid #f0c79e;border-radius:4px;padding:1px 6px;}
+.have{font-family:var(--mono);font-weight:700;font-size:9px;letter-spacing:.06em;color:#1f6f54;background:#e4f1ea;border:.6px solid #bcd9cb;border-radius:4px;padding:1px 6px;}
+
+/* Capa */
+.layer{display:flex;gap:14px;margin:0 0 14px;align-items:stretch;}
+.layer-label{flex:0 0 132px;background:var(--ink);color:#fff;border-radius:10px;padding:14px 12px;display:flex;flex-direction:column;justify-content:center;}
+.layer-label .ln{font-family:var(--mono);font-size:10px;letter-spacing:.1em;opacity:.7;}
+.layer-label .lt{font-family:var(--sans);font-weight:800;font-size:15px;line-height:1.15;margin-top:4px;}
+.layer-body{flex:1;display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;}
+.layer.infra .layer-label{background:#33424c;}
+.layer.orch  .layer-label{background:#2f5fa8;}
+.layer.core  .layer-label{background:var(--green);}
+.layer.mods  .layer-label{background:#7a3da8;}
+.layer.qa    .layer-label{background:#8d2f3c;}
+
+/* Skill card */
+.skill{flex:1 1 230px;min-width:215px;max-width:300px;background:var(--white);border:.8px solid var(--rule);border-radius:9px;padding:11px 12px;display:flex;flex-direction:column;gap:6px;}
+.skill .nm{font-family:var(--mono);font-weight:700;font-size:12px;color:var(--ink);}
+.skill .ds{font-size:11.5px;color:var(--slate);}
+.skill .io{font-family:var(--mono);font-size:9.5px;color:var(--muted);line-height:1.5;}
+.skill .io b{color:var(--slate);}
+.skill .row{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:2px;}
+.skill.brecha{border-color:#f0c79e;background:#fffaf3;}
+
+/* Pipeline */
+.pipe{background:var(--surface);border:.8px solid var(--rule);border-radius:10px;padding:14px 16px;margin:10px 0 16px;}
+.pipe .ph{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.pipe .ph .ttl{font-family:var(--sans);font-weight:800;font-size:15px;color:var(--ink);}
+.pipe .ph .sub{font-size:12px;color:var(--slate);}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:4px;}
+.step{font-family:var(--mono);font-size:10.5px;background:var(--white);border:.8px solid var(--rule);border-radius:6px;padding:4px 8px;color:var(--ink);}
+.step.mod{background:#f3ecf9;border-color:#d9c6ec;color:#5e2e84;}
+.step.qa{background:#f8e9eb;border-color:#e6c3c9;color:#8d2f3c;}
+.arr{color:var(--muted);font-family:var(--mono);font-size:12px;padding:0 1px;}
+.brace{font-family:var(--mono);font-size:10px;color:var(--muted);}
+
+.callout{background:var(--surface2);border-left:3px solid var(--green);border-radius:0 7px 7px 0;padding:11px 15px;margin:14px 0;font-size:12.5px;}
+.callout.q{border-left-color:var(--manual-fg);}
+.callout .h{font-family:var(--mono);font-weight:700;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--green);margin-bottom:5px;}
+.callout.q .h{color:var(--manual-fg);}
+.callout ol{margin:4px 0 0;padding-left:18px;} .callout li{margin:4px 0;}
+.foot{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:30px;border-top:.8px solid var(--rule);padding-top:8px;}
+.note{font-size:11px;color:var(--muted);margin:2px 0 0;}
+</style>
+</head>
+<body>
+
+<p class="eyebrow">Tenfold (Inforge) × Perchik CPA · Automatización data-entry</p>
+<h1>Arquitectura de Skills — 1065 → CCH Axcess</h1>
+<p class="lead">Skills modulares: cada una cubre un paso del mapeo (las 8 etapas + los módulos por
+escenario), lee de los conectores (Airtable · Dropbox · QuickBooks) y <b>vuelca los datos a CCH
+Axcess vía su API</b>. Los 3 casos de uso se arman <b>componiendo</b> estas skills. Borrador v0.1
+para iterar sobre el mapping.</p>
+
+<div class="legend">
+  <span><b>Clasificación (del mapping):</b></span>
+  <span class="badge b-auto">AUTO</span>
+  <span class="badge b-regla">REGLA</span>
+  <span class="badge b-manual">MANUAL</span>
+  <span class="badge b-check">CHECK</span>
+  <span style="margin-left:10px;"><b>Casos:</b></span>
+  <span class="tagc c1">C1 · SALVIN7</span>
+  <span class="tagc c2">C2 · Form 8949</span>
+  <span class="tagc c3">C3 · AGGUILU</span>
+  <span style="margin-left:10px;"><span class="have">YA EXISTE</span> <span class="gap">BRECHA — definir mapeo</span></span>
+</div>
+
+<h2>Diagrama por capas</h2>
+<hr>
+
+<!-- CAPA 0 -->
+<div class="layer infra">
+  <div class="layer-label"><span class="ln">CAPA 0</span><span class="lt">Conectores & Infra</span></div>
+  <div class="layer-body">
+    <div class="skill"><span class="nm">airtable-connector</span><span class="ds">Trigger del flujo y datos de la entidad/socios.</span><span class="io"><b>IN</b> Airtable · Entity/Individual Tracker</span><div class="row"><span class="have">YA EXISTE</span></div></div>
+    <div class="skill"><span class="nm">dropbox-connector</span><span class="ds">Lectura de documentos del cliente.</span><span class="io"><b>IN</b> SS-4, OA, Property List, HUDs, 1099, Client Copy</span><div class="row"><span class="have">YA EXISTE</span></div></div>
+    <div class="skill"><span class="nm">qb-report-reader</span><span class="ds">Parsea P&amp;L, Balance Sheet y Capital Account (PDF).</span><span class="io"><b>IN</b> Dropbox · {AÑO}/QB Reports/</span></div>
+    <div class="skill brecha"><span class="nm">cch-axcess-client</span><span class="ds">Auth + escritura a las secciones de CCH (Worksheets / Government Forms). El núcleo del objetivo.</span><span class="io"><b>OUT</b> CCH Axcess API</span><div class="row"><span class="gap">A CONSTRUIR</span></div></div>
+    <div class="skill"><span class="nm">source-resolver</span><span class="ds">Implementa el "Diccionario de fuentes": de dónde sale cada dato y su path.</span><span class="io"><b>IN</b> Airtable+Dropbox · <b>OUT</b> dato normalizado</span></div>
+  </div>
+</div>
+
+<!-- CAPA 1 -->
+<div class="layer orch">
+  <div class="layer-label"><span class="ln">CAPA 1</span><span class="lt">Orquestación</span></div>
+  <div class="layer-body">
+    <div class="skill"><span class="nm">intake-trigger</span><span class="ds">Escucha el disparo del trabajo.</span><span class="io"><b>IN</b> Airtable · Primary Form Status = "CCH To do" + Form 1065</span></div>
+    <div class="skill"><span class="nm">scenario-classifier</span><span class="ds">Determina actividad y flags que deciden qué skills corren.</span><span class="io">consulting USA/foreign · real estate · holding · venta inmueble · venta securities · socios foreign · cambio accionario</span></div>
+    <div class="skill"><span class="nm">return-orchestrator</span><span class="ds">Secuencia las skills según el escenario; corre las 8 etapas en orden.</span><span class="io"><b>OUT</b> plan de ejecución</span></div>
+  </div>
+</div>
+
+<!-- CAPA 2 -->
+<div class="layer core">
+  <div class="layer-label"><span class="ln">CAPA 2</span><span class="lt">Skills núcleo · 8 etapas</span></div>
+  <div class="layer-body">
+    <div class="skill"><span class="nm">basic-data</span><span class="ds">Identidad de la sociedad.</span><span class="io"><b>IN</b> SS-4/Airtable · <b>OUT</b> Basic Data</span><div class="row"><span class="badge b-auto">AUTO</span><span class="badge b-check">CHECK</span></div></div>
+    <div class="skill"><span class="nm">other-information</span><span class="ds">Schedule B (exempt, FBAR, foreign partners, 1099…).</span><span class="io"><b>OUT</b> Other Information</span><div class="row"><span class="badge b-regla">REGLA</span><span class="badge b-manual">MANUAL</span></div></div>
+    <div class="skill"><span class="nm">ownership-structure</span><span class="ds">Schedule B-1 + Partnership Representative.</span><span class="io"><b>IN</b> Operating Agreement</span><div class="row"><span class="badge b-regla">REGLA</span></div></div>
+    <div class="skill"><span class="nm">efile-config</span><span class="ds">Electronic Filing + Return Options + 8879 + Preparer.</span><span class="io"><b>OUT</b> Electronic Filing</span><div class="row"><span class="badge b-auto">AUTO</span><span class="badge b-regla">REGLA</span></div></div>
+    <div class="skill"><span class="nm">partners-k1</span><span class="ds">Partner Information: identidad, foreign, entity type, %, capital accounts.</span><span class="io"><b>IN</b> OA + Capital Account + K-1 t-1</span><div class="row"><span class="badge b-auto">AUTO</span><span class="badge b-regla">REGLA</span><span class="badge b-check">CHECK</span></div></div>
+    <div class="skill"><span class="nm">income-router</span><span class="ds">Decide y despacha al módulo de income correcto (Capa 3).</span><span class="io"><b>IN</b> scenario-classifier</span></div>
+    <div class="skill"><span class="nm">balance-sheet</span><span class="ds">Schedule L / M-1 / M-2 (incluye M-2 del estándar).</span><span class="io"><b>IN</b> QB Balance Sheet</span><div class="row"><span class="badge b-auto">AUTO</span><span class="badge b-regla">REGLA</span><span class="gap">+M-2 estándar</span></div></div>
+    <div class="skill"><span class="nm">foreign-forms</span><span class="ds">8804 / 8805 + base K-2 / K-3.</span><span class="io"><b>OUT</b> Foreign · Sch K-2/K-3</span><div class="row"><span class="badge b-regla">REGLA</span><span class="badge b-check">CHECK</span></div></div>
+    <div class="skill"><span class="nm">print-efile</span><span class="ds">Impresión Account/Client Copy + e-file 8879-PE.</span><span class="io"><b>OUT</b> Print / E-file</span><div class="row"><span class="badge b-check">CHECK</span></div></div>
+  </div>
+</div>
+
+<!-- CAPA 3 -->
+<div class="layer mods">
+  <div class="layer-label"><span class="ln">CAPA 3</span><span class="lt">Módulos income / escenario</span></div>
+  <div class="layer-body">
+    <div class="skill"><span class="nm">income-real-estate</span><span class="ds">Rent &amp; Royalty por propiedad + depreciación.</span><span class="io"><b>IN</b> P&amp;L by Class + HUD + Property List</span><div class="row"><span class="badge b-auto">AUTO</span><span class="badge b-regla">REGLA</span><span class="tagc c3">C3</span></div></div>
+    <div class="skill"><span class="nm">income-consulting-usa</span><span class="ds">Página 1 (línea 1a / 7).</span><span class="io"><b>IN</b> P&amp;L</span><div class="row"><span class="badge b-auto">AUTO</span><span class="badge b-regla">REGLA</span></div></div>
+    <div class="skill"><span class="nm">income-consulting-foreign</span><span class="ds">Schedule M-1 + M-2 con prefijo FOREIGN.</span><span class="io"><b>IN</b> P&amp;L · <b>OUT</b> M-1/M-2</span><div class="row"><span class="badge b-regla">REGLA</span><span class="tagc c1">C1</span></div></div>
+    <div class="skill brecha"><span class="nm">income-passthrough-k1</span><span class="ds">Sociedad que RECIBE K-1 de otras (holding). Carga línea por línea.</span><span class="io"><b>IN</b> K-1 recibidos (Dropbox)</span><div class="row"><span class="badge b-manual">MANUAL</span><span class="tagc c1">C1</span><span class="gap">BRECHA</span></div></div>
+    <div class="skill"><span class="nm">sale-of-property</span><span class="ds">Escenario B: Sch D/4797, 9c/10, 8804 4m/4q (corp vs individuo).</span><span class="io"><b>IN</b> HUD venta + P&amp;L + Property List</span><div class="row"><span class="badge b-regla">REGLA</span><span class="badge b-check">CHECK</span><span class="tagc c3">C3</span></div></div>
+    <div class="skill brecha"><span class="nm">sale-of-securities</span><span class="ds">Form 8949 desde 1099 + <b>exclusión de la retención 1446</b>.</span><span class="io"><b>IN</b> 1099-B (Bank Statements)</span><div class="row"><span class="badge b-manual">MANUAL</span><span class="badge b-check">CHECK</span><span class="tagc c2">C2</span><span class="gap">BRECHA</span></div></div>
+    <div class="skill"><span class="nm">change-in-ownership</span><span class="ds">Escenario C: AMENDED + prorrateo por días.</span><span class="io"><b>IN</b> OA enmendado</span><div class="row"><span class="badge b-regla">REGLA</span></div></div>
+  </div>
+</div>
+
+<!-- CAPA 4 -->
+<div class="layer qa">
+  <div class="layer-label"><span class="ln">CAPA 4</span><span class="lt">Validación & QA</span></div>
+  <div class="layer-body">
+    <div class="skill"><span class="nm">cross-check-engine</span><span class="ds">Los cruces de la sección 09: Σ K-3 = K-2 = Σ K-1 · Beginning = Ending(t-1) · 4797·7 = 1065·p5·10 · 8804 4e/4m/4q · <b>securities ∉ 1446</b>.</span><div class="row"><span class="badge b-check">CHECK</span></div></div>
+    <div class="skill"><span class="nm">diagnostic-runner</span><span class="ds">Corre el Diagnostic de CCH e interpreta los errores (incluye el de balance suprimido).</span><div class="row"><span class="badge b-check">CHECK</span></div></div>
+  </div>
+</div>
+
+<h2>Los 3 casos de uso = composición de skills</h2>
+<hr>
+
+<div class="pipe">
+  <div class="ph"><span class="tagc c1">C1</span><span class="ttl">SALVIN7 — consulting foreign + recibe K-1</span><span class="sub">+ socios foreign</span></div>
+  <div class="flow">
+    <span class="step">intake-trigger</span><span class="arr">→</span>
+    <span class="step">scenario-classifier</span><span class="arr">→</span>
+    <span class="step">basic-data</span><span class="arr">→</span><span class="step">other-information</span><span class="arr">→</span>
+    <span class="step">ownership-structure</span><span class="arr">→</span><span class="step">efile-config</span><span class="arr">→</span><span class="step">partners-k1</span><span class="arr">→</span>
+    <span class="step">income-router</span><span class="arr">→</span><span class="brace">{</span><span class="step mod">income-consulting-foreign</span><span class="step mod">income-passthrough-k1</span><span class="brace">}</span><span class="arr">→</span>
+    <span class="step">balance-sheet · M-2</span><span class="arr">→</span><span class="step">foreign-forms · 8804=0</span><span class="arr">→</span>
+    <span class="step qa">cross-check-engine</span><span class="arr">→</span><span class="step qa">diagnostic-runner</span><span class="arr">→</span><span class="step">print-efile</span>
+  </div>
+</div>
+
+<div class="pipe">
+  <div class="ph"><span class="tagc c2">C2</span><span class="ttl">Form 8949 — venta de acciones</span><span class="sub">módulo que se inserta en cualquier return con venta de securities</span></div>
+  <div class="flow">
+    <span class="step mod">sale-of-securities</span><span class="arr">→</span>
+    <span class="step">foreign-forms · 8804/8805</span><span class="arr">→</span>
+    <span class="step qa">cross-check-engine · securities ∉ 1446</span>
+  </div>
+  <p class="note">No es un return completo: es un <b>módulo</b> que se compone dentro de C1/C3 cuando hay venta de securities. Clave: que las ganancias short/long NO entren a la retención del 8804.</p>
+</div>
+
+<div class="pipe">
+  <div class="ph"><span class="tagc c3">C3</span><span class="ttl">AGGUILU — real estate con socio corp + venta de propiedades</span></div>
+  <div class="flow">
+    <span class="step">intake-trigger</span><span class="arr">→</span><span class="step">scenario-classifier</span><span class="arr">→</span>
+    <span class="step">basic-data</span><span class="arr">→</span><span class="step">other-information</span><span class="arr">→</span>
+    <span class="step">ownership-structure</span><span class="arr">→</span><span class="step">efile-config</span><span class="arr">→</span><span class="step">partners-k1</span><span class="arr">→</span>
+    <span class="step">income-router</span><span class="arr">→</span><span class="brace">{</span><span class="step mod">income-real-estate</span><span class="step mod">sale-of-property</span><span class="brace">}</span><span class="arr">→</span>
+    <span class="step">balance-sheet</span><span class="arr">→</span><span class="step">foreign-forms · 8804 corp/indiv</span><span class="arr">→</span>
+    <span class="step qa">cross-check-engine</span><span class="arr">→</span><span class="step qa">diagnostic-runner</span><span class="arr">→</span><span class="step">print-efile</span>
+  </div>
+</div>
+
+<div class="callout q">
+  <div class="h">Decisiones abiertas — para corregir juntos</div>
+  <ol>
+    <li><b>Granularidad de las skills:</b> ¿una skill por etapa (como acá), o más finas (una por pantalla/worksheet de CCH)? Las etapas grandes son más simples de orquestar; las finas, más reutilizables.</li>
+    <li><b>Cobertura de la CCH Axcess API:</b> hay que verificar qué secciones permite escribir la API (¿Worksheets y Government Forms? ¿overrides?). Eso define qué skills son <span class="badge b-auto">AUTO</span> reales y cuáles quedan <span class="badge b-manual">MANUAL</span>.</li>
+    <li><b>Human-in-the-loop:</b> ¿las skills MANUAL/CHECK frenan y piden intervención, o sólo marcan para revisión posterior?</li>
+    <li><b>cross-check-engine:</b> ¿corre al final, o incremental después de cada etapa (falla rápido)?</li>
+    <li><b>Form 8949 y change-in-ownership:</b> ¿módulos insertables (como propongo) o casos de uso propios?</li>
+    <li><b>Las 3 brechas del mapping</b> (income-passthrough-k1, sale-of-securities ∉ 1446, 8804 corp/indiv) deben definirse en el documento <b>antes</b> de codificar esas skills.</li>
+  </ol>
+</div>
+
+<p class="foot">Arquitectura de skills · borrador v0.1 · basado en el mapping de los videos (SALVIN7 · Form 8949 · AGGUILU) y el doc v2.3 rev jun-2026 · Tenfold (Inforge) × Perchik CPA</p>
+
+</body>
+</html>

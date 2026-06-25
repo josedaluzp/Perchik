@@ -1,0 +1,394 @@
+ por último vamos con el paso a paso para completar los formularios 8804 y 8805
+ bueno lo que debemos hacer es ingresamos a la parte de foreign
+ como cargamos el sketch al K2, bueno más abajo está 8804 y 8805
+ vamos al 8804, options and payments
+ y bueno marcamos, hilamos la primera opción y en la segunda opción
+ seleccionamos la opción 1
+ esto es, depende del método de pago de la retención
+ por lo general es EFTPS por form 8804
+ pero bueno, depende mucho de la declaración, por lo general es esta
+ y luego vamos a el punto 2
+ marcamos la primera opción, el tilde, managing member en la segunda
+ esta que nos aparece en el 8804 para firmar
+ para cuando firma al cliente que aparezca su nombre y managing member
+ y bueno, se impone
+ y luego en el punto 3
+ ponemos la cantidad de socios foreign que tiene la sociedad
+ y luego vamos a la parte de 8805
+ clickeamos, tildamos la primera opción y la tercera
+ y en el punto 2
+ ponemos el número de socio
+ por ejemplo, un socio 1, socio 2
+ y el
+ el país donde reside actualmente
+ entonces en este caso se quiere en Argentina
+ y el segundo socio es la BBI
+ así que iría British Virgin Island
+ bueno, luego de haber cargado toda la declaración
+ esto sería todo
+ vamos a chequear toda la declaración
+ y lo hacemos desde Goberner Form
+ siempre como base vamos a tener la declaración del año pasado
+ entonces en este caso lo que hacemos es chequear
+ toda la declaración contra la declaración del año pasado
+ para que no se nos haya pasado
+ alguna línea
+ que no se nos haya pasado algún
+ número
+ que no se nos haya pasado nada
+ entonces siempre contra la declaración del año pasado
+ bueno, la chequeamos toda
+ siempre chequeamos, bueno, estas páginas también
+ donde marcamos todo
+ lo de que el socio es una corp
+ que el socio es un individual
+ todo eso, todo lo chequeamos
+ todo contra
+ tanto contra los QuickBooks de este año
+ contra la declaración del año pasado
+ como para tener un abasto
+ bueno
+ y luego, bueno, como habíamos mencionado
+ luego de, bueno, de chequear todo B1
+ vemos que el sketcho al K
+ que sería la página 5
+ es todo lo que va a impactar en
+ el K1 de los socios
+ el K1 de los socios
+ es este
+ y acá se encuentra la información
+ que le pertenece a cada socio
+ según los porcentajes de K1
+ entonces, bueno, acá tenemos
+ el cuadro final
+ y nosotros lo que tenemos que hacer
+ el primero es sumar
+ que los ending capital
+ account de cada socio
+ nos den
+ el
+ ending capital
+ del balance
+ entonces, ¿qué hacemos?
+ 4.814
+ más
+ 476, 184
+ en este caso son dos socios
+ bueno, si hubiese más
+ seguiríamos pasando las páginas
+ y vamos contra el balance
+ porque nos tiene que dar lo mismo
+ que el partners capital account
+ y el balance at the end of the year
+ o sea, en el caso
+ suponete que esto cambie
+ ambos deberían
+ dar lo mismo
+ por ejemplo
+ los 500
+ y la suma de los K1
+ nos debería dar 500
+ o sea, lo mismo que el balance at the end of the year
+ y partners capital account
+ bueno
+ eso es lo primero
+ a tener en cuenta
+ y luego
+ lo que debemos chequear es
+ cuando nosotros cargamos
+ el K2
+ como quedó
+ les mostré previamente
+ queda así
+ y las páginas
+ la part 9
+ iría las
+ el income
+ y en la part 10
+ van las deductions
+ entonces bueno
+ acá está cargado todo el income
+ como les dije
+ en la línea 1
+ el interés en la línea 6
+ y
+ en la página de
+ deductions
+ van las deductions
+ bien
+ bueno
+ y este es el total del K2
+ y el total del K2
+ debe dar lo mismo
+ que
+ el profit and loss
+ en net income
+ en este caso
+ nos va con esa diferencia
+ de
+ no sé si lo habíamos hablado previamente
+ pero
+ los K1 que importa
+ tienen
+ gastos no deducibles
+ y estos gastos no deducibles
+ impactan en el K1
+ del socio
+ pero no deben impactar
+ en el K2
+ y K3
+ de los socios
+ entonces
+ no los ponemos en el K2
+ por ende
+ no nos da lo mismo
+ nos da con esos
+ 8 dólares de Israel
+ pero bueno
+ en realidad
+ haciendo una de
+ la que no tenga
+ gastos no deducibles
+ debe dar lo mismo
+ y luego
+ vamos a ver el K3
+ de cada socio
+ este es el K3
+ vamos también
+ a la parte 9
+ que es el income
+ y la parte 10
+ son los deductions
+ bueno acá seleccionamos
+ el socio que queremos ver
+ primero vemos a ese K3
+ que es el primer
+ bueno acá vamos a tener
+ según el porcentaje
+ del
+ el segundo
+ el income
+ que le corresponde
+ o sea la parte
+ del income
+ que le corresponde
+ y la parte
+ del interés
+ que le corresponde
+ y
+ acá vamos a ver
+ la parte
+ del income
+ que le corresponde
+ de
+ las de Darson
+ bueno en este caso
+ acá sería el income
+ que le corresponde
+ a la ventu
+ según su porcentaje
+ bueno
+ y luego
+ bueno
+ en la parte 10
+ que es donde están
+ las deductions
+ bueno acá vemos
+ lo mismo
+ las deductions
+ que le corresponde
+ por el porcentaje
+ según lo que acabo
+ lo que dije
+ anteriormente
+ y nosotros
+ nos tenemos que basar
+ en el net income
+ este número
+ nos tiene que dar
+ lo mismo
+ que el K1
+ y ahora les voy a mostrar
+ qué número es del K1
+ volvemos al K1
+ lo que debemos hacer
+ es
+ current
+ y net income
+ a menos 92
+ le sumamos
+ los 117
+ B o del increase
+ y
+ esto
+ nos debe dar
+ lo mismo
+ que el total
+ del K3
+ de este socio
+ nos tiene que dar
+ lo mismo
+ que
+ esto
+ en este caso
+ como dije
+ anteriormente
+ va a diferir
+ por
+ ese
+ monto
+ de
+ gastos
+ de gastos
+ no deducibles
+ pero
+ debería dar
+ lo mismo
+ y puede variar
+ aunque sea
+ en un centavo
+ más o menos
+ que se deben
+ como compensar
+ entre los socios
+ pero entre el K1
+ y el K3
+ puede variar
+ en un centavo
+ pero no mucho más
+ que eso
+ y bueno
+ hacemos la misma cuenta
+ con el otro socio
+ y hacemos lo mismo
+ bueno
+ la misma cuenta
+ con este socio
+ y bueno
+ básicamente
+ eso sería todo
+ además del K1
+ y el K3
+ que es lo que nosotros
+ chequeamos
+ juntos
+ debemos chequear
+ toda la década
+ como dije anteriormente
+ o sea
+ chequeamos
+ que
+ 8804
+ 8825
+ el 8804
+ no lo expliqué
+ anteriormente
+ en este
+ formulario
+ ahora está en cero
+ ¿por qué?
+ primero porque
+ sobre todo
+ Salvin7
+ tiene actividad
+ de consulting
+ fuera de Estados Unidos
+ entonces
+ en este
+ formulario
+ no entra
+ la actividad
+ fuera de Estados Unidos
+ entra la actividad
+ dentro de Estados Unidos
+ en el caso
+ de los comunos
+ que importa
+ que son
+ real estate
+ y son dentro
+ de Estados Unidos
+ como dieron
+ pérdida
+ no impactan
+ en este
+ formulario
+ pero si hubiesen
+ dado ganancias
+ se impactarían
+ y en este caso
+ al ser
+ la socia
+ que tiene
+ el 99%
+ sería
+ es una corp
+ va a impactar
+ en esta línea
+ entonces
+ se impactaría
+ y se pagaría
+ una retención
+ por ello
+ pero
+ en este caso
+ bueno
+ y acá están los montos
+ según
+ los porcentajes
+ de retención
+ y aquí
+ en esta línea
+ daría
+ lo que
+ habría que pagar
+ en este caso
+ como dio
+ pérdida
+ y encima
+ la sociedad
+ en sí
+ es
+ consulting
+ for
+ Estados Unidos
+ no
+ presenta
+ nada
+ en este formulario
+ bueno
+ y luego
+ como dije
+ chequeamos
+ todos los formularios
+ también
+ todos los debemos
+ comparar
+ con el año
+ pasado
+ este nos va a parecer
+ semi
+ completo
+ ya que
+ trae
+ trae
+ información
+ de los
+ cada uno
+ que importamos
+ y bueno
+ eso
+ seguir chequeando
+ todos los
+ formularios
+ 8879
+ que esté bien
+ el pin
+ que esté bien
+ la fecha
+ bueno
+ y eso es todo
+ lo imprimimos
+ y guardamos
+ en la
+ el cliente

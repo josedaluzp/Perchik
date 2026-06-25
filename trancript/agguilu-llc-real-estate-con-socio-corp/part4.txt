@@ -1,0 +1,459 @@
+ Bueno, es en el caso de que si daría positivo el neteo entre el resultado del ejercicio y el resultado de la venta, porque acá solo tienen una sola línea para poner ambos, en cambio en persona física tienen la parte del 4M y el 4Q
+ Como les mencionaba antes, en el caso de que el resultado de la venta sea negativo, por ende no completamos el punto 9C de la página 1065, acá no iría nada, no hay que completar ni punto 4M ni 4Q, porque no hay que poner valores negativos
+ Bueno, y luego vamos a ver cómo impacta en el K-2
+ Vamos a ir a el K-2, simplemente vuelvo hasta acá
+ Primero desde Worksheet, vamos a ingresar a Worksheet
+ En la parte de Foreign, vamos a la primera hoja
+ Y debemos marcar el punto 1 y el 3 como no
+ Y así se nos completa como debería quedar el K-2
+ Vamos a verlo
+ Debe quedar estos puntos
+ 4A, 4B no
+ Del punto 1 al 12 no
+ Menos el punto 10, que debe quedar en 10
+ Bueno, marcando esos puntos nos quedarían de esa forma
+ Y luego para completar el
+ Sketchual
+ K-2
+ Vamos
+ Uy
+ Vamos a este punto
+ Y acá Income
+ Income y deductions
+ Bueno, en Income
+ Vamos a completar lo que es el Income
+ Y lo que sería la venta de la propiedad
+ Entonces, en este caso
+ Todo esto lo sacamos de lo que recién completamos
+ Para que nos dé todo por igual
+ Entonces, en Income
+ Lo que ponemos primero
+ El total del Income de todas las propiedades
+ Vos tenés renta Income de todas las propiedades
+ Bueno, acá vemos el total
+ 38,506
+ 38,506
+ Va en ESI
+ Dentro de US Source
+ Y en la fila 2
+ Porque es Real Estate
+ Y después
+ La venta de la propiedad
+ En el punto 13
+ Del K-2
+ Vamos a poner lo que sería
+ El punto 9C
+ Del 1065
+ Entonces, volvemos a la página 1065
+ Página 5
+ Punto 9C
+ 34,232
+ Y en el punto 14
+ Ponemos la diferencia
+ Del punto 10
+ Con el punto 9C
+ Entonces, volvemos a la worksheet
+ Y la diferencia es 1537
+ Y también
+ Todo lo ponemos dentro de US Source
+ Entonces, en el punto 13
+ Va la amortización
+ Lo que sería el punto 9C
+ Y en el punto 14
+ El resultado de la venta
+ Menos la amortización
+ Que daría 1537
+ Todo eso iría en income
+ Y después en expenses
+ Ponemos el total de
+ De los expenses
+ Esto lo vamos a chequear
+ Que hayamos puesto lo mismo
+ Cuando vamos al 885
+ Yo lo que había dicho
+ En otra sociedad
+ Es que
+ Más que nada
+ Cuando cargamos estos números
+ De los expenses
+ Del income
+ Todo
+ Hay que basarse
+ En lo que pusimos
+ En la declaración
+ Porque a veces
+ Cambiamos un dólar
+ Varía un dólar
+ O lo que sea
+ De QuickBooks
+ Que tenemos
+ Entonces nosotros
+ Tenemos que informar
+ Exactamente
+ Lo que hicimos
+ En la declaración
+ No importa
+ En este lado
+ QuickBooks
+ Porque a veces
+ Eso difiere de un dólar
+ Y el dólar
+ De diferencia
+ Lo tenemos
+ En la declaración
+ Entonces nos fijamos
+ Acá
+ 80
+ 034
+ Y 80
+ 034
+ Iría en deductions
+ Las expenses
+ Van en el punto 3
+ Al ser real estate
+ Y dentro
+ Y dentro
+ También
+ Dentro de
+ Dentro de
+ U.S.Source
+ Bueno y vamos a ver
+ Cómo vemos
+ Acá
+ En el
+ Cómo se ve
+ Desde Government Form
+ Entonces vemos
+ El income
+ Que impacta
+ En la línea
+ 1 y 3
+ En la fila
+ En la columna
+ Perdón
+ Y
+ Bueno
+ Lo que pusimos
+ En el punto 13
+ La amortización
+ Y en el punto 14
+ La diferencia
+ Y luego
+ Los expense
+ Y ahora
+ Lo que vamos a ver
+ Vamos a chequear
+ Con el profit and loss
+ De QuickBooks
+ Que este net income
+ Sea igual al del profit and loss
+ Menos 7000
+ Menos 5759
+ Menos 7000
+ 5759
+ Perfecto
+ Una vez que nos da
+ Pasamos a chequear
+ El sketchual
+ K1
+ Con el sketchual
+ K3
+ Y acá vamos a ver
+ Cómo impacta
+ Cada valor
+ En cada socio
+ De acuerdo
+ A su porcentaje
+ Entonces
+ Lo que vamos a ver
+ Es que
+ En el K2
+ Acá tenemos
+ 415
+ Tenemos 342
+ Y 358
+ Bueno
+ Vamos al K2
+ Al K3
+ Perdón
+ Es una bubucera
+ Bueno
+ Y vamos a ver
+ Y vamos a ver
+ El K3
+ De cada uno
+ Vemos
+ Entonces
+ La diferencia
+ Entre el income
+ 385
+ Del socio
+ Del socio
+ Del socio
+ 1
+ Menos
+ El expense
+ Da 800
+ Lo cual nos da
+ Lo mismo
+ Que
+ Menos 415
+ Que el net
+ Real
+ State income
+ Perfecto
+ Y luego
+ Vamos a ver
+ .9
+ 342
+ Y .10
+ 358
+ Entonces
+ Vamos a ver
+ En la página
+ Del income
+ 342
+ Y la diferencia
+ Entre
+ 358
+ Menos 342
+ Bueno
+ Acá varía
+ Da 16
+ Varía en un dólar
+ No pasa nada
+ Y luego
+ Vamos a la
+ Segunda página
+ Y vemos
+ Que nos da
+ Menos 58
+ Esto
+ Al no completarse
+ El balance
+ Siempre
+ Las declaraciones
+ Que completamos
+ El balance
+ Lo
+ Comparamos
+ Con lo que nos da
+ En current year
+ Net income
+ En other increase
+ Bueno
+ En este caso
+ Como no completamos
+ Lo que
+ Nos va a dar
+ El menos 58
+ Sería
+ El
+ Menos 415
+ Más
+ 358
+ Entonces
+ Eso nos va a dar
+ Menos 57
+ Más o menos
+ Varía en un dólar
+ Así que estamos bien
+ Y después
+ Vamos a la parte
+ De la
+ De la
+ Corp
+ Vamos a hacer lo mismo
+ En el punto
+ De net real estate
+ Income
+ Me da
+ Menos 41
+ 113
+ Y en la parte
+ 10
+ 35
+ 411
+ Entonces
+ Cuando vamos
+ Al K3
+ Vamos a la parte
+ De la
+ Corp
+ Y vemos
+ Que es
+ 38
+ 121
+ Que nos da
+ De income
+ Menos
+ Los expense
+ Que nos dan
+ 800
+ Nos da
+ 37
+ 321
+ Ah
+ Perdón
+ Me confundí
+ De página
+ Ahí está
+ La página 2
+ Que sería
+ De la
+ Corp
+ Entonces 38
+ 3821
+ Menos
+ 79
+ 234
+ Me da
+ 41
+ 113
+ Tal cual nos daba
+ En rent real estate
+ De la
+ Corp
+ Y luego
+ Vemos
+ Lo mismo
+ El punto
+ 13
+ Y 14
+ En este caso
+ Vamos a la página
+ De la
+ Corp
+ Y vemos
+ Que nos da
+ La depreciación
+ En el punto
+ 13
+ Y la
+ La diferencia
+ Entre
+ El punto
+ 10
+ Y el
+ Punto
+ 9
+ 1521
+ 1522
+ Por un
+ Dólar
+ Y después
+ Con el
+ Final
+ Con el
+ Punto
+ 25
+ Hacemos
+ Lo mismo
+ Que habíamos
+ Hecho
+ Antes
+ Hacemos
+ Menos
+ 41
+ 113
+ Más
+ 35
+ 411
+ Nos da
+ 5702
+ Ahí está
+ Nos varía
+ En un dólar
+ Pero no pasa nada
+ Siempre que varían
+ Solo en un dólar
+ Y esas son las cosas
+ Que hay que tener
+ En cuenta
+ Al momento de
+ Hacer la venta
+ De propiedades
+ Ahora
+ Por último
+ Desde
+ Worksheet
+ Vamos a
+ Tirar
+ El review
+ Bueno
+ Primero
+ Desde
+ Government form
+ Vamos a
+ Chequear
+ Cada
+ Form
+ Para ver
+ Que nos haya
+ Dado bien
+ Para ver
+ Que no se nos haya
+ Pasado
+ Ningún número
+ Y luego
+ De ver
+ Todo
+ Es que he hecho
+ Al B1
+ K2
+ K3
+ K1
+ 8804
+ Etcétera
+ El 8879
+ Lo que vamos a hacer
+ Desde Worksheet
+ Vamos a
+ Review
+ Diagnostics
+ Y vemos
+ Que no nos haya tirado
+ Ningún error
+ Que no se pueda salvar
+ Si vemos algún error
+ Raro
+ Nos metemos
+ Y lo acomodamos
+ Como por ejemplo
+ Que no nos haya dado
+ Por un dólar
+ En el caso
+ De que se completa
+ El balance
+ No sería este caso
+ Pero algún error
+ Que debamos salvar
+ Si o si
+ Lo hacemos
+ Y en el caso
+ De que nos salgan
+ Estos errores
+ Que a veces
+ Son propios
+ Del sistema
+ Bueno
+ Los vamos tocando
+ Uno por uno
+ Y vemos
+ Si alguno
+ Nos falta
+ Completar algo
+ O algo
+ Entonces vamos
+ Uno por uno
+ ¿Qué es lo que vamos a hacer?
+ ¿Qué es lo que vamos a hacer?
+ Entonces como no vemos
+ Vemos que no podemos salvar
+ Ningún otro
+ Error
+ Listo
+ Esto sería todo
+ Imprimimos
+ Y la guardamos
+ En la carpeta del cliente

@@ -1,0 +1,10 @@
+# Heavy training media — no van a git (usar Dropbox / Git LFS)
+video/
+
+# Paquetes de skills regenerables (se reconstruyen con el script de packaging)
+dist/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.tmp

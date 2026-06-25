@@ -1,0 +1,131 @@
+# Diccionario de fuentes — source-resolver
+# El ÚNICO lugar que conoce dónde vive cada dato. Editar aquí, no en las skills.
+# Poblado con la estructura REAL (descubierta jun-2026) de Airtable + Dropbox de Perchik.
+version: 0.2
+
+# -----------------------------------------------------------------------------
+# Conectores: la geografía base. IDs/roots concretos van SOLO aquí.
+# -----------------------------------------------------------------------------
+connectors:
+  airtable:
+    base_id: "appv3AisSiSSDASiL"          # "Tax Year 2025 - Usar Esta"
+    tables:
+      entities: "tblFT6wt2maALhHRt"        # Entity Tracker
+      partners: "tblfQwMz76IYuQ03j"        # Individual Tracker
+      folder_names: "tbl9O1808OvlsjArv"    # Folder Names (carpeta <-> entidad)
+    # campos clave de Entity Tracker (fieldId)
+    entity_fields:
+      name: "fldgmNb65uIWzmLTc"
+      ein: "fldfWjmSVjcfJ8MCn"
+      entity_type: "fldkkKCXggUIR57cu"
+      primary_form: "fldic8lSDARziovEA"
+      primary_form_status: "fldlAKJdNodUSQGTF"   # TRIGGER
+      activity: "fldW2YzvZ13nuxbHY"
+      partners: "fldycRHLs2mQm1G57"
+      address: "fld1KgVsUgB5u3HOF"
+      street_irs: "fldt2FKyXaOjmPDDh"
+      city_state_zip_irs: "fldr5SWWLhvb7W8qy"
+      pin: "fldqAazLLuyG9LELn"
+      fbar: "fldNp1bjKP65dk5Uu"
+      status_8804: "fldcf6G4Ef3mF9DUN"
+      form_1099: "fldRPxzNasKFlGKpK"
+      name_on_folder: "fldpPQr69SyygdLZB"
+    # campos clave de Individual Tracker (socios)
+    partner_fields:
+      name: "fld5Yc8wxo7aNHaZI"
+      itin_ssn: "fldbrCAYHlAoKv0vD"
+      entity: "fldMWlNP13WwXbOFA"
+      dob: "fldtQCHDqvNv3SGWb"
+      passport: "flddkoOFcjhTdHKVz"
+      us_resident: "fldsOCNtEZy2vJQ6l"
+    trigger:
+      field: "primary_form_status"
+      value: "CCH To do"
+  dropbox:
+    namespace: "ns:2444366337"                       # Estudio PERCHIK CPA
+    clients_scope: "ns:2444366337//Clients"
+    # La carpeta del cliente es: Clients/Tax Clients/{owner}/{entity}/{year}/
+    # Como {owner} es una capa intermedia variable, NO se construye el path:
+    # se LOCALIZA por search dentro de clients_scope. (ver SKILL.md)
+    layout: "Clients/Tax Clients/{owner}/{entity}/{year}"
+
+# -----------------------------------------------------------------------------
+# Fuentes lógicas. Para Dropbox se localiza por search (name_contains + match),
+# tomando el año más reciente salvo que se pida otro.
+# -----------------------------------------------------------------------------
+sources:
+
+  # ---- Entidad (Airtable) ----
+  - key: entity.record
+    needed_by: [basic-data, scenario-classifier, intake-trigger, other-information]
+    connector: airtable
+    locator:
+      table: entities
+      match_name: "{entity}"
+      fields: [name, ein, entity_type, primary_form, primary_form_status, activity,
+               partners, address, street_irs, city_state_zip_irs, pin, fbar,
+               status_8804, form_1099, name_on_folder]
+    notes: "Datos maestros, dirección IRS, flags. EIN y dirección salen de acá (no del SS-4)."
+
+  # ---- Socios (Airtable) ----
+  - key: partners.list
+    needed_by: [partners-k1, ownership-structure, foreign-forms, other-information]
+    connector: airtable
+    locator:
+      table: partners
+      match_via: "entity.record.partners"     # los recordIds del campo partners
+      fields: [name, itin_ssn, entity, dob, passport, us_resident]
+    notes: >
+      Socio individuo → trae ITIN/SSN. Socio corp foreign (sin ITIN) → regla 'Applied for'.
+      El % y capital accounts vienen del Capital Account QB, no de Airtable.
+
+  # ---- Reportes QuickBooks (Dropbox) ----
+  - key: income.qb_profit_and_loss
+    needed_by: [income-real-estate, income-consulting-usa, income-consulting-foreign, balance-sheet, basic-data]
+    connector: dropbox
+    locator: { search_scope: clients_scope, name_contains: "{entity}", match: "P&L*", exclude: "*PY Comparison*|*By Properties*", prefer: latest_year }
+    notes: "Pie del reporte = método contable (Cash/Accrual). Lo parsea qb-report-reader."
+
+  - key: income.qb_balance_sheet
+    needed_by: [balance-sheet]
+    connector: dropbox
+    locator: { search_scope: clients_scope, name_contains: "{entity}", match: "BS*", exclude: "*PY Comparison*", prefer: latest_year }
+
+  - key: partners.capital_accounts
+    needed_by: [partners-k1, balance-sheet]
+    connector: dropbox
+    locator: { search_scope: clients_scope, name_contains: "{entity}", match: "Capital Account*", prefer: latest_year }
+    notes: "Equity inicial, contributions, distributions, equity final → M-2 y capital de cada socio."
+
+  - key: income.k1_received
+    needed_by: [income-passthrough-k1]
+    connector: dropbox
+    locator: { search_scope: clients_scope, name_contains: "{entity}", match: "K1*|K-1*", prefer: latest_year }
+    notes: "Holding que RECIBE K-1. Puede estar en subcarpeta Investments. (BRECHA: regla propia)"
+
+  - key: sale.securities_1099b
+    needed_by: [sale-of-securities]
+    connector: dropbox
+    locator: { search_scope: clients_scope, name_contains: "{entity}", match: "*1099-B*|*Investment*", prefer: latest_year }
+    notes: "Form 8949. Ganancias NO entran a retención 1446. (BRECHA)"
+
+  - key: sale.real_estate_hud
+    needed_by: [sale-of-property]
+    connector: dropbox
+    locator: { search_scope: clients_scope, name_contains: "{entity}", match: "*HUD*|*Settlement*", prefer: latest_year }
+
+  - key: sale.depreciation_schedule
+    needed_by: [sale-of-property]
+    connector: dropbox
+    locator: { search_scope: clients_scope, name_contains: "{entity}", match: "*Property List*|*4562*|*Depreciation*", prefer: latest_year }
+    notes: >
+      Depreciación ACUMULADA por activo (toda la vida), NO la del año. Define el unrecaptured
+      §1250 (9c) = menor(deprec. acumulada de los edificios vendidos, gain). La línea
+      "Depreciation Expense" del P&L es solo el año y NO sirve para el 9c.
+
+  # ---- Ground truth (para validar la simulación) ----
+  - key: reference.finished_1065
+    needed_by: [qa, validation]
+    connector: dropbox
+    locator: { search_scope: clients_scope, name_contains: "{entity}", match: "FORM 1065*", exclude: "*CLIENT COPY*|*DIAGNOSTICS*", prefer: latest_year }
+    notes: "El 1065 ya armado por el equipo. Sirve de 'respuesta correcta' al simular."

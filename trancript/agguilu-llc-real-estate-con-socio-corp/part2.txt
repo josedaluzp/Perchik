@@ -1,0 +1,307 @@
+ Bueno, continuamos cargando las propiedades que tiene esta sociedad, se carga de esta forma, ponemos Type of Property, Single Family o Multi Family Residence
+ Ponemos el nombre de la sociedad, el nombre de la propiedad, perdón, y acá la volvemos a copiar y pegar
+ De dónde es, Miami, el estate code, zip code
+ En el punto 11 debemos poner 1, como que es el 100%
+ Punto 12 de renta al real estate
+ En el punto 14 ponemos los días que se alquilaron
+ Si estuvo todo el año 365
+ Si no tuvo uso personal, va cero
+ Y este punto Activity Number completamos el mismo número que tenemos aquí abajo en Entity Number
+ Bueno, y luego nos basamos en el Property, perdón, en el Profit and Loss para cargar las distintas propiedades
+ Entonces nosotros acá tenemos el Property, el Profit and Loss 12,950
+ Esta sería la propiedad
+ Entonces vamos a cargar punto por punto
+ En este caso vamos a cargar esta columna, punto por punto
+ Bank Service, Commissions, Depreciation, HOA, punto por punto
+ Entonces, acá cargamos The Income
+ Tiene 4046, lo cargamos ahí
+ Luego Expenses
+ Tenemos Bank Service Charge
+ En el caso de no estar acá el concepto lo anotamos acá abajo
+ Bank Service Charge
+ 7
+ Y en Other Reductions ponemos lo que le corresponde
+ En el caso de Management Fees
+ Pusimos 13 porque es Management Fees
+ Como Other Reduction
+ Y acá en Bank
+ Y acá en Bank ponemos 30 porque no hay una que haga referencia al banco
+ Y luego ponemos los distintos montos
+ Bueno, cargamos el Bank Service como 7
+ Bueno, y así sucesivamente todos los Expenses
+ Y luego en el punto 4 vemos la depreciación
+ Cargamos Building Land con las fechas de alta de cada uno
+ El método para el Building es MSL
+ Y para el Land es L
+ Que es The Land
+ Y luego, bueno, The Life Rate para Building es 27,5
+ Y ponemos los costos de cada uno
+ Del Building y del Land
+ Y así nos va a arrojar la
+ En este caso como es una propiedad que viene de años anteriores
+ Nos va a arrojar la depreciación acumulada
+ Y la depreciación de este año en Current Year Depreciation
+ Bueno
+ Y así sucesivamente con todas las propiedades
+ En este caso se venden dos propiedades
+ Y una de las dos propiedades es esta propiedad
+ Que es 13,955 privos
+ Bueno, en este caso lo que tenemos que hacer es
+ Para la venta de propiedades
+ Vamos a
+ Primero que nada marcar 100% Disposed cuando se vende
+ Y en Fair Rental Days tenemos que hacer la cuenta
+ De cuántos días estuvo activa la propiedad para la sociedad
+ Este año del 2025 sería
+ Este año que estamos haciendo la declaración
+ Entonces lo que tenemos que completar
+ En Fair Rental Days
+ Es
+ Hacemos la resta entre
+ El día en que se vendió
+ Por ejemplo
+ Si la propiedad se vendió el 29 de diciembre del 2025
+ Hacemos 12,29 del 2025
+ Menos el 1 del 1 del 2025
+ Y a eso le sumo 1
+ Entonces así vamos a obtener los días que la propiedad estuvo activa en 2025
+ Hasta que se vendió
+ Hasta que se vendió
+ Y ponemos el número acá
+ Bueno, luego lo que debemos hacer es
+ Como expliqué anteriormente
+ Cargamos todo lo que
+ Los expenses y se linkan de la propiedad
+ Y en Building y Land
+ Lo que va a cambiar es
+ Vamos a ir hasta
+ Date Sold
+ Y acá vamos a poner la fecha de venta
+ En este caso la propiedad se vendió
+ En abril
+ Entonces ponemos
+ El mes
+ Abril
+ Y el día
+ El 8
+ Y lo que tenemos que chequear es
+ La
+ Amortización del año
+ La current year depreciation
+ Que nos dé bien con el profit and loss
+ Que tenemos cargado
+ En este caso
+ Les muestro el profit and loss
+ Esta es la sociedad que se vendió
+ Depreciation expense
+ Está bien
+ 6.81
+ Si nos da por
+ Si no nos está dando por
+ Por un dólar
+ Dos dólares
+ Por un par de dólares
+ Bueno, vamos a hablar con QuickBooks
+ Para ver si
+ Está bien puesta
+ O de dónde es que se tomó
+ La
+ La depreciación que se puso
+ En el profit and loss
+ Bueno, una vez hecho esto
+ Vamos a
+ Seguir los pasos
+ Que se realizan
+ En la venta de propiedades
+ Entonces
+ Vamos a ir
+ Al Sketchual D
+ 47.97
+ Gain and lose
+ Acá en este caso
+ Se vendieron dos propiedades
+ Yo les voy a mostrar
+ La primera
+ Que es la que estábamos viendo
+ 13.955
+ Privos
+ Bueno, en este caso
+ Abrimos
+ Un registro para el building
+ Y uno para el land
+ De cada propiedad que se vendió
+ Entonces ponemos
+ Building
+ De esta propiedad
+ Land
+ De esta propiedad
+ Ahí se me trabó
+ Ahí se me trabó
+ Bueno
+ Me queda el land
+ Abajo
+ Bueno
+ En este caso
+ Hacemos el building
+ De esta propiedad
+ No lo puedo
+ Correr
+ Pero bueno
+ Lo dejamos así
+ El building de esta propiedad
+ Y el land de esta propiedad
+ En este caso
+ El property type
+ De tanto de building
+ Para land
+ Es 1.250
+ Y luego ponemos
+ La fecha
+ De
+ Adquisición
+ De la propiedad
+ Y la fecha
+ De venta
+ De la propiedad
+ En la columna
+ De sales price
+ Nosotros lo que debemos hacer
+ Es
+ El precio de venta
+ Que figura en el profit and loss
+ Que se los voy a mostrar
+ Este precio de venta
+ Menos
+ El land
+ De la propiedad
+ Entonces
+ En este caso
+ En este caso
+ Era
+ El sale price
+ Era 74
+ 4.72
+ Con 85
+ Se le resta
+ El land
+ Que el land
+ Es de 7.211
+ Por lo cual
+ Lo que nos da
+ Es 67.262
+ Esto se hace
+ Con cada building
+ Que se vendieron
+ Y luego
+ En la columna
+ De sale price
+ En lo que corresponde
+ Al land
+ Ponemos
+ El valor
+ Del land
+ Por el cual
+ Se obtuvo
+ En este caso
+ 7.211
+ Y
+ Nada
+ Y de la otra propiedad
+ 7.583
+ Que es el costo
+ Propio
+ No hay que
+ No hay que
+ Netearlo de nada
+ Sino
+ El costo
+ Y luego
+ Acá
+ En cost
+ Si ponemos
+ El costo
+ Que nos valió
+ Cada
+ Tanto el building
+ Como el land
+ Nosotros en este caso
+ Contamos de
+ Un property list
+ Que si está actualizado
+ El property list
+ Y está al día
+ Aquí nos debería
+ Figurar
+ Exactamente
+ Los montos
+ Del building
+ Y del land
+ En este caso
+ Para que lo vean
+ Montado el building
+ 64.196
+ Nosotros pusimos
+ 64.196
+ Y land
+ Tenemos
+ 7.211
+ Y pusimos
+ 7.211
+ Entonces
+ En esta parte
+ En esta parte
+ En esta parte
+ Del cost
+ Iría eso
+ El costo
+ Del count
+ Si vienen
+ De años anteriores
+ Debemos
+ Chequearlo
+ Con el client
+ Copy
+ De los años anteriores
+ Donde
+ Abajo de todo
+ Nos va
+ A arrojar
+ Ambos
+ Ambos valores
+ Por ejemplo
+ Para que vean
+ Por ejemplo
+ Acá tenemos
+ Building
+ El costo
+ Land
+ El costo
+ Siempre nos tiene que dar lo mismo
+ Y la acumulada
+ También nos tiene que dar lo mismo
+ En este caso
+ Es otra
+ Es otra propiedad
+ Pero
+ Para que sepan
+ Que la acumulada
+ Debe dar lo mismo
+ El año pasado
+ O sea
+ Lo que dio
+ Al final del año pasado
+ El principio de este año
+ Bueno
+ Luego
+ Hay que completar
+ Selling expense
+ Los selling expense
+ Los vemos
+ En el profit and loss
+ En las propiedades
+ Que se vendieron
+ Que son estas dos
+ Acá tenemos
+ Expense of disposition
+ Y hay que poner
+ El

@@ -1,0 +1,341 @@
+<title>Form 1065 — AGGUILU LLC · Data Entry Simulado (CCH Axcess)</title>
+<style>
+  :root{
+    --ground:#eef1f5; --panel:#fff; --panel-2:#f7f9fb;
+    --ink:#16202e; --muted:#566472; --faint:#8a97a4; --line:#dce2ea;
+    --primary:#13507e; --primary-2:#1a6298; --primary-ink:#0c3a5c;
+    --auto:#1a7a55; --auto-bg:#e3f3eb; --auto-line:#bfe3cf;
+    --check:#9a6312; --check-bg:#fbf0d8; --check-line:#ecd4a0;
+    --manual:#5d6b7a; --manual-bg:#eef1f4;
+    --rule:#5a4a8c; --rule-bg:#ece8f6;
+    --src-at:#6d4ca6; --src-qb:#0f7d77; --src-k1:#1f6db5; --src-deed:#8a6d3b;
+    --sans:system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);
+    line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 64px;}
+  a{color:var(--primary-2);}
+
+  .bar{background:linear-gradient(180deg,var(--primary-2),var(--primary));color:#fff;
+    padding:16px 22px;border-radius:0 0 12px 12px;box-shadow:0 8px 24px -16px rgba(11,58,92,.7);}
+  .bar-top{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;justify-content:space-between;}
+  .bar .app{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#bcd6ec;}
+  .bar h1{margin:2px 0 0;font-size:21px;font-weight:700;letter-spacing:-.01em;}
+  .bar h1 b{color:#cfe6f7;font-weight:700;}
+  .ret-status{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 13px;font-size:12px;font-weight:600;}
+  .ret-status .d{width:8px;height:8px;border-radius:50%;background:#9ce6bf;box-shadow:0 0 0 3px rgba(156,230,191,.25);}
+  .bar-meta{display:flex;flex-wrap:wrap;gap:6px 26px;margin-top:13px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);}
+  .bar-meta div{font-size:12.5px;color:#dbe9f4;}
+  .bar-meta b{color:#fff;font-family:var(--mono);font-weight:600;}
+
+  .intro{margin:22px 0 8px;color:var(--muted);font-size:14px;max-width:80ch;}
+  .intro b{color:var(--ink);}
+
+  .legend{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;background:var(--panel);
+    border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:14px 0 18px;}
+  .legend .grp{display:flex;gap:9px;align-items:center;flex-wrap:wrap;}
+  .legend .sep{width:1px;height:20px;background:var(--line);}
+  .st{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.05em;border-radius:5px;padding:2px 8px;}
+  .st.auto{color:var(--auto);background:var(--auto-bg);}
+  .st.check{color:var(--check);background:var(--check-bg);}
+  .st.manual{color:var(--manual);background:var(--manual-bg);}
+  .st.rule{color:var(--rule);background:var(--rule-bg);}
+  .src{font-family:var(--mono);font-size:10.5px;font-weight:600;border-radius:5px;padding:2px 7px;color:#fff;white-space:nowrap;}
+  .src.at{background:var(--src-at);} .src.qb{background:var(--src-qb);}
+  .src.k1{background:var(--src-k1);} .src.deed{background:var(--src-deed);}
+  .src.rule{background:#6b7785;} .src.none{background:#fff;color:var(--check);border:1px dashed var(--check-line);}
+  .legend small{color:var(--muted);font-size:11.5px;}
+
+  /* automation bar */
+  .autobar{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:26px;}
+  .autobar .lbl{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:9px;}
+  .autobar .lbl .t{font-size:13px;color:var(--muted);}
+  .autobar .lbl .p{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--auto);letter-spacing:-.02em;}
+  .track{height:13px;border-radius:7px;overflow:hidden;display:flex;background:var(--manual-bg);}
+  .track i{height:100%;display:block;}
+  .track .i-auto{background:var(--auto);} .track .i-rule{background:var(--rule);}
+  .track .i-check{background:var(--check);} .track .i-manual{background:var(--manual);}
+  .autobar .keys{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-size:11.5px;color:var(--muted);}
+  .autobar .keys b{font-family:var(--mono);color:var(--ink);}
+  .autobar .keys span{display:inline-flex;align-items:center;gap:6px;}
+  .autobar .keys i{width:9px;height:9px;border-radius:2px;display:inline-block;}
+
+  .grid{display:grid;grid-template-columns:198px 1fr;gap:26px;align-items:start;}
+  @media(max-width:780px){.grid{grid-template-columns:1fr;}}
+  nav{position:sticky;top:14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;}
+  @media(max-width:780px){nav{position:static;}}
+  nav .nh{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);padding:4px 8px 8px;}
+  nav a{display:flex;justify-content:space-between;gap:8px;align-items:center;text-decoration:none;color:var(--ink);
+    font-size:13px;padding:7px 9px;border-radius:7px;border-left:3px solid transparent;}
+  nav a:hover{background:var(--panel-2);border-left-color:var(--primary);}
+  nav a .c{font-family:var(--mono);font-size:9.5px;color:var(--faint);}
+  nav a.star{color:var(--primary-ink);font-weight:600;}
+
+  .ws{background:var(--panel);border:1px solid var(--line);border-radius:11px;margin-bottom:20px;overflow:hidden;scroll-margin-top:14px;}
+  .ws.hl{border-color:#bcd6ec;box-shadow:0 0 0 1px rgba(26,98,152,.15);}
+  .ws-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;padding:13px 18px;border-bottom:1px solid var(--line);background:var(--panel-2);}
+  .ws-h .code{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--primary);background:#e7f0f8;border:1px solid #cfe2f1;border-radius:5px;padding:2px 8px;}
+  .ws-h h2{margin:0;font-size:15.5px;font-weight:700;letter-spacing:-.01em;}
+  .ws-h .skill{font-family:var(--mono);font-size:11px;color:var(--faint);margin-left:auto;}
+  .callout{margin:0;padding:11px 18px;background:#eef5fb;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--primary-ink);}
+  .callout b{font-weight:700;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  th{text-align:left;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:600;padding:9px 18px;border-bottom:1px solid var(--line);background:#fff;}
+  td{padding:9px 18px;border-bottom:1px solid #eef2f6;vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:#fafbfc;}
+  .fld{color:var(--muted);}
+  .fld .ln{font-family:var(--mono);font-size:10.5px;color:var(--faint);}
+  .val{font-family:var(--mono);font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;}
+  .val.neg{color:#b03a2e;}
+  .val.empty{color:var(--check);font-weight:600;}
+  td.s{white-space:nowrap;}
+  .colF{width:33%;} .colV{width:30%;} .colSrc{width:19%;} .colSt{width:18%;}
+  .subhead td{background:#f2f6fa;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--primary-ink);font-weight:700;padding:6px 18px;}
+  .scroll{overflow-x:auto;}
+
+  .pend{background:var(--panel);border:1px solid var(--check-line);border-radius:11px;overflow:hidden;}
+  .pend-h{background:var(--check-bg);padding:13px 18px;border-bottom:1px solid var(--check-line);font-weight:700;font-size:15px;color:#6e470d;}
+  .pend ol{margin:0;padding:14px 18px 16px 36px;}
+  .pend li{margin-bottom:10px;font-size:13.5px;color:var(--ink);}
+  .pend li b{font-family:var(--mono);font-weight:600;}
+  .pend .why{color:var(--muted);font-size:12.5px;}
+
+  .foot{margin-top:30px;font-family:var(--mono);font-size:10.5px;color:var(--faint);border-top:1px solid var(--line);padding-top:14px;line-height:1.7;}
+</style>
+
+<div class="bar">
+  <div class="wrap" style="padding-bottom:0">
+    <div class="bar-top">
+      <div>
+        <div class="app">Tenfold × Perchik · CCH Axcess · Data-entry simulado (solo lectura)</div>
+        <h1>Form 1065 — <b>AGGUILU LLC</b> · Tax Year 2025</h1>
+      </div>
+      <span class="ret-status"><span class="d"></span> CCH Ready to Check</span>
+    </div>
+    <div class="bar-meta">
+      <div>EIN <b>45-2150749</b></div>
+      <div>Año <b>Calendar 2025</b></div>
+      <div>Método <b>Cash</b></div>
+      <div>Actividad <b>Real Estate</b></div>
+      <div>Socios <b>2 · foreign (1 corp)</b></div>
+      <div>Venta de propiedades <b>2</b></div>
+      <div>1446 tax <b>$89</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <p class="intro">Caso C3: <b>real estate con venta de propiedades + socio corp foreign</b>. Cada
+  valor fue <b>extraído por las skills</b> desde Airtable + Dropbox y colocado en su campo de CCH.
+  Lo que distingue a este return: la <b>cadena del Form 4797</b> (venta), la <b>distinción corp vs
+  individuo en el 8804</b>, y el <b>balance suprimido</b>. Validado contra el 1065 ya armado.</p>
+
+  <div class="legend">
+    <div class="grp">
+      <span class="src at">Airtable</span><small>entidad + socios</small>
+      <span class="src qb">Dropbox</span><small>P&amp;L · Balance · Capital · 4797 · HUD</small>
+      <span class="src rule">regla</span><small>valor derivado</small>
+    </div>
+    <span class="sep"></span>
+    <div class="grp">
+      <span class="st auto">AUTO</span><small>auto-rellenado</small>
+      <span class="st rule">REGLA</span><small>derivado/calculado</small>
+      <span class="st check">CHECK</span><small>verificar</small>
+      <span class="st manual">MANUAL</span><small>fuera de conectores</small>
+    </div>
+  </div>
+
+  <div class="autobar">
+    <div class="lbl"><span class="t">Grado de automatización del data-entry</span><span class="p">88%</span></div>
+    <div class="track">
+      <i class="i-auto" style="width:46.5%"></i>
+      <i class="i-rule" style="width:41.9%"></i>
+      <i class="i-check" style="width:9.3%"></i>
+      <i class="i-manual" style="width:2.3%"></i>
+    </div>
+    <div class="keys">
+      <span><i style="background:var(--auto)"></i> <b>20</b> AUTO · copiados del conector</span>
+      <span><i style="background:var(--rule)"></i> <b>18</b> REGLA · calculados por skill</span>
+      <span><i style="background:var(--check)"></i> <b>4</b> CHECK · ojo humano</span>
+      <span><i style="background:var(--manual)"></i> <b>1</b> MANUAL</span>
+      <span style="color:var(--faint)">43 campos · 38 sin intervención</span>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <nav>
+      <div class="nh">Worksheets</div>
+      <a href="#basic"><span>Basic Data</span><span class="c">Pg 1</span></a>
+      <a href="#partners"><span>Partner Info</span><span class="c">B-1 / K-1</span></a>
+      <a href="#schk"><span>Schedule K</span><span class="c">Pg 4-5</span></a>
+      <a class="star" href="#sale"><span>Venta · 4797</span><span class="c">★</span></a>
+      <a class="star" href="#f8804"><span>8804 / 8805</span><span class="c">★</span></a>
+      <a href="#schl"><span>Balance (Sch L)</span><span class="c">suprimido</span></a>
+      <a href="#pend"><span>Pendientes</span><span class="c">4</span></a>
+    </nav>
+
+    <div>
+
+      <!-- BASIC DATA -->
+      <section class="ws" id="basic">
+        <div class="ws-h"><span class="code">1065 · Pg 1</span><h2>Basic Data — General</h2><span class="skill">skill: basic-data</span></div>
+        <table>
+          <thead><tr><th class="colF">Campo CCH</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">Partnership name</td><td class="val">AGGUILU LLC</td><td class="s"><span class="src at">Airtable·E</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">EIN</td><td class="val">45-2150749</td><td class="s"><span class="src at">Airtable·E</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Address <span class="ln">(Pg1 header)</span></td><td class="val">2625 Weston Road, Suite&nbsp;105<br>Weston, FL 33331</td><td class="s"><span class="src at">Airtable·E</span></td><td class="s"><span class="st check">CHECK</span></td></tr>
+            <tr><td class="fld">Box C — Business code</td><td class="val">531190 <span class="ln">(Real Estate)</span></td><td class="s"><span class="src at">Airtable·E</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box H — Accounting method</td><td class="val">Cash</td><td class="s"><span class="src qb">Dropbox·P&amp;L</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box E — Date business started</td><td class="val">02/25/2011</td><td class="s"><span class="src none">no extraído</span></td><td class="s"><span class="st manual">MANUAL</span></td></tr>
+            <tr><td class="fld">Box G — Type of return</td><td class="val">Año normal <span class="ln">(sin box)</span></td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">Type of entity filing</td><td class="val">Domestic LLC</td><td class="s"><span class="src at">Airtable·E</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- PARTNERS -->
+      <section class="ws" id="partners">
+        <div class="ws-h"><span class="code">Sch B-1 / K-1</span><h2>Partner Information</h2><span class="skill">skill: partners-k1</span></div>
+        <table>
+          <thead><tr><th class="colF">Campo</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr class="subhead"><td colspan="4">Socio #1 — Araceli N. Braslavsky · Individual · Foreign (AR) · Partnership Rep · 1%</td></tr>
+            <tr><td class="fld">Box E — TIN</td><td class="val">ITIN 953-94-9178</td><td class="s"><span class="src at">Airtable·I</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box J — % Profit/Loss/Capital</td><td class="val">1% / 1% / 1%</td><td class="s"><span class="src none">PY / OA</span></td><td class="s"><span class="st check">CHECK</span></td></tr>
+            <tr><td class="fld">K-1 Box 2 — Net rental RE</td><td class="val neg">(415)</td><td class="s"><span class="src rule">regla 1%</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">K-1 Box 9c — Unrecaptured 1250</td><td class="val">342</td><td class="s"><span class="src rule">regla 1%</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">K-1 Box 10 — Net 1231 gain</td><td class="val">358</td><td class="s"><span class="src rule">regla 1%</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+
+            <tr class="subhead"><td colspan="4">Socio #2 — FIRENZE ESTATES LTD · Corporation · Foreign (VI) · 99%</td></tr>
+            <tr><td class="fld">Box E — EIN/TIN</td><td class="val empty">APPLIED FOR</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">Tipo de socio</td><td class="val">Corporation (foreign)</td><td class="s"><span class="src at">Airtable·I</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Box J — % Profit/Loss/Capital</td><td class="val">99% / 99% / 99%</td><td class="s"><span class="src none">PY / OA</span></td><td class="s"><span class="st check">CHECK</span></td></tr>
+            <tr><td class="fld">8805 — Country code</td><td class="val">VI</td><td class="s"><span class="src at">Airtable·I</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">K-1 Box 2 — Net rental RE</td><td class="val neg">(41,113)</td><td class="s"><span class="src rule">regla 99%</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">K-1 Box 10 — Net 1231 gain</td><td class="val">35,411</td><td class="s"><span class="src rule">regla 99%</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SCHEDULE K -->
+      <section class="ws" id="schk">
+        <div class="ws-h"><span class="code">Sch K · Pg 4-5</span><h2>Schedule K — Distributive Items</h2><span class="skill">skill: income-real-estate · income-router</span></div>
+        <table>
+          <thead><tr><th class="colF">Línea</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">L.1 — Ordinary business income</td><td class="val">0</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">L.2 — Net rental real estate income (loss)</td><td class="val neg">(41,528)</td><td class="s"><span class="src qb">Dropbox·P&amp;L</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.9c — Unrecaptured §1250 gain</td><td class="val">34,232</td><td class="s"><span class="src qb">Dropbox·4797</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">L.10 — Net §1231 gain</td><td class="val">35,769</td><td class="s"><span class="src qb">Dropbox·4797</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.16 — Schedule K-2/K-3 attached</td><td class="val">X</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">Net income (loss) per return</td><td class="val neg">(5,759)</td><td class="s"><span class="src qb">Dropbox·P&amp;L</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+
+            <tr class="subhead"><td colspan="4">L.2 detalle — Net rental por propiedad (Statement 2)</td></tr>
+            <tr><td class="fld">1829 N. A St — Unit 83</td><td class="val neg">(9,966)</td><td class="s"><span class="src qb">Dropbox·By Prop</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">12950 Rosemont Ave</td><td class="val neg">(15,648)</td><td class="s"><span class="src qb">Dropbox·By Prop</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">15309 Troester</td><td class="val neg">(13,570)</td><td class="s"><span class="src qb">Dropbox·By Prop</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">19209 Moross Rd</td><td class="val">2,816</td><td class="s"><span class="src qb">Dropbox·By Prop</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">871 Edge St · 16596 Whitcomb · 13955 Prevost</td><td class="val neg">(3,160)</td><td class="s"><span class="src qb">Dropbox·By Prop</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SALE OF PROPERTY -->
+      <section class="ws hl" id="sale">
+        <div class="ws-h"><span class="code">Form 4797 ★</span><h2>Venta de propiedades</h2><span class="skill">skill: sale-of-property</span></div>
+        <p class="callout">Se vendieron <b>2 propiedades</b> (cada una building+land). Gross proceeds (1099-S)
+        <b>$152,093</b>. La cadena: gain por propiedad → Form 4797 §1231 → Schedule K L.10, con la porción
+        <b>unrecaptured §1250 → L.9c ($34,232)</b>.</p>
+        <div class="scroll">
+        <table>
+          <thead><tr><th>Propiedad</th><th>Vendida</th><th>Precio</th><th>Base ajust.</th><th>Gain</th><th class="s">Fuente</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">16596 Whitcomb <span class="ln">(bldg+land)</span></td><td class="val">02/26/25</td><td class="val">77,620</td><td class="val">58,761</td><td class="val">18,859</td><td class="s"><span class="src qb">Dropbox·HUD</span></td></tr>
+            <tr><td class="fld">13955 Prevost <span class="ln">(bldg+land)</span></td><td class="val">04/08/25</td><td class="val">74,473</td><td class="val">57,563</td><td class="val">16,910</td><td class="s"><span class="src qb">Dropbox·HUD</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <table>
+          <thead><tr><th class="colF">Campo CCH</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">4797 Part I L.1 — Gross proceeds (1099-S)</td><td class="val">152,093</td><td class="s"><span class="src qb">Dropbox·P&amp;L</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">4797 Part III L.32 — Net §1231 gain</td><td class="val">35,769</td><td class="s"><span class="src qb">Dropbox·4797</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">→ Schedule K L.10</td><td class="val">35,769</td><td class="s"><span class="src qb">Dropbox·4797</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">Unrecaptured §1250 → L.9c</td><td class="val">34,232</td><td class="s"><span class="src rule">cálculo</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 8804 / 8805 -->
+      <section class="ws hl" id="f8804">
+        <div class="ws-h"><span class="code">8804 / 8805 ★</span><h2>Foreign Withholding — corp vs individuo</h2><span class="skill">skill: foreign-forms</span></div>
+        <p class="callout"><b>La regla clave de C3:</b> toda la retención §1446 (<b>$89</b>) la genera el socio
+        <b>individuo</b> (Araceli): su parte de la ganancia se divide en §1250 ($342 × 25%) + capital gain
+        ($16 × 20%). El socio <b>corporativo FIRENZE genera $0</b> — su resultado neto es pérdida, sin ECTI.</p>
+        <table>
+          <thead><tr><th class="colF">Línea Form 8804</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">L.3a — N° de socios extranjeros</td><td class="val">2</td><td class="s"><span class="src at">Airtable·I</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">L.4a–4l — ECTI socio <b>corporativo</b> (FIRENZE)</td><td class="val">0 <span class="ln">(net loss)</span></td><td class="s"><span class="src rule">regla corp</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">L.4m — Unrecap. §1250 socio <b>individuo</b></td><td class="val">342</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">L.4q — Adj. net capital gain socio <b>individuo</b></td><td class="val">16</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">L.5d — (4p × 25%)</td><td class="val">86</td><td class="s"><span class="src rule">cálculo</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">L.5e — (4t × 20%)</td><td class="val">3</td><td class="s"><span class="src rule">cálculo</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">L.5f / L.10 — Total §1446 tax</td><td class="val">89</td><td class="s"><span class="src rule">cálculo</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr class="subhead"><td colspan="4">Forms 8805 por socio</td></tr>
+            <tr><td class="fld">8805 Araceli (AR, individuo) — ECTI / credit</td><td class="val">358 / 89</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">8805 FIRENZE (VI, corp) — ECTI / credit</td><td class="val">0 / 0</td><td class="s"><span class="src rule">regla</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- SCHEDULE L -->
+      <section class="ws" id="schl">
+        <div class="ws-h"><span class="code">Sch L / M-1 / M-2</span><h2>Balance Sheet — suprimido</h2><span class="skill">skill: balance-sheet</span></div>
+        <p class="callout">El return <b>no lleva Schedule L / M-1 / M-2</b>: la sociedad está bajo el umbral
+        (1M / 250k), así que se suprime el balance. <b>Pero</b> el diagnostic igual exige cargar
+        buildings/land + amortización acumulada — esos datos sí están en QB (abajo) listos por si CCH los pide.</p>
+        <table>
+          <thead><tr><th class="colF">Dato (en QB, fuera del return)</th><th class="colV">Valor</th><th class="colSrc">Fuente</th><th class="colSt">Estado</th></tr></thead>
+          <tbody>
+            <tr><td class="fld">Total assets (QB BS)</td><td class="val">371,970</td><td class="s"><span class="src qb">Dropbox·BS</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+            <tr><td class="fld">Cash — Interaudi Bank</td><td class="val">113,143</td><td class="s"><span class="src qb">Dropbox·BS</span></td><td class="s"><span class="st auto">AUTO</span></td></tr>
+            <tr><td class="fld">5 propiedades restantes (Land+Building−Deprec.)</td><td class="val">255,960</td><td class="s"><span class="src qb">Dropbox·BS</span></td><td class="s"><span class="st check">CHECK</span></td></tr>
+            <tr><td class="fld">Schedule L / M-2 en el return</td><td class="val empty">suprimido</td><td class="s"><span class="src rule">regla umbral</span></td><td class="s"><span class="st rule">REGLA</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- PENDIENTES -->
+      <section class="pend" id="pend">
+        <div class="pend-h">Pendientes / verificaciones — lo que la automatización no resuelve sola</div>
+        <ol>
+          <li><b>% de socios 1% / 99%</b> — no sale de QB (el Capital Account es una sola línea "Member").
+            <div class="why">Hoy se toma del return del año anterior. Falta el Operating Agreement para confirmarlo. → cargar el % en Airtable para que sea AUTO.</div></li>
+          <li><b>EIN de FIRENZE ESTATES LTD</b> — "APPLIED FOR" (corp foreign).
+            <div class="why">La regla "corp foreign → Applied for" se aplicó bien; verificar si el IRS ya asignó EIN.</div></li>
+          <li><b>Dirección — discrepancia de fuente (otra vez)</b> — Airtable dice "Suite D"; el return usa "Suite 105".
+            <div class="why">Mismo desfase que en SALVIN7 → Airtable está desactualizado en la dirección. Conviene corregir Airtable de raíz.</div></li>
+          <li><b>Balance suprimido pero diagnostic exige buildings/land + depreciación</b>.
+            <div class="why">QB tiene las 5 propiedades con Land/Building/Accum. Deprec.; cargar esa parte aunque Sch L esté suprimido.</div></li>
+        </ol>
+      </section>
+
+    </div>
+  </div>
+
+  <p class="foot">
+    Simulación de data-entry · solo lectura · ningún dato escrito en CCH Axcess (skill cch-axcess-client = brecha abierta).<br>
+    Fuentes vía MCP: Airtable "Tax Year 2025" (Entity + Individual Tracker) · Dropbox /Estudio PERCHIK CPA/Clients/…/AGGUILU LLC/2025
+    (P&amp;L, Balance, Capital Account, Rental Reports, HUDs de venta).<br>
+    Cifras de 4797 / 8804 / 8805 / K-1 extraídas del 1065 ya armado (FORM 1065 - AGGUILU LLC.pdf, 55 págs). Estado del equipo: CCH Ready to Check.
+  </p>
+
+</div>
