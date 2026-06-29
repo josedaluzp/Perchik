@@ -1,47 +1,73 @@
-# CCH Axcess OIP — Token Authentication (OAuth 2.0)
+# CCH Axcess OIP — Token Authentication (OAuth 2.0) — implementación completa
 
-Fuente: KB 000237208 (Wolters Kluwer, 08/2023). Aplica a cch-axcess-client.
+Fuentes: KB 000237208 (overview), 000256426 (registro), 000256421 (implementación).
+Aplica a cch-axcess-client. Flujo = **authorization_code** (3-legged) + refresh para desatendido.
 
 ## Servidores
-- **Authorization Server:** `login.cchaxcess.com` (maneja tokens OAuth2).
-- **Resource Server:** `api.cchaxcess.com` (responde las APIs — Tax Services, etc.).
+- **Authorization Server:** `https://login.cchaxcess.com`
+- **Resource Server:** `https://api.cchaxcess.com`
 
-## Flujo: authorization_code (3-legged) + refresh para desatendido
-NO es `client_credentials`. Requiere consentimiento humano **una sola vez**, y luego renovación
-silenciosa vía refresh token:
+## 0. Registro de la app (UNA vez) — KB 000256426
+En CCH Axcess Dashboard (cuenta licenciada para OIP + userID con permiso "view firm settings"):
+`Dashboard > Application Links > Firm > Developer Tools > Add Application`. Configurar:
+- **Application Name** (lo ve el usuario al dar consentimiento), **Type = Authorization Code**
+  (recomendado, más seguro que Implicit), **Description**.
+- **Access token lifetime** y **Refresh token lifetime** ← *poner el refresh lo más largo posible
+  para el cron.*
+- **Scopes recomendados:**
+  - `CCHAxcess_data_writeaccess` — leer/escribir datos (necesario para el import). 
+  - `offline_access` — **necesario para obtener refresh_token** (clave para desatendido).
+  - `openid` — sub claims. · `IDInfo` — ID token (logout). · `CCHAxcess_Profile` — email/nombre.
+- **Redirect URLs:** una `https://` real. **localhost BLOQUEADO.** (Para el consentimiento manual
+  alcanza con una URL https propia y leer el `code` de la barra.)
+- Copiar **client_id** y **client_secret** a un store seguro (→ env vars, ver abajo).
 
-```
-1. (UNA vez) Registrar la app OIP  → client_id + client_secret.
-   "Should be completed by the company that licenses an integration kit." Registro = una sola vez.
-2. (UNA vez) Consentimiento del usuario: el authz server pide account number → usuario/contraseña
-   (o Federated/ADFS) → MFA → el usuario concede acceso a la app.
-   → la app recibe access_token + REFRESH_TOKEN.
-3. (cada corrida) usar el refresh_token para obtener un nuevo access_token y llamar a las APIs.
-   La KB confirma: "applications may securely store tokens and renew them for scheduled or
-   unattended processing." → calza con el cron en la PC dedicada (consentir 1 vez, renovar solo).
-```
+## 1. Consentimiento + authorization code (UNA vez, requiere browser)
+`GET https://login.cchaxcess.com/ps/auth/v1.0/core/connect/authorize` con query params:
+- `response_type=code`
+- `client_id=<client_id>`
+- `redirect_uri=<redirect registrado>`
+- `scope=<lista separada por espacios>` (ej. `CCHAxcess_data_writeaccess offline_access openid IDInfo`)
+- (opcional) `acr_values={"AccountNumber":"123456"}` — el account number de 6 dígitos del firm
+  (las llaves `{}` son parte del formato).
 
-El access token va en `Authorization: Bearer <token>` contra `api.cchaxcess.com`. Identifica
-qué usuario/licencia usa la API y que la app fue autorizada por ese usuario.
+El usuario entra account number → usuario/contraseña (o ADFS) → MFA → aprueba la app. CCH
+redirige a `redirect_uri?code=<authorization_code>`. El code **expira rápido** → usarlo ya.
+(Si el usuario ya autorizó antes y no revocó, no se le vuelve a pedir aprobación.)
 
-## Revocación
-El usuario puede quitar el acceso a la app desde CCH Axcess → invalida los tokens y la app deja de
-renovar hasta un nuevo consentimiento. (Tener esto en cuenta: si alguien revoca, el cron falla y
-hay que re-consentir en la PC.)
+## 2. Canjear el code por tokens
+`POST https://login.cchaxcess.com/ps/auth/v1.0/core/connect/token`
+- Header: `Authorization: Basic base64(client_id + ":" + client_secret)`
+- Body (form-urlencoded, NO en el header):
+  `code=<authorization_code>&redirect_uri=<redirect>&grant_type=authorization_code`
+- Si el code trae `%`, URL-decodificarlo antes.
+- **Respuesta 200 (JSON):** `id_token` (JWT, para logout/profile), `access_token` (JWT, para las
+  APIs), `expires_in` (seg hasta expirar el access), `refresh_token` (string).
 
-## Implicación de seguridad (regla del proyecto)
-`client_id`, `client_secret` y `refresh_token` → **variables de entorno / store seguro, NUNCA en
-el código ni en el repo**. Documentar nombres en un `.env.example`.
+## 3. Llamar a las APIs
+Header: `Authorization: Bearer <access_token>` contra `https://api.cchaxcess.com/...`
+(p.ej. el `POST /taxservices/oiptax/api/v1/ReturnsImportBatch`).
 
-## Implicación de arquitectura
-El cron corre en Claude Desktop, pero las llamadas HTTP OAuth + import probablemente requieran un
-**componente local** (script / pequeño MCP) que cch-axcess-client invoque: ese componente
-mantiene el refresh token, renueva el access token y hace los POST a la API. A confirmar al
-implementar.
+## 4. Refresh (desatendido — el corazón del cron)
+`POST https://login.cchaxcess.com/ps/auth/v1.0/core/connect/token`
+- Mismo header `Authorization: Basic base64(client_id:client_secret)`.
+- Body: `refresh_token=<refresh_token>&redirect_uri=<redirect>&grant_type=refresh_token`
+  (el ejemplo de body de la KB usa `grant_type=refresh_token`).
+- Devuelve los mismos campos que el paso 2, **y RESETEA la expiración del access Y del refresh**.
+- ⇒ Si el cron refresca antes de que expire el refresh token, **renueva para siempre sin humano**.
+  Si el refresh expira (PC apagada demasiado tiempo), repetir pasos 1-2 (re-consentir).
+- KB dedicada pendiente de leer: *"How do I use OIP token authentication for an unattended
+  process?"* — la más relevante para nuestro caso.
 
-## Pendiente (las 2 sub-KB que faltan leer)
-1. **"How do I register my OIP application … to get an Oauth2 client ID and client secret?"**
-   → el registro (paso 1). De dónde salen client_id/secret, redirect URI, etc.
-2. **"How do I implement Oauth2 token authentication in my OIP application?"**
-   → los endpoints concretos: authorize URL, token URL, cómo se pide el refresh, scopes, sandbox.
-3. (info) "What CCH Axcess login options are compatible with Token Authentication for OIP?"
+## 5. Logout (opcional)
+`GET …/connect/endsession?post_logout_redirect_uri=<url>&id_token_hint=<id_token>`. Invalida los
+tokens pero NO revoca la autorización (al re-loguear no vuelve a pedir aprobación).
+
+## Seguridad (regla del proyecto)
+`client_id`, `client_secret`, `refresh_token` (y el account number) → **variables de entorno /
+store seguro, NUNCA en código ni repo**. Ver `.env.example`. Validar al arrancar que existen.
+
+## Arquitectura (a confirmar al implementar)
+El cron corre en Claude Desktop, pero el manejo de tokens + los POST HTTP probablemente vivan en
+un **componente local** (script / MCP) que cch-axcess-client invoca: guarda el refresh token,
+renueva el access token, arma el XML (ver `tax-transfer-format.md`) y postea a la API.

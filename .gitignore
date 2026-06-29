@@ -4,6 +4,10 @@ video/
 # Paquetes de skills regenerables (se reconstruyen con el script de packaging)
 dist/
 
+# Secretos — solo .env.example se versiona
+.env
+.env.local
+
 # OS / editor
 .DS_Store
 Thumbs.db
