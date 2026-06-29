@@ -40,17 +40,18 @@ connectors:
       us_resident: "fldsOCNtEZy2vJQ6l"
     # Single-select Primary Form Status (fldlAKJdNodUSQGTF) — state machine del pipeline CCH.
     # IDs REALES del campo (descubiertos jun-2026). Escribir SIEMPRE por choice id, no por nombre.
+    # NOTA: por ahora el pipeline SOLO LEE 'CCH To do' (disparo de extracción). Los estados
+    # cch_in_progress/ready_check/corregir quedan documentados para el futuro pero NO se escriben.
     status_states:
-      cch_todo:        { id: "selPwQ1cfNDgRDGav", name: "CCH To do" }          # disparo
-      cch_in_progress: { id: "selSiJzclw1Qf9mDl", name: "CCH In progress" }    # tomado por la tarea → anti-re-disparo
-      cch_ready_check: { id: "sel1rEOrPXWUWRjRv", name: "CCH Ready to Check" }  # borrador listo → revisión humana
-      cch_corregir:    { id: "selwp3vCOZTaaJayx", name: "CCH Corregir" }        # el pipeline falló → intervención
+      cch_todo:        { id: "selPwQ1cfNDgRDGav", name: "CCH To do" }          # disparo (ACTIVO)
+      cch_in_progress: { id: "selSiJzclw1Qf9mDl", name: "CCH In progress" }    # writeback → DIFERIDO
+      cch_ready_check: { id: "sel1rEOrPXWUWRjRv", name: "CCH Ready to Check" }  # writeback → DIFERIDO
+      cch_corregir:    { id: "selwp3vCOZTaaJayx", name: "CCH Corregir" }        # writeback → DIFERIDO
     trigger:
       field: "primary_form_status"
-      value: "CCH To do"
-      on_pickup:  "cch_in_progress"   # escribir ANTES de procesar (idempotencia)
-      on_success: "cch_ready_check"    # borrador armado OK
-      on_failure: "cch_corregir"       # faltó dato / falló el pipeline
+      value: "CCH To do"               # único estado que se mira hoy (solo lectura, sin writeback)
+      # transiciones de escritura DIFERIDAS (reactivar cuando se automatice el ciclo de estados):
+      # on_pickup: cch_in_progress · on_success: cch_ready_check · on_failure: cch_corregir
   dropbox:
     namespace: "ns:2444366337"                       # Estudio PERCHIK CPA
     clients_scope: "ns:2444366337//Clients"
