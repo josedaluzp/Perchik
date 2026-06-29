@@ -98,6 +98,22 @@ relevantes: `RCS`=Succeeded, `RCRIU`=Return in use, etc.
      codes reales de cada worksheet/línea que nos importa. Encaja con `reference.finished_1065`
      (ya tenemos returns terminados de AGGUILU/SALVIN7 como ground truth).
 
+## Return listing (GET) — VERIFICADO jun-2026
+`GET https://api.cchaxcess.com/taxservices/oiptax/api/v1/Returns?$filter=TaxYear eq '2024'`
+(TaxYear es obligatorio en el $filter; sin él devuelve 400 "Tax Year is either unspecified...").
+Devuelve `{ "Returns": [ {OfficeName, BusinessUnitName, TaxYear, ReturnID, ReturnGroupName,
+ReturnType, Description, Signer, ClientName, YearEnd, ReturnConfigurationSetName, ReturnStatus,
+LastModifiedDate} ], "TotalCount": N }`.
+
+**Formato ReturnID:** `{TaxYear}{TipoCode}:{ClientID}:V{Version}` — ej. `2024P:1DAYLLC:V1`.
+Tipo: **P = 1065 Partnership**, **C = 1120 Corporation** (hay más). El ClientID va truncado
+(~15 chars, sin espacios). ReturnType legible: "1065 Partnership" / "1120 Corporation".
+
+> **Acceso (jun-2026):** el "Try it" del portal ya ejecuta estas llamadas con el token Bearer que
+> auto-genera la sesión logueada (cliente Axcess 168142) — LECTURA funciona sin firmar/suscribir.
+> Un componente PROPIO (cron) necesita su propia app OAuth registrada (Developer Tools), aún
+> gateada. Import (escritura) puede requerir "additional licensing".
+
 ## Identificación del return (ReturnHeader)
 Claves: `ClientID`, `TaxYear`, `ReturnType`, `ReturnVersion` (+ `ReturnGroupName`,
 `ConfigurationSet`, `OfficeName`, `BusinessUnitName`, `EINorSSN`, `ControlNumber`).
