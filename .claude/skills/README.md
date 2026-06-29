@@ -29,7 +29,7 @@ implementación real contra MCP/CCH) · ⛔ brecha (regla/decisión pendiente).
 | 0 | dropbox-connector (MCP)  | Conector | ✅ existe (MCP) |
 | 1 | **source-resolver**      | Plataforma | ✅ diccionario poblado con IDs/estructura real + extracción probada |
 | 1 | qb-report-reader         | Plataforma | 🟡 esqueleto |
-| 1 | cch-axcess-client        | Plataforma | 🟡 contrato definido + **mecanismo decidido**: API oficial CCH Axcess Tax Services v2 (OAuth 2.0). Falta detallar endpoint/schema/field codes e implementar. |
+| 1 | cch-axcess-client        | Plataforma | 🟡 contrato definido + **mecanismo y flujo definidos**: Tax Services v2, import XML por lotes (buffer→flush→poll), export para read-back, OAuth 2.0. Falta lo crítico: **schema XML de import + field codes** (+ OAuth setup, licencia). |
 | 2 | intake-trigger           | Entrada | ✅ lógica completa (alcance actual) — solo lectura: detecta `CCH To do` → dispara orquestador (extracción + borrador). Writeback de estados diferido. Corre vía Tareas Programadas de Cowork. |
 | 2 | scenario-classifier      | Entrada | 🟡 esqueleto |
 | 3 | basic-data               | Núcleo | 🟡 esqueleto |
