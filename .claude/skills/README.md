@@ -58,7 +58,9 @@ implementación real contra MCP/CCH) · ⛔ brecha (regla/decisión pendiente).
 de *cómo* se escribe en CCH **ya se tomó**: API oficial **CCH Axcess Tax Services v2** (OIP,
 "Import and export data to tax returns"), auth OAuth 2.0. Se descarta la automatización de UI.
 Formato + OAuth ya documentados (ver `cch-axcess-client/references/`). **Bloqueo externo
-(jun-2026):** la cuenta del firm (168142) tiene licenciado solo CCH Axcess Tax, NO Open
-Integration Platform → no aparece "Developer Tools" para registrar la app OAuth. Acción
-pendiente: gestionar la licencia OIP con WK. Mientras tanto se puede construir el builder de XML
-contra el formato documentado. Ver `cch-axcess-client/SKILL.md`.
+(jun-2026):** el acceso (Developer Portal + sandbox) viene incluido con la cuenta Axcess de
+Perchik (168142) — NO hace falta comprar licencia ni cuenta de sandbox aparte. Lo pendiente es
+operativo: **firmar el DocuSign del quote + que WK active las APIs** (en abril aún no estaban
+habilitadas). Por eso hoy no aparece "Developer Tools" ni "Subscribe". Acción: firmar el quote
+(lo tiene Ian / hilo con Bridgit de WK) y confirmar activación de APIs. Mientras tanto se puede
+construir el builder de XML contra el formato documentado. Ver `cch-axcess-client/SKILL.md`.
