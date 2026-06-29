@@ -57,5 +57,8 @@ implementación real contra MCP/CCH) · ⛔ brecha (regla/decisión pendiente).
 `cch-axcess-client` es el sumidero: **sin él no hay test end-to-end de nada.** La decisión dura
 de *cómo* se escribe en CCH **ya se tomó**: API oficial **CCH Axcess Tax Services v2** (OIP,
 "Import and export data to tax returns"), auth OAuth 2.0. Se descarta la automatización de UI.
-Falta extraer de la doc del portal el endpoint/schema/field codes + la licencia de import, y
-recién ahí implementar. Ver `cch-axcess-client/SKILL.md`.
+Formato + OAuth ya documentados (ver `cch-axcess-client/references/`). **Bloqueo externo
+(jun-2026):** la cuenta del firm (168142) tiene licenciado solo CCH Axcess Tax, NO Open
+Integration Platform → no aparece "Developer Tools" para registrar la app OAuth. Acción
+pendiente: gestionar la licencia OIP con WK. Mientras tanto se puede construir el builder de XML
+contra el formato documentado. Ver `cch-axcess-client/SKILL.md`.
