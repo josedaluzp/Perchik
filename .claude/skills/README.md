@@ -29,7 +29,7 @@ implementación real contra MCP/CCH) · ⛔ brecha (regla/decisión pendiente).
 | 0 | dropbox-connector (MCP)  | Conector | ✅ existe (MCP) |
 | 1 | **source-resolver**      | Plataforma | ✅ diccionario poblado con IDs/estructura real + extracción probada |
 | 1 | qb-report-reader         | Plataforma | 🟡 esqueleto |
-| 1 | cch-axcess-client        | Plataforma | ⛔ contrato definido — falta decidir API/UI de CCH |
+| 1 | cch-axcess-client        | Plataforma | 🟡 contrato definido + **mecanismo decidido**: API oficial CCH Axcess Tax Services v2 (OAuth 2.0). Falta detallar endpoint/schema/field codes e implementar. |
 | 2 | intake-trigger           | Entrada | ✅ lógica completa (alcance actual) — solo lectura: detecta `CCH To do` → dispara orquestador (extracción + borrador). Writeback de estados diferido. Corre vía Tareas Programadas de Cowork. |
 | 2 | scenario-classifier      | Entrada | 🟡 esqueleto |
 | 3 | basic-data               | Núcleo | 🟡 esqueleto |
@@ -52,8 +52,10 @@ implementación real contra MCP/CCH) · ⛔ brecha (regla/decisión pendiente).
 | 8 | print-efile              | Cierre | 🟡 esqueleto |
 | — | return-orchestrator      | Orquestación | 🟡 esqueleto — se finaliza al último |
 
-## Cuello de botella
+## Cuello de botella — DESBLOQUEADO (jun-2026)
 
-`cch-axcess-client` es el sumidero: **sin él no hay test end-to-end de nada.** Antes de
-codificarlo hay que decidir *cómo* se escribe en CCH Axcess (¿API oficial? ¿automatización
-de UI?). Es la primera decisión dura pendiente.
+`cch-axcess-client` es el sumidero: **sin él no hay test end-to-end de nada.** La decisión dura
+de *cómo* se escribe en CCH **ya se tomó**: API oficial **CCH Axcess Tax Services v2** (OIP,
+"Import and export data to tax returns"), auth OAuth 2.0. Se descarta la automatización de UI.
+Falta extraer de la doc del portal el endpoint/schema/field codes + la licencia de import, y
+recién ahí implementar. Ver `cch-axcess-client/SKILL.md`.

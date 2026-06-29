@@ -1,13 +1,18 @@
 ---
 name: cch-axcess-client
-description: Use when any 1065→CCH Axcess skill needs to WRITE data into CCH Axcess (Worksheets / Government Forms) or read back a field. The single sink — every skill writes through here. BRECHA — the actual write mechanism (official API vs UI automation) is undecided; this skill defines the contract so the rest can be built against it.
+description: Use when any 1065→CCH Axcess skill needs to WRITE data into CCH Axcess (Worksheets / Government Forms) or read back a field. The single sink — every skill writes through here. Mecanismo decidido (jun-2026): API oficial CCH Axcess Tax Services v2 (OAuth 2.0).
 ---
 
 # cch-axcess-client — el sumidero (escribe en CCH Axcess)
 
-> ⛔ **BRECHA / cuello de botella.** Sin esta skill no hay test end-to-end de nada.
-> El *mecanismo* de escritura todavía no está decidido (ver "Decisión pendiente").
-> Mientras tanto se define el **contrato** para que las demás skills se construyan contra él.
+> ✅ **Mecanismo DECIDIDO (jun-2026): API oficial — CCH Axcess Open Integration Platform,
+> "Tax Services v2"** (*"Import and export data to tax returns"*; v1 también lo hace pero v2 es
+> la recomendada). Se **descarta la automatización de UI**. El **contrato** `write/read` de abajo
+> NO cambia: se implementa traduciendo la dirección lógica del campo a la operación de
+> import/export del API. Quedan por detallar el endpoint exacto, el schema de import y los
+> field codes (ver "Implementación — pendiente de detalle").
+>
+> Acceso al portal: https://developers.cchaxcess.com/ (login CCH Axcess / WK).
 
 ## Qué hace
 
@@ -31,12 +36,24 @@ value: 50.0
 Toda skill de núcleo/módulo escribe **solo** a través de este contrato. Nunca tocan CCH
 por su cuenta.
 
-## Decisión pendiente (hay que resolver antes de codificar)
-1. **¿API oficial de CCH Axcess?** (si existe endpoint de escritura a returns).
-2. **¿Automatización de UI?** (Playwright/driver sobre la app) — frágil pero universal.
-3. **¿Import por archivo?** (si CCH acepta un import estructurado).
+## Implementación — pendiente de detalle (camino API confirmado)
 
-La elección define cómo se implementa `write/read`; **no** cambia el contrato de arriba.
+Mecanismo = **Tax Services v2** (OIP). Falta extraer de la doc del portal, antes de codificar:
+
+1. **Auth (OAuth 2.0):** flujo recomendado por WK. Cómo se obtienen `client_id`/`secret` de
+   integrador, endpoint de token, scopes. ¿Hay entorno **sandbox/test** separado de producción?
+2. **Identificar el return:** cómo se referencia un 1065 concreto (client id + tax year + return
+   id / version). Hay endpoint de **return listings** para descubrirlos.
+3. **Mecanismo de escritura:** la API "importa/exporta datos al return". Confirmar si el import
+   es **por lote/payload estructurado** (probable) y cuál es su **schema** + el sistema de
+   **field codes** de CCH (cómo se nombra "Partner Information › Ownership %" en el import).
+   El contrato lógico de abajo se traduce a esos field codes acá.
+4. **Licencia:** v2 dice *"Some operations require additional licensing"* — confirmar que la
+   operación de **import** está habilitada en la licencia del estudio.
+5. **read-back:** usar el **export** del mismo API para leer un campo (QA / cross-check).
+
+> Nota: APIs hermanas relevantes para otras skills — **Tax Return eFile Status** (print-efile),
+> **Staff/signers** (efile-config), **Client** (alta de entidad). No las consume esta skill.
 
 ## Por qué un solo sumidero
 - Un solo lugar con la auth y el manejo de errores de CCH.
