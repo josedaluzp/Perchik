@@ -43,28 +43,33 @@ Flujo **buffer → flush → poll** por return:
    `Client ID` + `Tax Year` + `Return Type` (+ `Return Version`/`ReturnId`). Si no existe la
    versión, `Create a new version of the provided return`.
 2. **Acumular (buffer).** Recoger todos los `write` lógicos de las skills para ese return.
-3. **Construir el XML de import.** Traducir cada dirección lógica (`worksheet/line/partner`) al
-   **field code** de CCH en el schema de import. ⬅️ *pieza pendiente de detalle, ver abajo.*
-4. **Flush.** `Submit a list of files for importing data to returns` (o la variante que además
-   actualiza el *return configuration set*) → devuelve un **BatchGuid**.
-5. **Poll.** `Check status of the submitted batch job` (`BatchStatus`) hasta `Complete`. La doc
-   recomienda chequear cada 1-2 min para jobs de import/export. Manejar `BIERR`/response codes
-   (p.ej. `RCRIU` = return in use).
-6. **(opcional) Calcular.** `Submit a list of returns for calculation` para que recalcule.
+3. **Construir el XML de import** (formato "Tax Transfer", ver
+   `references/tax-transfer-format.md`). Traducir cada dirección lógica:
+   `worksheet`→`View Identifier Hierarchy`, sección→`WorkSheetSection Name`,
+   `partner`→`Controls/Entity ID`, `line`+`value`→`FieldData Location`(FieldID)+`Value`.
+   El XML va en UTF-16 → bytes → base64.
+4. **Flush.** `POST …/ReturnsImportBatch` con `{ FileDataList:[base64], ConfigurationXml }`
+   (`ImportMode=MatchAndUpdate` para socios repetidos) → devuelve `ExecutionID` (BatchGuid).
+5. **Poll.** `GET …/BatchStatus?$filter=BatchGuid eq '<ExecutionID>'` hasta `Complete`
+   (cada 1-2 min). Manejar `BIERR`/response codes (`RCRIU`=return in use).
+6. **(opcional) Calcular.** `Submit a list of returns for calculation` (o `CalcReturnAfterImport`
+   en el ConfigurationXml).
 7. **read-back / QA.** `Submit a list of returns for export` → `BatchStatus` → `Stream the
-   requested file` → parsear el XML exportado.
+   requested file` → parsear el XML exportado (mismo formato Tax Transfer).
 
 Auth: header `Authorization: Bearer <access_token>` (OAuth 2.0). Un solo lugar con el token,
 el refresh y el manejo de errores de CCH.
 
 ## Pendiente de detalle (antes de codificar)
 
-1. **Schema del XML de import + field codes** ⬅️ *la pieza crítica.* Cómo se expresa
-   "1065 › Partner Information › Ownership % = 50" en el XML. Ver la doc de
-   `Submit a list of files for importing data to returns` (v2) o `Import Tax Return Data XML
-   Async` (v1), y buscar **sample XML** o el **schema descargable** en Downloads.
-2. **OAuth 2.0:** obtención de `client_id`/`secret` de integrador, token endpoint, scopes,
-   ¿sandbox? (la doc también menciona `IntegratorKey`/subscription key en algunos endpoints v1).
+El **formato ya está resuelto** (ver `references/tax-transfer-format.md`). Falta:
+
+1. **Field codes del 1065** ⬅️ *lo único crítico.* El ejemplo de la API es Individual
+   (`ReturnType="I"`, codes `IFDSGEN.*`); el 1065 es **Partnership (`ReturnType="P"`)** con otros
+   codes. Obtenerlos: (a) **Tax Transfer User Guide** (Tax help files de CCH), o (b) **exportar un
+   1065 terminado** (AGGUILU/SALVIN7, ya disponibles como `reference.finished_1065`) → el export
+   trae los `Location` reales de cada campo. **Vía (b) es la más directa.**
+2. **OAuth 2.0:** `client_id`/`secret` de integrador, token endpoint, scopes, ¿sandbox?
 3. **Licencia:** v2 avisa "Some operations require additional licensing" — confirmar import.
 
 ## Operaciones hermanas (NO las consume esta skill, pero existen)
