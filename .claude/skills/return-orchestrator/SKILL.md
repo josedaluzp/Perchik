@@ -30,6 +30,16 @@ tablas por worksheet (Campo · Valor · Fuente · Estado) y el contador de autom
 5. **Devolver el mockup** (formato estándar, abajo). **No** ejecutar `print-efile` ni escribir
    en CCH — el cierre real es manual hasta que exista `cch-axcess-client`.
 
+## Resultado hacia intake-trigger
+Cuando lo invoca `intake-trigger` (flujo automático), además del mockup hay que devolver un
+**resultado explícito** para que el trigger sepa qué estado escribir en Airtable:
+- **`success`** → el borrador + mockup se generaron (aunque haya campos en CHECK/MANUAL: eso es
+  normal y queda para revisión humana). → el trigger marca `CCH Ready to Check`.
+- **`failure`** → no se pudo armar el borrador: falta una fuente crítica (P&L, socios, etc.),
+  no se localizó la carpeta del cliente, o hubo una excepción. Devolver el **motivo**. → el
+  trigger marca `CCH Corregir`. Nunca devolver `success` si el borrador quedó incompleto por
+  falta de datos base.
+
 ## Formato de salida (mockup estándar)
 Artifact HTML con:
 - Cabecera del return (nombre, EIN, año, método, actividad, socios).

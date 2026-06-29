@@ -30,7 +30,7 @@ implementación real contra MCP/CCH) · ⛔ brecha (regla/decisión pendiente).
 | 1 | **source-resolver**      | Plataforma | ✅ diccionario poblado con IDs/estructura real + extracción probada |
 | 1 | qb-report-reader         | Plataforma | 🟡 esqueleto |
 | 1 | cch-axcess-client        | Plataforma | ⛔ contrato definido — falta decidir API/UI de CCH |
-| 2 | intake-trigger           | Entrada | 🟡 esqueleto |
+| 2 | intake-trigger           | Entrada | ✅ lógica completa — trigger + writeback de estado (CCH To do→In progress→Ready to Check/Corregir) + dispara orquestador. Corre vía Tareas Programadas de Cowork. |
 | 2 | scenario-classifier      | Entrada | 🟡 esqueleto |
 | 3 | basic-data               | Núcleo | 🟡 esqueleto |
 | 3 | other-information        | Núcleo | 🟡 esqueleto |

@@ -38,9 +38,19 @@ connectors:
       dob: "fldtQCHDqvNv3SGWb"
       passport: "flddkoOFcjhTdHKVz"
       us_resident: "fldsOCNtEZy2vJQ6l"
+    # Single-select Primary Form Status (fldlAKJdNodUSQGTF) — state machine del pipeline CCH.
+    # IDs REALES del campo (descubiertos jun-2026). Escribir SIEMPRE por choice id, no por nombre.
+    status_states:
+      cch_todo:        { id: "selPwQ1cfNDgRDGav", name: "CCH To do" }          # disparo
+      cch_in_progress: { id: "selSiJzclw1Qf9mDl", name: "CCH In progress" }    # tomado por la tarea → anti-re-disparo
+      cch_ready_check: { id: "sel1rEOrPXWUWRjRv", name: "CCH Ready to Check" }  # borrador listo → revisión humana
+      cch_corregir:    { id: "selwp3vCOZTaaJayx", name: "CCH Corregir" }        # el pipeline falló → intervención
     trigger:
       field: "primary_form_status"
       value: "CCH To do"
+      on_pickup:  "cch_in_progress"   # escribir ANTES de procesar (idempotencia)
+      on_success: "cch_ready_check"    # borrador armado OK
+      on_failure: "cch_corregir"       # faltó dato / falló el pipeline
   dropbox:
     namespace: "ns:2444366337"                       # Estudio PERCHIK CPA
     clients_scope: "ns:2444366337//Clients"
