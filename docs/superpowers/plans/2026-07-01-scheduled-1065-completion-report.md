@@ -17,6 +17,7 @@
 - **Sync manual:** las skills se editan en este repo pero corren en Cowork/Claude Desktop; no hay sync automático (se documenta el checklist de copia manual).
 - **Frontmatter obligatorio** en cada SKILL.md: `name` (kebab-case, igual al folder) y `description`.
 - **Fuente de verdad del diseño:** `docs/superpowers/specs/2026-07-01-scheduled-1065-completion-report-design.md`.
+- **Packaging:** el fuente es `.claude/skills/<skill>/`; lo que se importa en Claude Desktop es `dist/skills-claude-desktop/<skill>.zip` (SKILL.md en la RAÍZ del zip, `references/` preservado). Los zips actuales son viejos (24-jun) → hay que regenerar los de cada skill tocada + crear el de `completion-report` (Task 6). `dist/` está gitignored: los zips NO se commitean (son artefactos locales). Herramienta: `Compress-Archive` de PowerShell (no hay `zip` en Git Bash).
 
 ---
 
@@ -338,15 +339,46 @@ git commit -m "intake-trigger: referencia de la Tarea Programada horaria para Cl
 
 ---
 
-### Task 6: Prueba de aceptación (manual, en Cowork) y checklist de sync
+### Task 6: Regenerar los paquetes .zip para Claude Desktop
+
+**Files:**
+- Create: `dist/skills-claude-desktop/completion-report.zip`
+- Regenerate: `dist/skills-claude-desktop/{source-resolver,return-orchestrator,intake-trigger}.zip`
+
+(No se commitean — `dist/` está gitignored.)
+
+- [ ] **Step 1: Regenerar los 4 zips con Compress-Archive**
+
+Run (PowerShell):
+```powershell
+$src = ".claude/skills"; $out = "dist/skills-claude-desktop"
+foreach ($s in "source-resolver","return-orchestrator","intake-trigger","completion-report") {
+  Compress-Archive -Path "$src/$s/*" -DestinationPath "$out/$s.zip" -Force
+}
+```
+Expected: sin errores; los 4 `.zip` quedan con fecha de hoy.
+
+- [ ] **Step 2: Verificar que cada zip tiene SKILL.md en la raíz**
+
+Run (Git Bash):
+```bash
+for s in source-resolver return-orchestrator intake-trigger completion-report; do
+  echo "== $s =="; unzip -l "dist/skills-claude-desktop/$s.zip" | grep -E "SKILL.md|references/"
+done
+```
+Expected: cada uno lista `SKILL.md` en la raíz; `source-resolver` lista `references/sources.yaml`; `intake-trigger` lista `references/scheduled-task.md`.
+
+---
+
+### Task 7: Prueba de aceptación (manual, en Cowork) y checklist de sync
 
 **Files:** ninguno (verificación).
 
 - [ ] **Step 1: Sincronizar a Claude Desktop (manual)**
 
-Copiar a mano en Claude Desktop:
-- Skill nueva `completion-report`.
-- `intake-trigger`, `return-orchestrator`, `source-resolver` actualizadas.
+En Claude Desktop → Ajustes → Capacidades → Skills, subir/reemplazar los `.zip` regenerados:
+- `completion-report.zip` (nueva).
+- `intake-trigger.zip`, `return-orchestrator.zip`, `source-resolver.zip` (actualizados).
 
 - [ ] **Step 2: Prueba de humo en un chat de Cowork**
 
