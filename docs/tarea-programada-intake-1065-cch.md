@@ -14,13 +14,15 @@ Se crea en el diálogo **"Crear tarea programada"** (Ajustes → Tareas programa
 **Prompt (pegar tal cual en el cuadro de texto):**
 
 > Revisá en Airtable (Entity Tracker) las entidades con `Primary Form Status = "CCH To do"`.
-> Por cada una, en serie (una a la vez):
-> 1. Armá el borrador del Form 1065 con `return-orchestrator` (extrae datos de Airtable + Dropbox
->    y genera el mockup HTML).
-> 2. Ejecutá `completion-report` para notificar por mail (conector Gmail) que el 1065 se completó,
->    con los puntos a verificar (CHECK/MANUAL/faltantes) y la referencia al mockup.
+> - Si no hay ninguna: ejecutá `completion-report` en modo `empty` para avisar por mail que no
+>   había formularios para enviar a CCH, y terminá.
+> - Si hay: tomá como máximo 5 (las primeras). Por cada una, en serie (una a la vez):
+>   1. Armá el borrador del Form 1065 con `return-orchestrator` (datos de Airtable + Dropbox →
+>      mockup HTML).
+>   2. Ejecutá `completion-report` para notificar por mail (conector Gmail) que el 1065 se
+>      completó, con los puntos a verificar (CHECK/MANUAL/faltantes) y la referencia al mockup.
 >
-> NO cambies ningún estado en Airtable. Devolveme el resumen de lo procesado.
+> NO cambies ningún estado en Airtable. Devolveme el resumen (incluí cuántas quedaron pendientes).
 
 **Requisitos en la PC dedicada:** Cowork abierto, "Mantener activo" encendido, y los conectores
 **Airtable + Dropbox + Gmail** autenticados en la sesión.
