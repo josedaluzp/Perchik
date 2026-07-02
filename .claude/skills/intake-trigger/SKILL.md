@@ -27,14 +27,19 @@ No clasifica ni mapea nada — solo detecta y delega.
 - **source-resolver** → header `connectors.airtable` (base/tabla y campo del trigger).
 - **airtable-connector (MCP)** → leer el estado (solo lectura).
 - **return-orchestrator** → la extracción + armado real, uno por entidad.
+- **completion-report** → tras cada entidad, manda el mail de cierre (éxito o fallo). Es el
+  único punto que notifica; el orquestador (doble uso: también corre a mano) NO manda mail.
 
 ## Procedimiento
 
 1. **Resolver** vía source-resolver el campo del trigger (`primary_form_status`) y su valor de
    disparo (`CCH To do`).
 2. **Buscar** entidades con `Primary Form Status = "CCH To do"` (Entity Tracker).
-3. **Por cada entidad, en serie (una a la vez):** invocar `return-orchestrator` con
-   `client = <entidad>` → extrae las fuentes (Airtable + Dropbox) y arma el borrador/mockup.
+3. **Por cada entidad, en serie (una a la vez):**
+   a. invocar `return-orchestrator` con `client = <entidad>` → extrae las fuentes
+      (Airtable + Dropbox), arma el borrador/mockup y devuelve el resultado estructurado
+      (`result`, `mockup`, `fields_by_status`, `qa`, `cch_upload`).
+   b. invocar `completion-report` con ese resultado → manda el mail de cierre (éxito o fallo).
 4. **Devolver** el resumen de lo procesado (ver Salida).
 
 ## Salida
@@ -79,13 +84,14 @@ permiso de **escritura**. **Por ahora esto no se ejecuta.**
 ## Cómo se ejecuta (Tareas Programadas de Cowork)
 
 Corre en una **PC dedicada con Cowork abierto** y *"Mantener activo"* encendido (las tareas
-programadas sólo corren con el equipo activo). El prompt de cada tarea programada es:
+programadas sólo corren con el equipo activo). Tarea `intake-1065-cch`, **frecuencia: cada 1 hora**.
+El prompt (ver también `docs/tarea-programada-intake-1065-cch.md`):
 
-> **Ejecutá la skill `intake-trigger`.** Revisá Airtable por las entidades en
-> `Primary Form Status = "CCH To do"`, y por cada una armá su borrador 1065 con
-> `return-orchestrator` (extracción de datos + mockup). NO cambies ningún estado en Airtable.
-> Devolveme el resumen de lo procesado.
+> Revisá en Airtable las entidades en `Primary Form Status = "CCH To do"`. Por cada una, en serie:
+> 1) armá su borrador 1065 con `return-orchestrator` (extracción + mockup); 2) ejecutá
+> `completion-report` para notificar por mail (Gmail) que el 1065 se completó, con los puntos a
+> verificar y la referencia al mockup. NO cambies ningún estado en Airtable. Devolveme el resumen.
 
 > **Por qué Cowork y no routines/API:** las tareas programadas de Cowork corren en la misma
-> sesión local autenticada → los conectores MCP (Airtable, Dropbox) están vivos. Una routine
+> sesión local autenticada → los conectores MCP (Airtable, Dropbox, Gmail) están vivos. Una routine
 > cloud headless podría despertar sin esos conectores autenticados.
