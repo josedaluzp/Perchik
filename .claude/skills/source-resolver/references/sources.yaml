@@ -61,6 +61,17 @@ connectors:
     layout: "Clients/Tax Clients/{owner}/{entity}/{year}"
 
 # -----------------------------------------------------------------------------
+# Notificaciones. A dónde/quién avisa completion-report al cerrar una entidad.
+# -----------------------------------------------------------------------------
+notifications:
+  email:
+    connector: gmail
+    recipient: "josed@inforge.us"     # destinatario del mail de cierre (parametrizable)
+    # send_mode: el conector Gmail vía MCP suele exponer solo create_draft.
+    # "auto" = enviar si el conector lo permite; si no, dejar borrador. A confirmar en Cowork.
+    send_mode: "auto"
+
+# -----------------------------------------------------------------------------
 # Fuentes lógicas. Para Dropbox se localiza por search (name_contains + match),
 # tomando el año más reciente salvo que se pida otro.
 # -----------------------------------------------------------------------------

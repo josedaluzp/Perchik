@@ -60,6 +60,11 @@ found: true                   # false si el dato no aplica a este escenario
 **El resolver nunca llama al conector.** Solo arma la dirección. Quien pidió el dato es
 quien luego invoca el MCP de Airtable/Dropbox con ese locator.
 
+> **Config no-fuente.** El YAML también guarda config que no es una fuente por-cliente pero que
+> tampoco debe hardcodearse en las skills, bajo su propio top-level. Hoy: `notifications.email`
+> (`connector`, `recipient`, `send_mode`) — lo consume `completion-report` para saber a quién y
+> cómo mandar el mail de cierre.
+
 ## Cómo agregar / cambiar una fuente
 
 Editar **solo** `references/sources.yaml`. Cada entrada:
