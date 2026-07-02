@@ -45,6 +45,12 @@ del orquestador NO se dispara (para no mandar mails de prueba).
 - Asunto: `[1065] <cliente> — NO se pudo completar`.
 - Cuerpo: el `reason` (fuente crítica faltante, carpeta no localizada, excepción).
 
+**Corrida vacía (`mode: empty`):**
+- La invoca `intake-trigger` cuando no encontró ninguna entidad en `CCH To do`.
+- Asunto: `[1065] Sin formularios para enviar a CCH`.
+- Cuerpo: "La corrida no encontró formularios en 'CCH To do' para procesar." (Un solo mail, no
+  por entidad.) No hay mockup ni QA que reportar.
+
 ## Salida
 ```yaml
 client: AGGUILU LLC

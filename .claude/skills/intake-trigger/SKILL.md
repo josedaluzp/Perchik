@@ -35,12 +35,16 @@ No clasifica ni mapea nada — solo detecta y delega.
 1. **Resolver** vía source-resolver el campo del trigger (`primary_form_status`) y su valor de
    disparo (`CCH To do`).
 2. **Buscar** entidades con `Primary Form Status = "CCH To do"` (Entity Tracker).
-3. **Por cada entidad, en serie (una a la vez):**
+   - **Si no hay ninguna:** NO correr el orquestador. Invocar `completion-report` en modo
+     `empty` → manda un mail corto avisando que no había formularios para enviar a CCH. Terminar.
+3. **Tomar como máximo `batch_limit` (= 5) entidades** de la lista (las primeras). El resto queda
+   para la próxima corrida horaria.
+4. **Por cada una de esas ≤5, en serie (una a la vez):**
    a. invocar `return-orchestrator` con `client = <entidad>` → extrae las fuentes
       (Airtable + Dropbox), arma el borrador/mockup y devuelve el resultado estructurado
       (`result`, `mockup`, `fields_by_status`, `qa`, `cch_upload`).
    b. invocar `completion-report` con ese resultado → manda el mail de cierre (éxito o fallo).
-4. **Devolver** el resumen de lo procesado (ver Salida).
+5. **Devolver** el resumen de lo procesado (ver Salida), incluyendo cuántas quedaron pendientes.
 
 ## Salida
 ```yaml
@@ -55,6 +59,10 @@ triggered:
 ```
 
 ## Reglas
+- **Límite de lote: `batch_limit = 5` por corrida.** Nunca procesar más de 5 entidades en una
+  corrida horaria (evita runs eternos y avalancha de borradores). El resto espera a la próxima hora.
+- **Corrida vacía:** si no hay ninguna en `CCH To do`, no correr el orquestador; solo notificar
+  vía `completion-report` (modo `empty`).
 - **Solo lectura en Airtable.** No escribe `Primary Form Status` ni ningún otro campo. Tampoco
   escribe en CCH (eso es de `cch-axcess-client`, que aún no existe).
 - En serie, no en paralelo: una entidad a la vez para no pisar conexiones MCP ni dejar varios
@@ -63,14 +71,13 @@ triggered:
 
 ## Idempotencia (limitación actual)
 
-Como NO hay writeback de estado, cada corrida vuelve a procesar **todas** las entidades que
-sigan en `CCH To do`. Es inofensivo (solo lectura) pero genera borradores repetidos y consumo.
-Mitigación por ahora — elegir una:
-- **Manual:** el equipo mueve la entidad fuera de `CCH To do` en Airtable cuando el borrador ya
-  fue revisado (su flujo normal de tablero).
-- **Disparo puntual:** correr el trigger a demanda en vez de en cron, hasta activar el writeback.
-
-Cuando se decida automatizar el ciclo, se reactiva el bloque de estados (abajo).
+Como NO hay writeback de estado, cada corrida vuelve a tomar las mismas entidades que sigan en
+`CCH To do` (acotadas a `batch_limit = 5`). Es inofensivo (solo lectura) pero genera borradores
+repetidos. Mitigación por ahora:
+- **Manual:** el equipo mueve la entidad fuera de `CCH To do` cuando el borrador ya fue revisado.
+  Con el límite de 5, cada hora se toman las 5 de arriba; al sacarlas, la próxima hora suben las
+  siguientes 5 (funciona como una cola natural).
+- Cuando se decida automatizar el ciclo, se reactiva el writeback de estados (bloque abajo).
 
 ## Estados — diferido (NO activo todavía)
 
