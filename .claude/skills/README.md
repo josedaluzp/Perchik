@@ -30,7 +30,7 @@ implementación real contra MCP/CCH) · ⛔ brecha (regla/decisión pendiente).
 | 1 | **source-resolver**      | Plataforma | ✅ diccionario poblado con IDs/estructura real + extracción probada |
 | 1 | qb-report-reader         | Plataforma | 🟡 esqueleto |
 | 1 | cch-axcess-client        | Plataforma | 🟡 mecanismo + **formato resuelto** (Tax Transfer XML, POST /ReturnsImportBatch, buffer→flush→poll, export read-back; ver `references/tax-transfer-format.md`). Falta: **field codes del 1065** (sacar exportando un return terminado), OAuth setup, licencia. |
-| 2 | intake-trigger           | Entrada | ✅ lógica completa (alcance actual) — solo lectura: detecta `CCH To do` → dispara orquestador (extracción + borrador). Writeback de estados diferido. Corre vía Tareas Programadas de Cowork. |
+| 2 | intake-trigger           | Entrada | ✅ lógica completa (alcance actual) — solo lectura: detecta `CCH To do` → dispara orquestador (extracción + borrador) → `completion-report` (mail). Writeback de estados diferido. Corre vía Tarea Programada de Cowork **cada 1h** (`intake-1065-cch`). |
 | 2 | scenario-classifier      | Entrada | 🟡 esqueleto |
 | 3 | basic-data               | Núcleo | 🟡 esqueleto |
 | 3 | other-information        | Núcleo | 🟡 esqueleto |
@@ -50,7 +50,8 @@ implementación real contra MCP/CCH) · ⛔ brecha (regla/decisión pendiente).
 | 7 | cross-check-engine       | QA | 🟡 esqueleto |
 | 7 | diagnostic-runner        | QA | 🟡 esqueleto |
 | 8 | print-efile              | Cierre | 🟡 esqueleto |
-| — | return-orchestrator      | Orquestación | 🟡 esqueleto — se finaliza al último |
+| 8 | **completion-report**    | Cierre / notificación | 🟡 diseñado (spec `docs/superpowers/specs/2026-07-01-…`) — al terminar cada entidad manda mail (Gmail) "1065 de X completado" + puntos a verificar + ref. al mockup. La invoca `intake-trigger`. |
+| — | return-orchestrator      | Orquestación | ✅ funciona end-to-end en run interactivo (genera el mockup HTML, p.ej. `1065_AGGUILU_mockup.html`); pendiente cablear la subida a CCH cuando exista el cliente. |
 
 ## Cuello de botella — DESBLOQUEADO (jun-2026)
 
@@ -64,3 +65,21 @@ operativo: **firmar el DocuSign del quote + que WK active las APIs** (en abril a
 habilitadas). Por eso hoy no aparece "Developer Tools" ni "Subscribe". Acción: firmar el quote
 (lo tiene Ian / hilo con Bridgit de WK) y confirmar activación de APIs. Mientras tanto se puede
 construir el builder de XML contra el formato documentado. Ver `cch-axcess-client/SKILL.md`.
+
+## Automatización horaria (scheduled) — en construcción (jul-2026)
+
+Mientras esperamos las credenciales de sandbox, se **envuelve el flujo que ya funciona** (el run
+manual "armá el 1065 de X" → mockup) en una **Tarea Programada de Cowork cada 1h** (`intake-1065-cch`)
+y se le agrega una **notificación por mail** al cerrar cada entidad. Lo que corre HOY:
+
+```
+scheduled 1h → intake-trigger (lee "CCH To do") → return-orchestrator (mockup) → completion-report (mail Gmail)
+```
+
+- La **subida real a CCH** (`cch-axcess-client`) es una costura futura: se inserta entre el
+  orquestador y el mail cuando haya credenciales. Hoy el mail informa "subida a CCH pendiente".
+- **Solo se lee `CCH To do`** — no se escribe ningún estado en Airtable (decisión jul-2026). Sin
+  writeback, cada hora reprocesa lo que siga en `CCH To do`; el equipo lo saca a mano al revisar.
+- Diseño completo: `docs/superpowers/specs/2026-07-01-scheduled-1065-completion-report-design.md`.
+- **Recordá:** las skills se editan en este repo pero corren en **Cowork/Claude Desktop** →
+  hay que copiarlas a mano allá (no hay sync automático).
