@@ -40,6 +40,31 @@ Cuando lo invoca `intake-trigger` (flujo automático), además del mockup hay qu
   trigger marca `CCH Corregir`. Nunca devolver `success` si el borrador quedó incompleto por
   falta de datos base.
 
+## Salida hacia completion-report
+
+Además del mockup, cuando corre en flujo automático el orquestador expone un objeto que
+`completion-report` consume para armar el mail (no re-calcula nada):
+
+```yaml
+client: AGGUILU LLC
+result: success            # success | failure
+reason: null               # motivo, solo si failure
+mockup: "file:///C:/Users/PC/Downloads/1065_AGGUILU_mockup.html"
+fields_by_status:          # derivado de los estados del mockup (AUTO/REGLA/CHECK/MANUAL)
+  auto:   [ "<worksheet · línea>" ]   # cargados directo de la fuente
+  regla:  [ "<worksheet · línea>" ]   # derivados por regla fiscal
+  check:  [ "<worksheet · línea>" ]   # resueltos pero a verificar por una persona
+  manual: [ "<worksheet · línea>" ]   # no están en las fuentes → carga humana
+  missing:[ "<dato/fuente faltante>" ]
+qa:
+  cross_checks: "resumen de cross-check-engine"
+  diagnostics:  "resumen de diagnostic-runner"
+cch_upload: pending        # done | pending (pending mientras cch-axcess-client esté gated)
+```
+
+Los valores de `fields_by_status` salen del contador y las filas del mockup (columna Estado);
+no es información nueva, es el mismo mockup en forma estructurada.
+
 ## Formato de salida (mockup estándar)
 Artifact HTML con:
 - Cabecera del return (nombre, EIN, año, método, actividad, socios).
