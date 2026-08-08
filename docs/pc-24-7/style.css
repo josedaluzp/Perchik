@@ -1,0 +1,315 @@
+/* ============================================================================
+   Tenfold (Inforge) × Perchik CPA — Functional Design Document stylesheet
+   Reproduces the house style of "Mapping 1065 CCH Axcess" (v2.3).
+   Target renderer: WeasyPrint (preferred) or headless Chromium. A4, print.
+   All tokens were audited from the source PDF — do not invent new colors.
+   ============================================================================ */
+
+/* ---- Fonts -------------------------------------------------------------- */
+/* Archivo (display/body) + IBM Plex Mono (kickers/code). DejaVu is the
+   fallback the original used. Loaded from Google Fonts; for offline builds,
+   download the .ttf files and repoint these src URLs to local paths. */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+/* ---- Design tokens ------------------------------------------------------ */
+:root {
+  /* Ink & text */
+  --ink:        #1b262e;   /* headings, primary text, strong rules           */
+  --slate:      #46555f;   /* secondary body text, table labels             */
+  --muted:      #8a8578;   /* monospace paths, captions, page furniture      */
+
+  /* Brand */
+  --green:      #1f6f54;   /* kickers, section eyebrows, links, accents      */
+  --green-deep: #1f6f54;   /* filled emphasis card background                */
+
+  /* Surfaces */
+  --surface:    #f5f7f6;   /* cards, neutral tags                            */
+  --surface-2:  #eef1f0;   /* callout / zebra / table emphasis              */
+  --white:      #ffffff;
+  --cream:      #f4f1ea;   /* text on deep-green surfaces                    */
+  --cream-2:    #d7eee2;   /* secondary text on deep-green surfaces          */
+
+  /* Lines */
+  --rule:       #d4dcd9;   /* hairline rules, card borders, table separators */
+  --rule-strong:#1b262e;   /* heavy divider under section titles            */
+
+  /* Badge palette: AUTO / REGLA / MANUAL / CHECK */
+  --auto-fg:   #1f6f54; --auto-bg:   #e4f1ea; --auto-bd:   #bcd9cb;
+  --regla-fg:  #2f5fa8; --regla-bg:  #e7eef9; --regla-bd:  #c3d3ee;
+  --manual-fg: #b3641c; --manual-bg: #faeede; --manual-bd: #ecd0b3;
+  --check-fg:  #8d2f3c; --check-bg:  #f8e9eb; --check-bd:  #e6c3c9;
+
+  /* Type families */
+  --sans: 'Archivo', 'DejaVu Sans', sans-serif;
+  --mono: 'IBM Plex Mono', 'DejaVu Sans Mono', monospace;
+}
+
+/* ---- Page geometry ------------------------------------------------------ */
+@page {
+  size: A4;
+  margin: 18mm 11mm 14mm 11mm;
+
+  @bottom-left {
+    content: "TENFOLD × PERCHIK CPA";
+    font-family: var(--mono);
+    font-size: 6.5pt;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  @bottom-right {
+    /* Override --footer-right per document via :root, e.g.
+       :root{ --footer-right:"NUEVO DOC → CCH AXCESS · v1.0"; } */
+    content: var(--footer-right, "MAPPING 1065 → CCH AXCESS · v2.3") " · " counter(page) "/" counter(pages);
+    font-family: var(--mono);
+    font-size: 6.5pt;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+}
+
+/* ---- Base --------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--sans);
+  font-size: 9.6pt;
+  line-height: 1.5;
+  color: var(--slate);
+  margin: 0;
+  /* The main content column is inset ~30pt from the page margin in the
+     original; we approximate with a left padding on the content wrapper. */
+}
+
+.content { padding-left: 11mm; }   /* inner content column inset */
+
+p { margin: 0 0 0.7em; }
+strong, b { color: var(--ink); font-weight: 700; }
+
+a { color: var(--green); text-decoration: none; }
+
+/* ---- Kicker / eyebrow --------------------------------------------------- */
+.eyebrow {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 8pt;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin: 0 0 0.5em;
+}
+
+/* ---- Headings ----------------------------------------------------------- */
+h1.hero {
+  font-family: var(--sans);
+  font-weight: 900;            /* Archivo Heavy */
+  font-size: 28pt;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0 0 0.5em;
+}
+
+h2.section-title {
+  font-family: var(--sans);
+  font-weight: 900;            /* Archivo Heavy */
+  font-size: 17.4pt;
+  line-height: 1.1;
+  color: var(--ink);
+  margin: 0 0 0.4em;
+}
+
+h3 {
+  font-family: var(--sans);
+  font-weight: 700;            /* Archivo Bold */
+  font-size: 11pt;
+  color: var(--ink);
+  margin: 1.4em 0 0.5em;
+}
+
+/* Green sub-label used for "PARTE 1 — FUNDAMENTOS" and group headers */
+.group-label {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 10.7pt;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin: 1.6em 0 0.6em;
+}
+
+/* Intro lead paragraph under a title */
+.lead {
+  font-size: 10pt;
+  color: var(--slate);
+  max-width: 46em;
+  margin: 0 0 1.2em;
+}
+
+/* ---- Rules -------------------------------------------------------------- */
+hr.rule        { border: 0; border-top: 0.6pt solid var(--rule); margin: 1.4em 0; }
+hr.rule-strong { border: 0; border-top: 1.6pt solid var(--rule-strong); margin: 1.2em 0; }
+
+/* ---- Monospace / code --------------------------------------------------- */
+code, .mono {
+  font-family: var(--mono);
+  font-size: 8.2pt;
+  color: var(--ink);
+}
+code.path { color: var(--muted); }   /* file paths use muted brown-gray */
+
+/* Neutral source tag (e.g. "SS-4 (Dropbox)", "Airtable / SS-4") */
+.tag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 8pt;
+  color: var(--slate);
+  background: var(--surface);
+  border: 0.6pt solid var(--rule);
+  border-radius: 4px;
+  padding: 1.5px 7px;
+  white-space: nowrap;
+}
+
+/* ---- Badges (legend tokens) -------------------------------------------- */
+.badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 7.4pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 2px 7px;
+  border: 0.6pt solid transparent;
+}
+.badge--auto   { color: var(--auto-fg);   background: var(--auto-bg);   border-color: var(--auto-bd); }
+.badge--regla  { color: var(--regla-fg);  background: var(--regla-bg);  border-color: var(--regla-bd); }
+.badge--manual { color: var(--manual-fg); background: var(--manual-bg); border-color: var(--manual-bd); }
+.badge--check  { color: var(--check-fg);  background: var(--check-bg);  border-color: var(--check-bd); }
+
+/* ---- Cards -------------------------------------------------------------- */
+.card-grid {
+  display: flex;
+  gap: 12px;
+  margin: 1em 0 1.4em;
+}
+.card {
+  flex: 1;
+  background: var(--white);
+  border: 0.6pt solid var(--rule);
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.card .eyebrow { margin-bottom: 0.3em; }
+.card h4 {
+  font-family: var(--sans);
+  font-weight: 900;
+  font-size: 10.3pt;
+  color: var(--ink);
+  margin: 0 0 0.5em;
+}
+.card p { font-size: 8.6pt; margin: 0; }
+
+/* Filled emphasis card (deep green, e.g. the final "CCH Axcess" step) */
+.card--filled {
+  background: var(--green-deep);
+  border-color: var(--green-deep);
+}
+.card--filled h4 { color: var(--cream); }
+.card--filled p, .card--filled .eyebrow { color: var(--cream-2); }
+
+/* ---- Process flow (step cards with arrows) ----------------------------- */
+.flow { display: flex; align-items: stretch; gap: 0; margin: 1.2em 0 1.6em; }
+.flow .card { flex: 1; text-align: center; }
+.flow .card h4 { text-align: center; }
+.flow .arrow {
+  align-self: center;
+  font-family: var(--mono);
+  color: var(--slate);
+  padding: 0 8px;
+}
+
+/* ---- Callout ------------------------------------------------------------ */
+.callout {
+  background: var(--surface-2);
+  border-left: 3px solid var(--green);
+  border-radius: 0 6px 6px 0;
+  padding: 12px 16px;
+  margin: 1.2em 0 1.4em;
+}
+.callout .eyebrow {                 /* callout title is mono, uppercase, bold */
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--green);
+  margin-bottom: 0.4em;
+}
+.callout p:last-child { margin-bottom: 0; }
+
+/* ---- Table of contents -------------------------------------------------- */
+.toc { margin: 0.4em 0 1em; }
+.toc-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 7px 0;
+  border-bottom: 0.6pt solid var(--rule);
+}
+.toc-row .num {
+  font-family: var(--mono);
+  font-size: 9pt;
+  color: var(--muted);
+  min-width: 22px;
+}
+.toc-row .title { color: var(--ink); font-size: 9.6pt; }
+
+/* ---- Mapping table ------------------------------------------------------ */
+table.mapping {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.8em 0 1.6em;
+  font-size: 9pt;
+}
+table.mapping thead th {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 7.4pt;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  text-align: left;
+  vertical-align: bottom;
+  padding: 0 12px 8px 0;
+  border-bottom: 1.2pt solid var(--rule-strong);
+}
+table.mapping tbody td {
+  padding: 11px 12px 11px 0;
+  vertical-align: top;
+  border-bottom: 0.6pt solid var(--rule);
+  color: var(--slate);
+}
+table.mapping tbody td:first-child {        /* leftmost column = field name  */
+  color: var(--ink);
+  font-weight: 600;
+}
+table.mapping .badge { white-space: nowrap; }
+
+/* Optional zebra (off by default; matches some sections of the original) */
+table.mapping.zebra tbody tr:nth-child(even) td { background: var(--surface); }
+
+/* ---- Cover footer block ------------------------------------------------- */
+.doc-footer {
+  margin-top: 1.4em;
+  padding-top: 10px;
+  border-top: 1.6pt solid var(--rule-strong);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+.doc-footer .col .eyebrow { color: var(--slate); letter-spacing: 0.12em; }
+.doc-footer .col p { font-weight: 700; color: var(--ink); font-size: 11pt; margin: 0; }
+.doc-footer .col.right { text-align: right; }
+
+/* ---- Utilities ---------------------------------------------------------- */
+.page-break { break-before: page; }
+ul.clean { margin: 0.4em 0 1em; padding-left: 1.1em; }
+ul.clean li { margin: 0.3em 0; color: var(--slate); }

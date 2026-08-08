@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>PC 24/7 — Tres candidatos — Tenfold (Inforge) × Perchik CPA</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  :root{ --footer-right:"PC 24/7 → CCH AXCESS · v2.0"; }
+
+  /* Layout-only helpers. No new colors or fonts: todo sale de los tokens. */
+  .card-grid.cands { align-items: stretch; }
+  .cands .card { display: flex; flex-direction: column; padding: 16px 18px; }
+  .cands .card h4 { min-height: 3em; }
+  .cands .card .form {
+    font-family: var(--mono);
+    font-size: 7.6pt;
+    color: var(--muted);
+    margin: 0 0 10px;
+  }
+  .cands .card--filled .form { color: var(--cream-2); }
+  .cands .price {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 14pt;
+    color: var(--green);
+    margin: 0 0 12px;
+  }
+  .cands .card--filled .price { color: var(--cream); }
+
+  .specs { margin: 0 0 12px; border-top: 0.6pt solid var(--rule); }
+  .cands .card--filled .specs { border-top-color: var(--cream-2); }
+  .specs .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 5px 0;
+    border-bottom: 0.6pt solid var(--rule);
+    font-size: 8.2pt;
+  }
+  .cands .card--filled .specs .row { border-bottom-color: var(--cream-2); }
+  .specs .k { color: var(--slate); }
+  .cands .card--filled .specs .k { color: var(--cream-2); }
+  .specs .v { font-family: var(--mono); font-weight: 600; color: var(--ink); text-align: right; }
+  .cands .card--filled .specs .v { color: var(--cream); }
+  .specs .v.hi { color: var(--green); }
+  .cands .card--filled .specs .v.hi { color: var(--cream); }
+
+  .why { font-size: 8.6pt; margin: 0 0 10px; }
+  .buy { margin-top: auto; padding-top: 10px; border-top: 0.6pt dashed var(--rule); }
+  .cands .card--filled .buy { border-top-color: var(--cream-2); }
+  .buy .lbl {
+    font-family: var(--mono);
+    font-size: 6.6pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 5px;
+  }
+  .cands .card--filled .buy .lbl { color: var(--cream-2); }
+  .buy a { display: block; font-family: var(--mono); font-size: 7.2pt; margin-bottom: 3px; }
+  .cands .card--filled .buy a { color: var(--cream); }
+  .buy .cav { font-size: 7.4pt; color: var(--muted); margin: 6px 0 0; }
+  .cands .card--filled .buy .cav { color: var(--cream-2); }
+</style>
+</head>
+<body>
+<div class="content">
+
+  <p class="eyebrow">Tenfold (Inforge) × Perchik CPA · PC 24/7 · Julio 2026</p>
+  <h1 class="hero">Tres candidatos</h1>
+
+  <div class="card-grid cands">
+
+    <div class="card card--filled">
+      <p class="eyebrow">Mejor</p>
+      <h4>Lenovo ThinkCentre M70q Gen 6</h4>
+      <p class="form">tiny · 1 L · vendedor Oemgenuine</p>
+      <p class="price">US$1.249,95</p>
+      <div class="specs">
+        <div class="row"><span class="k">CPU</span><span class="v">Core Ultra</span></div>
+        <div class="row"><span class="k">RAM · disco</span><span class="v hi">32 GB · 1 TB</span></div>
+        <div class="row"><span class="k">Windows</span><span class="v">11 Pro</span></div>
+        <div class="row"><span class="k">Opiniones</span><span class="v">4,5 ★ · 29</span></div>
+        <div class="row"><span class="k">Stock</span><span class="v">confirmado</span></div>
+        <div class="row"><span class="k">Con 7% tax</span><span class="v hi">~US$ 1.337</span></div>
+      </div>
+      <p class="why"><strong>El único con precio y stock verificados</strong>, y el más barato con 32 GB y
+         1 TB. Garantía de 3 años del vendedor sobre memoria y disco; la de fábrica sigue vigente en el
+         resto.</p>
+      <div class="buy">
+        <p class="lbl">Amazon</p>
+        <a href="https://www.amazon.com/Oemgenuine-ThinkCentre-M70q-Gen-6/dp/B0H9V974WB">amazon.com/dp/B0H9V974WB</a>
+        <p class="cav">La misma máquina con 512 GB sale US$ 1.149,95.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Más vendida</p>
+      <h4>Beelink SER8</h4>
+      <p class="form">mini · 0,6 L · Ryzen 7 8845HS</p>
+      <p class="price">ref. ~US$600</p>
+      <div class="specs">
+        <div class="row"><span class="k">CPU</span><span class="v">Ryzen 7 8845HS</span></div>
+        <div class="row"><span class="k">RAM · disco</span><span class="v">32 GB · 1 TB</span></div>
+        <div class="row"><span class="k">Windows</span><span class="v">11 Pro</span></div>
+        <div class="row"><span class="k">Opiniones</span><span class="v hi">cientos</span></div>
+        <div class="row"><span class="k">Soporte</span><span class="v">de por vida</span></div>
+        <div class="row"><span class="k">Con 7% tax</span><span class="v hi">~US$ 642</span></div>
+      </div>
+      <p class="why"><strong>Está en los Best Sellers de Amazon:</strong> de lejos la más probada por
+         compradores reales, y a la mitad de precio. Soporte de por vida y 30 días de devolución.</p>
+      <div class="buy">
+        <p class="lbl">Amazon</p>
+        <a href="https://www.amazon.com/Beelink-Mini-SER8-Ryzen-8845HS/dp/B0CGMXTK2J">amazon.com/dp/B0CGMXTK2J</a>
+        <p class="cav">Marca consumer: soporte directo con Beelink, sin canal corporativo.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Más potencia</p>
+      <h4>HP Elite Mini 800 G9</h4>
+      <p class="form">mini · 1 L · i5-14500</p>
+      <p class="price">ref. ~US$1.050</p>
+      <div class="specs">
+        <div class="row"><span class="k">CPU</span><span class="v">i5-14500</span></div>
+        <div class="row"><span class="k">RAM · disco</span><span class="v">32 GB · 1 TB</span></div>
+        <div class="row"><span class="k">Windows</span><span class="v">11 Pro</span></div>
+        <div class="row"><span class="k">Opiniones</span><span class="v hi">4,8 ★ · 21</span></div>
+        <div class="row"><span class="k">Stock</span><span class="v">confirmado</span></div>
+        <div class="row"><span class="k">Con 7% tax</span><span class="v">~US$ 1.124</span></div>
+      </div>
+      <p class="why"><strong>La mejor calificación de las tres</strong> y precio intermedio. La
+         configuración la arma un revendedor, igual que el Lenovo.</p>
+      <div class="buy">
+        <p class="lbl">Amazon</p>
+        <a href="https://www.amazon.com/HP-Elitedesk-G9-i5-14500-Windows/dp/B0H2977DW2">amazon.com/dp/B0H2977DW2</a>
+        <a href="https://www.amazon.com/s?k=HP+Elite+Mini+800+G9+32GB+1TB">buscar si está agotada</a>
+        <p class="cav">Verificar que diga i5-14500 y 32 GB: circulan variantes de 8 y 16 GB.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <p><strong>Los requisitos son cuatro, y nada más:</strong> <strong>Windows 11 Pro</strong> —por el
+     cifrado de disco sobre datos de clientes y por el acceso remoto—, <strong>32 GB de RAM</strong> —CCH
+     Axcess pide 16 GB dedicados y la automatización va encima—, <strong>disco SSD</strong>, y
+     <strong>Windows instalado en la máquina real</strong>, porque CCH no admite Windows virtualizado. El
+     resto no mueve la aguja: el procesador es indiferente —el trabajo pesado ocurre en los servidores, no
+     en el equipo— y el 1 TB tampoco, porque CCH ocupa unos 10 GB.</p>
+
+  <div class="callout">
+    <p class="eyebrow">Acceso remoto, respaldo y precios</p>
+    <p><strong>No hace falta hardware especial para entrar a la máquina en remoto:</strong> Windows 11 Pro
+       ya incluye Escritorio Remoto, y si se prefiere algo más simple, AnyDesk. Para reiniciarla sin que
+       nadie vaya hasta el equipo, un <strong>enchufe inteligente de ~US$ 25</strong>. Como el proceso
+       corre cada hora, una corrida perdida de madrugada la recupera la siguiente. Conviene sumar un
+       <strong>UPS</strong> (~US$ 130 con impuesto) para que un corte de luz no interrumpa una corrida.</p>
+    <p><strong>La reputación del vendedor se usó como filtro: mínimo 20 opiniones.</strong> El Lenovo y el
+       HP están verificados desde Miami —4,5 ★ con 29 opiniones y 4,8 ★ con 21—: poco volumen, pero real.
+       La Beelink figura en los Best Sellers de mini PCs de Amazon, con un volumen de reseñas de otro
+       orden. Los totales ya incluyen el <strong>7% de Miami-Dade</strong>, y si una configuración de 1 TB
+       aparece agotada, la de 512 GB es el mismo equipo.</p>
+  </div>
+
+</div>
+</body>
+</html>
