@@ -83,3 +83,10 @@ scheduled 1h → intake-trigger (lee "CCH To do") → return-orchestrator (mocku
 - Diseño completo: `docs/superpowers/specs/2026-07-01-scheduled-1065-completion-report-design.md`.
 - **Recordá:** las skills se editan en este repo pero corren en **Cowork/Claude Desktop** →
   hay que copiarlas a mano allá (no hay sync automático).
+
+## Dónde retomamos (ago-2026)
+
+Ya hay **acceso a la PC 24/7**. El próximo paso es implementar `cch-axcess-client` ahí: decidir su
+forma (**MCP local por stdio vs CLI** — recomendación y trade-offs en el `README.md` de la raíz),
+destrabar la activación de las APIs con WK, y **exportar un 1065 terminado para sacar los field
+codes de Partnership**. Eso último es lo que convierte los 🟡 esqueletos en implementación real.
