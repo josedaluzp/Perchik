@@ -47,6 +47,9 @@ def test_build_payload_xml_bytes_is_valid_and_has_expected_structure():
     taxpayer = root.find("TaxReturn/TaxPayerDetails")
     assert taxpayer.attrib["NameLine1"] == "SALVIN7"
 
+    view_el = root.find("TaxReturn/View")
+    assert view_el.attrib["{http://www.w3.org/2001/XMLSchema-instance}type"] == "Worksheet"
+
     identifier = root.find("TaxReturn/View/Identifier")
     assert identifier.attrib["Hierarchy"] == "Federal\\Partner Information"
 
