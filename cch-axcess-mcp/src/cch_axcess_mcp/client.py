@@ -30,6 +30,17 @@ def _escape_odata(value: str) -> str:
     return value.replace("'", "''")
 
 
+def _raise_with_body(resp: requests.Response) -> None:
+    """Como resp.raise_for_status(), pero preserva el body de la respuesta en
+    el mensaje de la excepción — el spec pide poder ver el error real de CCH
+    (ej. RCRIU) para diagnosticar. Nunca incluir los headers del request acá:
+    ahí vive el bearer token y la subscription key."""
+    if not resp.ok:
+        raise RuntimeError(
+            f"CCH {resp.status_code} {resp.request.method} {resp.url}: {resp.text[:2000]}"
+        )
+
+
 def find_returns(
     config: Config,
     cache: TokenCache,
@@ -49,7 +60,7 @@ def find_returns(
         params={"$filter": " and ".join(filters)},
         timeout=30,
     )
-    resp.raise_for_status()
+    _raise_with_body(resp)
     return resp.json()
 
 
@@ -64,7 +75,7 @@ def import_batch(
         json=body,
         timeout=60,
     )
-    resp.raise_for_status()
+    _raise_with_body(resp)
     return resp.json()
 
 
@@ -81,7 +92,7 @@ def batch_status(
         params={"$filter": filter_expr},
         timeout=30,
     )
-    resp.raise_for_status()
+    _raise_with_body(resp)
     return resp.json()
 
 

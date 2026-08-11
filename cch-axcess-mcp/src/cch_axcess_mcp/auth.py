@@ -3,11 +3,23 @@ import json
 import os
 import time
 from pathlib import Path
+from typing import Optional
 from urllib.parse import urlencode
 
 import requests
 
 from .config import Config
+
+
+def _raise_with_body(resp: requests.Response) -> None:
+    """Como resp.raise_for_status(), pero preserva el body de la respuesta en
+    el mensaje de la excepción — sin él no se puede diagnosticar un error real
+    de CCH (ej. invalid_grant). Nunca incluir los headers del request acá: ahí
+    vive el bearer token y la subscription key."""
+    if not resp.ok:
+        raise RuntimeError(
+            f"CCH {resp.status_code} {resp.request.method} {resp.url}: {resp.text[:2000]}"
+        )
 
 
 class TokenCache:
@@ -24,7 +36,14 @@ class TokenCache:
         return json.loads(self.path.read_text())
 
     def write(self, data: dict) -> None:
-        self.path.write_text(json.dumps(data, indent=2))
+        """Mergea sobre lo existente (un refresh sin refresh_token en la
+        respuesta no debe destruir el que ya teníamos) y escribe atómico via
+        un archivo temporal + os.replace, para no dejar JSON truncado si el
+        proceso muere a mitad de escritura."""
+        merged = {**self.read(), **data}
+        tmp_path = self.path.with_name(self.path.name + ".tmp")
+        tmp_path.write_text(json.dumps(merged, indent=2))
+        os.replace(tmp_path, self.path)
 
 
 def build_authorize_url(config: Config, state: str = "") -> str:
@@ -56,7 +75,7 @@ def _post_token(config: Config, body: dict) -> dict:
         data=body,
         timeout=30,
     )
-    resp.raise_for_status()
+    _raise_with_body(resp)
     tokens = resp.json()
     tokens["obtained_at"] = time.time()
     return tokens
@@ -76,11 +95,23 @@ def exchange_code(config: Config, cache: TokenCache, code: str) -> dict:
     return tokens
 
 
+def _find_refresh_token(config: Config, cache: TokenCache) -> Optional[str]:
+    """Fuente única de verdad para de dónde puede venir el refresh_token:
+    primero el cache file, y si no está, el fallback CCH_OIP_REFRESH_TOKEN
+    (donde .env.example dice que va el token post-consentimiento inicial)."""
+    return cache.read().get("refresh_token") or os.environ.get("CCH_OIP_REFRESH_TOKEN")
+
+
+def has_refresh_token(config: Config, cache: TokenCache) -> bool:
+    """Chequea las mismas dos fuentes que refresh() acepta, para que el guard
+    de los tests de integración no pueda divergir de la lógica real."""
+    return bool(_find_refresh_token(config, cache))
+
+
 def refresh(config: Config, cache: TokenCache) -> dict:
     """Renueva access+refresh token. Resetea la expiración de ambos (ver
     oauth-auth.md) — por eso conviene llamarlo en cada corrida del scheduled."""
-    current = cache.read()
-    refresh_token = current.get("refresh_token") or os.environ.get("CCH_OIP_REFRESH_TOKEN")
+    refresh_token = _find_refresh_token(config, cache)
     if not refresh_token:
         raise RuntimeError(
             "No hay refresh_token disponible. Corré cch_get_oauth_url + cch_exchange_code primero."
