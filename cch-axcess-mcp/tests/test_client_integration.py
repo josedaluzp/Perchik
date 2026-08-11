@@ -1,14 +1,14 @@
 import pytest
 
-from cch_axcess_mcp.auth import TokenCache
+from cch_axcess_mcp.auth import TokenCache, has_refresh_token
 from cch_axcess_mcp.client import batch_status, find_returns
 from cch_axcess_mcp.config import load_config
 
 try:
     _config = load_config()
     _cache = TokenCache(_config.token_cache_path)
-    _has_refresh_token = bool(_cache.read().get("refresh_token"))
-except RuntimeError:
+    _has_refresh_token = has_refresh_token(_config, _cache)
+except Exception:
     _has_refresh_token = False
 
 pytestmark = pytest.mark.skipif(
