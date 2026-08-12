@@ -58,7 +58,11 @@ cch-axcess-mcp/
     client.py       # llamadas HTTP a la API real: find_returns, import_batch, batch_status
     server.py       # FastMCP (SDK oficial Python de MCP): expone los tools por stdio
   tests/
-    smoke_test.py   # contra la API REAL, sin mocks — se corre a mano cuando haya credenciales
+    test_config.py             # carga de config: variables faltantes y defaults
+    test_xml_builder.py        # estructura del Payload XML, base64, ConfigurationXml
+    test_auth.py               # TokenCache (merge + atómico) y armado de la authorize URL
+    test_client.py             # helper puro _escape_odata
+    test_client_integration.py # contra la API REAL, sin mocks — skipeado si no hay refresh token
 ```
 
 Elegido sobre dos alternativas: (a) implementar el protocolo MCP a mano en
@@ -84,25 +88,33 @@ se inventa el contrato hasta confirmarlo en el portal de desarrollador:**
 
 ## Manejo de errores
 
-Las llamadas HTTP usan `raise_for_status()`: un 400/401/500 de CCH sube tal
-cual a Claude (con el body de la respuesta, que trae el detalle del error),
-en vez de tragarse el error o devolver un mensaje genérico. Esto importa
-porque las pruebas son contra la API real — necesitamos ver el error real de
-CCH para diagnosticar (ej. `RCRIU` = return in use).
+Las llamadas HTTP pasan por `raise_with_body()` (definido en `auth.py`, lo
+usan auth y client): un 400/401/500 de CCH sube tal cual a Claude **con el
+body de la respuesta**, que trae el detalle del error, en vez de tragárselo o
+devolver un mensaje genérico. `raise_for_status()` no alcanza porque descarta
+justo ese body. Esto importa porque las pruebas son contra la API real —
+necesitamos ver el error real de CCH para diagnosticar (ej. `RCRIU` = return
+in use). El mensaje nunca incluye los headers del request: ahí viven el
+bearer token y la subscription key.
 
 ## Testing — sin mocks, contra la API real
 
-Por decisión explícita del usuario, no se testea con HTTP mockeado. En su
-lugar, un script de smoke test (`tests/smoke_test.py`) ejercita la secuencia
-real, de menor a mayor riesgo:
+Por decisión explícita del usuario, no se testea con HTTP mockeado. La suite
+es pytest y se divide en dos:
 
-1. `cch_auth_status` — confirma que el refresh token vivo funciona.
-2. `cch_find_return` (solo lectura) — confirma auth + subscription key +
-   conectividad contra un cliente real (ej. SALVIN7).
-3. `cch_import_batch` — **se prueba recién cuando existan los field codes
-   reales del 1065** (Partnership); antes de eso, escribir sería alto riesgo
-   sin un mapeo de campos confirmado. Hasta entonces, el smoke test se
-   detiene después del paso 2.
+- **Unitarios, sin red** (`test_config.py`, `test_xml_builder.py`,
+  `test_auth.py`, `test_client.py`): cubren lo que es lógica pura — carga de
+  config, armado del XML, merge/atomicidad del TokenCache, armado de la
+  authorize URL, escapado OData. Corren siempre.
+- **Integración contra la API real** (`test_client_integration.py`): ejercita
+  `find_returns` y `batch_status` contra CCH de verdad. Todo el módulo está
+  guardado por `pytest.mark.skipif(not has_refresh_token(...))`, así que sin
+  credenciales skipea limpio en vez de fallar.
+
+`cch_import_batch` **se prueba recién cuando existan los field codes reales
+del 1065** (Partnership); antes de eso, escribir sería alto riesgo sin un
+mapeo de campos confirmado. Por eso la integración hoy llega solo hasta
+lectura.
 
 ## Pendientes conocidos (no bloquean el scaffold, sí el uso real)
 

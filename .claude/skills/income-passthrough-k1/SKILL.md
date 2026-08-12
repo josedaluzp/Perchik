@@ -40,7 +40,7 @@ Asume que las sociedades emisoras de los K-1 recibidos son domésticas:
   - Si el neto es **positivo** → línea de INCOME correspondiente, columna US Source.
   - Si el neto es **negativo** → línea de DEDUCTIONS, columna US Source, sumándole el total
     de "Deductions" (box 13) de esos mismos K-1.
-  *(SALVIN7: neto = −6.138 − 6.285 + 0 = −12.423; + (47+32+49) = **12.551**.)*
+  *(SALVIN7: neto = −6,138 − 6,285 + 0 = −12,423; + (47+32+49) = **12,551**.)*
 
 ## 3. Excluir del K-2/K-3 los "non-deductible expenses"
 Los non-deductible expenses de los K-1 recibidos bajan el capital account del socio en **su
