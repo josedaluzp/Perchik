@@ -1,0 +1,111 @@
+2026-08-10
+
+QUE SE HIZO
+-----------
+- Clonado el repo desde https://github.com/josedaluzp/Perchik.git a
+  C:\Users\ian\perchik-architecture-skills (estaba vacio).
+- Corregido el packaging de las skills para Claude Desktop: Compress-Archive
+  de PowerShell guardaba las rutas con \ (backslash) dentro del zip, lo que
+  Claude Desktop rechazaba como "path with invalid characters". Regenerados
+  los 25 .zip en dist/skills-claude-desktop/ con System.IO.Compression.ZipFile
+  forzando / en las entradas. El usuario ya los subio a Claude Desktop.
+- Investigado en developers.cchaxcess.com (Developer Portal de CCH Axcess):
+  - Confirmado que el producto a usar es "Tax APIs" (activo), no "All APIs -
+    Limited Use" (ese ultimo limitado a 10 calls/min, solo para explorar).
+  - Confirmado el esquema real de Tax Services v2: GET Returns,
+    POST ReturnsImportBatch, GET BatchStatus - paths, headers, body y
+    response documentados en
+    .claude/skills/cch-axcess-client/references/tax-transfer-format.md
+  - Detectado un header IntegratorKey que pide el "Try it" del portal, sin
+    resolver todavia de donde sale (no esta en Profile ni en el registro de
+    la app OAuth).
+- Registrada la app OAuth en el Dashboard de CCH Axcess (Application Links >
+  Developer Tools > Add Application): Perchik-1065-Automation, tipo
+  AuthorizationCode, access token 2h, refresh token 4 semanas, scopes
+  CCHAxcess_data_writeaccess, offline_access, openid, IDInfo,
+  CCHAxcess_Profile (se excluyo CCHAxcess_ADSync_writeaccess, no hace
+  falta). Se generaron Client ID/Client secret. Quedo a mitad de camino:
+  faltaba completar Redirect URL / Post Logout Redirect URL y darle Finish.
+- Decision de arquitectura: MCP local (stdio) para cch-axcess-client, sin
+  CLI aparte - Claude Desktop no puede ejecutar un CLI por su cuenta (no
+  tiene terminal, solo Conectores/MCP y Skills), asi que la unica forma de
+  que el flujo automatizado (scheduled -> intake-trigger -> ... ->
+  cch-axcess-client) ejecute codigo real contra la API de CCH es un tool de
+  MCP.
+- Instalado Python 3.12.10 via winget (no estaba instalado en la PC).
+- Creado .env a partir de .env.example; agregadas CCH_OIP_SUBSCRIPTION_KEY y
+  CCH_OIP_INTEGRATOR_KEY a ambos archivos (no estaban documentadas todavia).
+- Scaffold del paquete cch-axcess-mcp/ (implementacion real de
+  cch-axcess-client):
+  - pyproject.toml, README.md
+  - src/cch_axcess_mcp/config.py - carga .env, valida vars requeridas
+  - src/cch_axcess_mcp/auth.py - OAuth 2.0 completo (authorize URL,
+    exchange code, refresh con rotacion, TokenCache en disco)
+  - src/cch_axcess_mcp/xml_builder.py - arma el Payload XML (Tax Transfer)
+    + ConfigurationXml, base64/UTF-16
+  - src/cch_axcess_mcp/client.py - find_returns, import_batch,
+    batch_status reales; create_return_version/submit_export/stream_file/
+    efile_status como NotImplementedError explicito (paths no confirmados
+    todavia)
+  - server.py todavia no existe - esta en el plan (Task 6), no implementado
+    aun.
+- Corrido el proceso de superpowers (brainstorming -> spec -> plan):
+  - Spec: docs/superpowers/specs/2026-08-10-cch-axcess-mcp-design.md
+  - Plan (7 tareas, TDD sin mocks): docs/superpowers/plans/2026-08-10-cch-axcess-mcp.md
+- Creado el skill .claude/skills/session-log/SKILL.md - este mismo
+  mecanismo de registro diario (ahora en .txt, ver mas abajo).
+- Empezada la ejecucion del plan con subagent-driven-development: detectado
+  que ese metodo necesita commits de git locales para poder revisar el diff
+  de cada tarea. El usuario aprobo permitir commits locales SOLO para esto
+  (nunca push, nunca a un remoto).
+
+DECISIONES TOMADAS
+-------------------
+- MCP, no CLI, para cch-axcess-client. El scheduled corre en la misma PC
+  24/7, asi que un MCP local por stdio alcanza sin necesidad de servidor
+  HTTP ni puerto expuesto.
+- API a usar: Tax Services v2 de "Tax APIs" (no v1, no "Limited Use").
+- Testing sin mocks: por pedido explicito del usuario, los tests son contra
+  la API real (con skip limpio cuando faltan credenciales), no contra HTTP
+  mockeado.
+- Registro diario en logs/YYYY-MM-DD.txt (texto plano, no markdown) en vez
+  de .md - decision de hoy, reemplaza el formato anterior.
+- Se permiten commits de git LOCALES unicamente para poder ejecutar el plan
+  de cch-axcess-mcp con subagent-driven-development (el metodo revisa por
+  diff de commits). Nunca se pushea a ningun remoto.
+- Sin field codes todavia: no se prueba cch_import_batch contra un return
+  real hasta exportar un 1065 terminado y sacar los Location reales de
+  Partnership (ReturnType="P").
+
+PENDIENTE / BLOQUEADO
+----------------------
+- Registro OAuth incompleto: falta volver a la pantalla "OAuth Settings"
+  del Dashboard de CCH, completar Redirect URL (una https:// de un dominio
+  de Perchik - localhost bloqueado) y Post Logout Redirect URL, y darle
+  Finish.
+- .env sin completar: CCH_OIP_CLIENT_ID, CCH_OIP_CLIENT_SECRET,
+  CCH_OIP_REDIRECT_URI, CCH_OIP_ACCOUNT_NUMBER, CCH_OIP_SUBSCRIPTION_KEY (la
+  de "Tax APIs" del Profile del dev portal) - el usuario los completa a
+  mano en C:\Users\ian\perchik-architecture-skills\.env
+- IntegratorKey: origen sin resolver (ni Profile ni registro OAuth lo
+  mostraron). Puede que haya que pedirlo aparte a Wolters Kluwer.
+- Nombre exacto del header de subscription key: el codigo asume
+  Ocp-Apim-Subscription-Key (convencion Azure APIM) - falta confirmar
+  contra una llamada real.
+- Field codes del 1065 (Partnership) - pendiente exportar un return
+  terminado (AGGUILU/SALVIN7) para sacar los Location reales.
+- Identidad de git sin configurar en esta maquina (ni local ni global) -
+  bloquea los commits locales recien aprobados. Falta que el usuario
+  confirme si configuro yo la identidad SOLO en este repo (--local) y si
+  aisla el trabajo en una rama/worktree separada de main o commitea directo
+  sobre main.
+
+PROXIMOS PASOS
+----------------
+1. Resolver identidad de git (local a este repo) y decidir rama/worktree vs
+   main directo, para poder arrancar el plan con subagent-driven-development.
+2. Terminar el registro de la app OAuth en el Dashboard de CCH (Redirect
+   URLs + Finish).
+3. Completar .env con las credenciales reales.
+4. Ejecutar las 7 tareas del plan (config -> xml_builder -> auth -> client
+   -> consentimiento OAuth real -> server.py -> registro en Claude Desktop).

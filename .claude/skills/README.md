@@ -44,8 +44,8 @@ implementación real contra MCP/CCH) · ⛔ brecha (regla/decisión pendiente).
 | 5 | income-consulting-foreign| Módulo income | 🟡 esqueleto |
 | 5 | sale-of-property         | Módulo income | 🟡 esqueleto |
 | 5 | change-in-ownership      | Módulo income | 🟡 esqueleto |
-| 5 | income-passthrough-k1    | Módulo income | ⛔ esqueleto + BRECHA (holding recibe K-1) |
-| 5 | sale-of-securities       | Módulo income | ⛔ esqueleto + BRECHA (8949 ∉ retención 1446) |
+| 5 | income-passthrough-k1    | Módulo income | 🟡 esqueleto |
+| 5 | sale-of-securities       | Módulo income | 🟡 esqueleto |
 | 6 | foreign-forms            | Núcleo | 🟡 esqueleto |
 | 7 | cross-check-engine       | QA | 🟡 esqueleto |
 | 7 | diagnostic-runner        | QA | 🟡 esqueleto |

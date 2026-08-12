@@ -4,6 +4,14 @@ video/
 # Paquetes de skills regenerables (se reconstruyen con el script de packaging)
 dist/
 
+# Entornos virtuales y cache de Python (cch-axcess-mcp/)
+.venv/
+__pycache__/
+*.pyc
+
+# Cache de tokens OAuth (cch-axcess-mcp/) — nunca en el repo
+.token_cache.json
+
 # Secretos — solo .env.example se versiona
 .env
 .env.local

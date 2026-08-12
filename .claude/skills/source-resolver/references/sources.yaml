@@ -123,13 +123,13 @@ sources:
     needed_by: [income-passthrough-k1]
     connector: dropbox
     locator: { search_scope: clients_scope, name_contains: "{entity}", match: "K1*|K-1*", prefer: latest_year }
-    notes: "Holding que RECIBE K-1. Puede estar en subcarpeta Investments. (BRECHA: regla propia)"
+    notes: "Holding que RECIBE K-1. Puede estar en subcarpeta Investments. Regla de mapeo: income-passthrough-k1/SKILL.md."
 
   - key: sale.securities_1099b
     needed_by: [sale-of-securities]
     connector: dropbox
     locator: { search_scope: clients_scope, name_contains: "{entity}", match: "*1099-B*|*Investment*", prefer: latest_year }
-    notes: "Form 8949. Ganancias NO entran a retención 1446. (BRECHA)"
+    notes: "Form 8949. Ganancias NO entran a retención 1446 (verificación manual, ver sale-of-securities/SKILL.md)."
 
   - key: sale.real_estate_hud
     needed_by: [sale-of-property]
