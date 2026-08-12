@@ -7,17 +7,18 @@ Detalle completo del análisis: `whisper-salvin/analisis_3casos_video_vs_doc.md`
 
 ## Prioridad ALTA (brechas de mapeo reales)
 
-- [ ] **Camino "Passthrough / Holding" (sociedad que recibe K-1 de otras).** Caso SALVIN7: su income
-      entra por 3 K-1 recibidos, cargados línea por línea en `Income › Partnership Passthrough
-      (K-1 1065)`. Hoy el doc lo deja como 1 línea MANUAL fuera de R1 y admite que "Holding necesita
-      regla propia". → Agregar una rama/sección en el árbol de Income (pg22) con el detalle de carga.
-      *(Fuente: video SALVIN7 PI 12:00-15:00 · doc pg22-23, pg50)*
+- [x] **Camino "Passthrough / Holding" (sociedad que recibe K-1 de otras).** Resuelto — regla
+      formalizada en `.claude/skills/income-passthrough-k1/SKILL.md`. Ver
+      `docs/superpowers/specs/2026-08-12-income-passthrough-securities-design.md`.
+      *(Fuente: video SALVIN7 PI 12:00-15:00 · doc pg22-23, pg50 · transcript:
+      `trancript/salvin7-llc-consulting-fuera-de-usa/`)*
 
-- [ ] **Form 8949 — securities NO gravados en la retención.** Las ganancias short/long term de
-      acciones no entran a Section 1446, pero CCH las mete solo en el **8804 punto 4e**. Regla a
-      documentar: excluirlas y verificar que **Σ punto 9 del 8805 (socios foreign) = 4e del 8804** y
-      **punto 10 = retención**. → Agregar al mapeo/verificación del 8804/8805.
-      *(Fuente: video Form 8949 · doc pg23 "Form 8949", sección 09)*
+- [x] **Form 8949 — securities NO gravados en la retención.** Resuelto — regla formalizada en
+      `.claude/skills/sale-of-securities/SKILL.md` (la exclusión de 1446 no es automática en CCH,
+      es una verificación manual post-carga). Ver
+      `docs/superpowers/specs/2026-08-12-income-passthrough-securities-design.md`.
+      *(Fuente: video Form 8949 · doc pg23 "Form 8949", sección 09 · transcript:
+      `trancript/form-8949/part1.txt`)*
 
 - [ ] **8804 — distinguir socio CORP vs INDIVIDUAL.** En venta de propiedades, **4M/4Q (9c y 10−9c)
       impactan sólo el % de los socios individuales**; la **corp va por la línea 4A** (resultado de
