@@ -5,6 +5,9 @@ description = "MCP server (stdio) para leer/escribir returns en CCH Axcess via T
 requires-python = ">=3.10"
 dependencies = [
     "mcp>=1.2.0,<2.0",
+    # server.py importa anyio.to_thread directo. Hoy entra transitivo via mcp,
+    # pero si es import nuestro va declarado nuestro.
+    "anyio>=4.0",
     "requests>=2.31",
     "python-dotenv>=1.0",
 ]

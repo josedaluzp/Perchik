@@ -2,8 +2,8 @@ from typing import Optional
 
 import requests
 
-from .auth import TokenCache, get_valid_access_token
-from .config import TAX_SERVICES_PATH, Config
+from .auth import TokenCache, get_valid_access_token, raise_with_body
+from .config import DEFAULT_TIMEOUT, IMPORT_TIMEOUT, TAX_SERVICES_PATH, Config
 
 
 def _headers(config: Config, cache: TokenCache) -> dict:
@@ -30,15 +30,28 @@ def _escape_odata(value: str) -> str:
     return value.replace("'", "''")
 
 
-def _raise_with_body(resp: requests.Response) -> None:
-    """Como resp.raise_for_status(), pero preserva el body de la respuesta en
-    el mensaje de la excepción — el spec pide poder ver el error real de CCH
-    (ej. RCRIU) para diagnosticar. Nunca incluir los headers del request acá:
-    ahí vive el bearer token y la subscription key."""
-    if not resp.ok:
-        raise RuntimeError(
-            f"CCH {resp.status_code} {resp.request.method} {resp.url}: {resp.text[:2000]}"
-        )
+def _request(
+    config: Config,
+    cache: TokenCache,
+    method: str,
+    path: str,
+    *,
+    timeout: int = DEFAULT_TIMEOUT,
+    **kwargs,
+) -> dict:
+    """Único lugar donde se arma el request, se preserva el body del error y se
+    parsea el JSON. Los endpoints de abajo solo dicen método, path y params —
+    misma idea que _post_token en auth.py. Los que todavía están en
+    NotImplementedError se enganchan acá cuando se confirme su contrato."""
+    resp = requests.request(
+        method,
+        f"{_base_url(config)}{path}",
+        headers=_headers(config, cache),
+        timeout=timeout,
+        **kwargs,
+    )
+    raise_with_body(resp)
+    return resp.json()
 
 
 def find_returns(
@@ -54,14 +67,9 @@ def find_returns(
         filters.append(f"ClientID eq '{_escape_odata(client_id)}'")
     if return_type:
         filters.append(f"ReturnType eq '{_escape_odata(return_type)}'")
-    resp = requests.get(
-        f"{_base_url(config)}/Returns",
-        headers=_headers(config, cache),
-        params={"$filter": " and ".join(filters)},
-        timeout=30,
+    return _request(
+        config, cache, "GET", "/Returns", params={"$filter": " and ".join(filters)}
     )
-    _raise_with_body(resp)
-    return resp.json()
 
 
 def import_batch(
@@ -69,14 +77,14 @@ def import_batch(
 ) -> dict:
     """POST ReturnsImportBatch. Devuelve {ExecutionID, FileResults[]}."""
     body = {"FileDataList": file_data_list_b64, "ConfigurationXml": configuration_xml}
-    resp = requests.post(
-        f"{_base_url(config)}/ReturnsImportBatch",
-        headers=_headers(config, cache),
+    return _request(
+        config,
+        cache,
+        "POST",
+        "/ReturnsImportBatch",
+        timeout=IMPORT_TIMEOUT,
         json=body,
-        timeout=60,
     )
-    _raise_with_body(resp)
-    return resp.json()
 
 
 def batch_status(
@@ -86,14 +94,7 @@ def batch_status(
     filter_expr = f"BatchGuid eq '{_escape_odata(batch_guid)}'"
     if expand_items:
         filter_expr += " and Expand eq 'Items'"
-    resp = requests.get(
-        f"{_base_url(config)}/BatchStatus",
-        headers=_headers(config, cache),
-        params={"$filter": filter_expr},
-        timeout=30,
-    )
-    _raise_with_body(resp)
-    return resp.json()
+    return _request(config, cache, "GET", "/BatchStatus", params={"$filter": filter_expr})
 
 
 # --- Pendientes: path/body exactos sin confirmar todavía contra el portal ---

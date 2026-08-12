@@ -13,6 +13,11 @@ load_dotenv(_PACKAGE_ROOT / ".env")  # override local, si existe
 
 TAX_SERVICES_PATH = "/taxservices/oiptax/api/v1"
 
+# Timeouts de red, en un solo lugar. El import es más lento que el resto
+# (CCH arma el batch del lado suyo antes de responder), por eso va aparte.
+DEFAULT_TIMEOUT = 30
+IMPORT_TIMEOUT = 60
+
 REQUIRED_VARS = [
     "CCH_OIP_CLIENT_ID",
     "CCH_OIP_CLIENT_SECRET",

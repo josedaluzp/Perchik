@@ -8,14 +8,17 @@ from urllib.parse import urlencode
 
 import requests
 
-from .config import Config
+from .config import DEFAULT_TIMEOUT, Config
 
 
-def _raise_with_body(resp: requests.Response) -> None:
+def raise_with_body(resp: requests.Response) -> None:
     """Como resp.raise_for_status(), pero preserva el body de la respuesta en
     el mensaje de la excepción — sin él no se puede diagnosticar un error real
-    de CCH (ej. invalid_grant). Nunca incluir los headers del request acá: ahí
-    vive el bearer token y la subscription key."""
+    de CCH (ej. invalid_grant en auth, RCRIU en el import). Nunca incluir los
+    headers del request acá: ahí vive el bearer token y la subscription key.
+
+    Vive en este módulo y lo importa client.py también, para que el formato
+    del error sea uno solo y no derive entre los dos."""
     if not resp.ok:
         raise RuntimeError(
             f"CCH {resp.status_code} {resp.request.method} {resp.url}: {resp.text[:2000]}"
@@ -39,10 +42,15 @@ class TokenCache:
         """Mergea sobre lo existente (un refresh sin refresh_token en la
         respuesta no debe destruir el que ya teníamos) y escribe atómico via
         un archivo temporal + os.replace, para no dejar JSON truncado si el
-        proceso muere a mitad de escritura."""
+        proceso muere a mitad de escritura.
+
+        El archivo queda 0600 (solo el dueño lee/escribe). En Windows chmod es
+        casi un no-op — la protección real ahí es la ACL del perfil de usuario,
+        no esto — pero no cuesta nada y sirve si algún día corre en POSIX."""
         merged = {**self.read(), **data}
         tmp_path = self.path.with_name(self.path.name + ".tmp")
         tmp_path.write_text(json.dumps(merged, indent=2))
+        os.chmod(tmp_path, 0o600)  # antes del replace: nunca hay una ventana con permisos abiertos
         os.replace(tmp_path, self.path)
 
 
@@ -54,7 +62,9 @@ def build_authorize_url(config: Config, state: str = "") -> str:
         "scope": config.scopes,
     }
     if config.account_number:
-        params["acr_values"] = f'{{"AccountNumber":"{config.account_number}"}}'
+        params["acr_values"] = json.dumps(
+            {"AccountNumber": config.account_number}, separators=(",", ":")
+        )
     if state:
         params["state"] = state
     return f"{config.auth_base}/authorize?{urlencode(params)}"
@@ -73,9 +83,9 @@ def _post_token(config: Config, body: dict) -> dict:
             "Content-Type": "application/x-www-form-urlencoded",
         },
         data=body,
-        timeout=30,
+        timeout=DEFAULT_TIMEOUT,
     )
-    _raise_with_body(resp)
+    raise_with_body(resp)
     tokens = resp.json()
     tokens["obtained_at"] = time.time()
     return tokens
